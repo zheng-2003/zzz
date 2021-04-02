@@ -37,13 +37,6 @@
   </url>
   
   <url>
-    <loc>https://zhaozheng.link/%E5%BE%AE%E5%8D%9A%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95/</loc>
-    
-    <lastmod>2021-04-01</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://zhaozheng.link/axios%E7%9A%84%E5%B0%81%E8%A3%85/</loc>
     
     <lastmod>2021-04-01</lastmod>
@@ -137,14 +130,14 @@
   </url>
   
   <url>
-    <loc>https://zhaozheng.link/tags/Hexo/</loc>
+    <loc>https://zhaozheng.link/tags/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</loc>
     <lastmod>2021-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://zhaozheng.link/tags/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</loc>
+    <loc>https://zhaozheng.link/tags/Hexo/</loc>
     <lastmod>2021-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -181,14 +174,14 @@
   </url>
   
   <url>
-    <loc>https://zhaozheng.link/categories/Hexo/</loc>
+    <loc>https://zhaozheng.link/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</loc>
     <lastmod>2021-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://zhaozheng.link/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</loc>
+    <loc>https://zhaozheng.link/categories/Hexo/</loc>
     <lastmod>2021-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
