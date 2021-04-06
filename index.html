@@ -1,0 +1,384 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>欢迎来到阿正的博客</title><meta name="description"><meta name="author" content="阿正"><meta name="copyright" content="阿正"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://zhaozheng.link/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="preconnect" href="//zz.bdstatic.com"/><meta name="baidu-site-verification" content="rdxzmazm3w"/><meta name="360-site-verification" content="193901e57d9a45b4d4d67d46d21b1a0a"/><meta property="og:type" content="website"><meta property="og:title" content="欢迎来到阿正的博客"><meta property="og:url" content="https://zhaozheng.link/"><meta property="og:site_name" content="欢迎来到阿正的博客"><meta property="og:description"><meta property="og:image" content="https://zhaozheng.link/img/avatar.png"><meta property="article:published_time" content="2021-04-06T23:38:04.795Z"><meta property="article:modified_time" content="2021-04-06T23:38:04.795Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = '1'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3caf21725e65fafb3cfbbd4128697348";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.4.0',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":30,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime_unit: 'days',
+  runtime: true,
+  copyright: {"limitCount":50,"languages":{"author":"Author: 阿正","link":"Link: ","source":"Source: 欢迎来到阿正的博客","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  ClickShowText: {"text":"奥利给,今天又是充满希望的一天,大威天龙，我让你原形毕露","fontSize":"15px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"message_prev":"Press","message_next":"to bookmark this page"},"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#49b1f5","bgDark":"#121212","position":"top-center"},
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: true,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isanchor: true    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2021-04-07 07:38:04'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/third-party/calendar.js"></script><script src="/js/third-party/languages.js"></script><script src="/js/third-party/star.js"></script><link rel="stylesheet" href="/css/weather-plugin.css"><script src="/js/third-party/weather-config.js"></script><script src="/js/third-party/weather-plugin.js"></script><link rel="stylesheet" href="/css/VolantisTags.css"><link rel="stylesheet" href="/css/volantis.css"><link rel="stylesheet" href="/css/fontAnimation.css"><link rel="stylesheet" href="/css/cur.css"><link rel="stylesheet" href="/css/iconfont.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="欢迎来到阿正的博客" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">17</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">Tags</div><div class="length_num">6</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">Categories</div><div class="length_num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home faa-bounce animated"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-leaf faa-bounce animated-hover"></i><span> 百宝箱</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" target="_blank" rel="noopener" href="https://lk.glassysky.site"><i class="fa-fw fas fa-paw"></i><span> 远方的导航工具箱</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://ct.glassysky.site"><i class="fa-fw fas fa-graduation-cap"></i><span> 远方的评论管理系统</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-book faa-bounce animated-hover"></i><span> 找文章</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive faa-bounce animated-hover"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags faa-bounce animated-hover"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open faa-bounce animated-hover"></i><span> 分类</span></a></li><li><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-comment faa-bounce animated-hover"></i><span> 说说</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list faa-spin animated"></i><span> 远方杂谈</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music faa-bounce animated-hover"></i><span> 音乐</span></a></li><li><a class="site-page" href="/photo/"><i class="fa-fw fas fa-image faa-bounce animated-hover"></i><span> 相册</span></a></li><li><a class="site-page" href="/video/"><i class="fa-fw fas fa-video faa-bounce animated-hover"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link faa-flash animated"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/bbs/"><i class="fa-fw fas fa-window-maximize"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-heart faa-bounce animated-hover"></i><span> 关于</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart faa-bounce animated-hover"></i><span> 我的</span></a></li></ul></div></div></div></div><div id="body-wrap"><div id="web_bg" data-type="photo" style="background:url(https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile/img/19.jpg);background-attachment: local;background-position: center;background-size: cover;background-repeat: no-repeat"></div><header class="full_page" id="page-header"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">欢迎来到阿正的博客</a></span><span class="pull-right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home faa-bounce animated"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-leaf faa-bounce animated-hover"></i><span> 百宝箱</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" target="_blank" rel="noopener" href="https://lk.glassysky.site"><i class="fa-fw fas fa-paw"></i><span> 远方的导航工具箱</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://ct.glassysky.site"><i class="fa-fw fas fa-graduation-cap"></i><span> 远方的评论管理系统</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-book faa-bounce animated-hover"></i><span> 找文章</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive faa-bounce animated-hover"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags faa-bounce animated-hover"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open faa-bounce animated-hover"></i><span> 分类</span></a></li><li><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-comment faa-bounce animated-hover"></i><span> 说说</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list faa-spin animated"></i><span> 远方杂谈</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music faa-bounce animated-hover"></i><span> 音乐</span></a></li><li><a class="site-page" href="/photo/"><i class="fa-fw fas fa-image faa-bounce animated-hover"></i><span> 相册</span></a></li><li><a class="site-page" href="/video/"><i class="fa-fw fas fa-video faa-bounce animated-hover"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link faa-flash animated"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/bbs/"><i class="fa-fw fas fa-window-maximize"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-heart faa-bounce animated-hover"></i><span> 关于</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart faa-bounce animated-hover"></i><span> 我的</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site_title">欢迎来到阿正的博客</h1><div id="site_subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://space.bilibili.com/476991968" target="_blank" title="B站"><i class="iconfont icon-bilibili1"></i></a><a class="social-icon" href="https://cnblogs.com/glassysky" target="_blank" title="博客园"><i class="iconfont icon-bokeyuan"></i></a><a class="social-icon" href="https://github.com/glassy-sky-lisong" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/1990691193@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="iconfont icon-RSS"></i></a></div></div><div id="scroll_down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/Java%E6%B3%9B%E5%9E%8B%E4%B9%8B%E4%B8%8A%E3%80%81%E4%B8%8B%E8%BE%B9%E7%95%8C%E9%80%9A%E9%85%8D%E7%AC%A6%E7%9A%84%E7%90%86%E8%A7%A3-%E9%80%82%E5%90%88%E5%88%9D%E5%AD%A6/" title="Java泛型之上、下边界通配符的理解(适合初学)">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post-cover/3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java泛型之上、下边界通配符的理解(适合初学)"></a></div><div class="recent-post-info"><a class="article-title" href="/Java%E6%B3%9B%E5%9E%8B%E4%B9%8B%E4%B8%8A%E3%80%81%E4%B8%8B%E8%BE%B9%E7%95%8C%E9%80%9A%E9%85%8D%E7%AC%A6%E7%9A%84%E7%90%86%E8%A7%A3-%E9%80%82%E5%90%88%E5%88%9D%E5%AD%A6/" title="Java泛型之上、下边界通配符的理解(适合初学)">Java泛型之上、下边界通配符的理解(适合初学)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-09-02T11:15:25.000Z" title="Created 2020-09-02 19:15:25">2020-09-02</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/">博客园博文</a><i class="fas fa-angle-right"></i><a class="article-meta__categories" href="/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/">博客美化</a></span></div><div class="content">泛型的由来为什么需要泛型&emsp;&emsp;Java的数据类型一般都是在定义时就需要确定，这种强制的好处就是类型安全，不会出现像弄一个ClassCastException的数据给jvm，数据安全那么执行的class就会很稳定。但是假如说我不知道这个参数要传什么类型的，因为公司需求在变，如果写死的那就只能便以此需求就改一次，很麻烦。sun公司也注意到这个问题，这样会让代码的灵活性降低，他们就研究出了泛型。
+泛型初识&emsp;&emsp;什么是泛型，可以字面理解就是一个泛泛的类型，他是不确定的，在Java代码编译的时候用泛型是不会出错的，而在运行期时就会报错，说你这种第一是不合理的。这是为什么呢。因为为了提高灵活性，就在编译时期将条件放宽，但是泛型一定要在运行的时候告诉jvm你给我的数据到底是什么类型的，否则jvm会是懵逼的。所以泛型的好处就是将类型的灵活性提高，也只是在Java语法的基础上提高，不过泛型还是比较实用的。
+何时使用泛型&emsp;&emsp;泛型的应用场景就是应用在模型（可以理解为存储数据的盒子），我为了这个盒子适用更多的地方我就用将需要存入的数据用一个泛型表示，当然 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/%E8%B6%85%E5%AE%9E%E7%94%A8%E7%9A%84SQL%E8%AF%AD%E5%8F%A5%E4%B9%8B%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2/" title="超实用的SQL语句之嵌套查询">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post-cover/2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="超实用的SQL语句之嵌套查询"></a></div><div class="recent-post-info"><a class="article-title" href="/%E8%B6%85%E5%AE%9E%E7%94%A8%E7%9A%84SQL%E8%AF%AD%E5%8F%A5%E4%B9%8B%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2/" title="超实用的SQL语句之嵌套查询">超实用的SQL语句之嵌套查询</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-08-31T11:40:33.000Z" title="Created 2020-08-31 19:40:33">2020-08-31</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/">博客园博文</a><i class="fas fa-angle-right"></i><a class="article-meta__categories" href="/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/mybatis/">mybatis</a></span></div><div class="content">嵌套查询
+什么是嵌套查询.
+ 　　嵌套查询的意思是，一个查询语句(select-from-where)查询语句块可以嵌套在另外一个查询块的where子句中，称为嵌套查询。其中外层查询也称为父查询，主查询。内层查询也称子查询，从查询。
+嵌套查询的工作方式
+ 　　先处理内查询，由内向外处理，外层查询利用内层查询的结果嵌套查询不仅仅可以用于父查询select语句使用。还可以用于insert、update、delete语句或其他子查询中。
+
+子查询的组成
+ 1、包含标准选择列表组件的标准select查询。
+
+ 2、包含一个或多个表或者视图名称的标准from子句。
+ 3、可选的where子句。
+ 4、可选的group by子句。
+ 5、可选的having子句。
+子查询的语法规则
+ 1、子查询的select查询总是使用圆括号括起来。
+
+ 2、不能包括compute或for.browse子句。
+ 3、如果同时指定top子句，则可能只包括order by子句。
+ 4、子查询最多可以嵌套到32层。个别查询可能会不支持32层嵌套。
+ 5、任何可以使用表达式的地方都可以使用子查询，只要它返回的是单个值。
+  ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/Vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/" title="Vue父子组件传参">     <img class="post_bg" data-lazy-src="/img/banner/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue父子组件传参"></a></div><div class="recent-post-info"><a class="article-title" href="/Vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/" title="Vue父子组件传参">Vue父子组件传参</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-08-30T12:08:31.000Z" title="Created 2020-08-30 20:08:31">2020-08-30</time></span></div><div class="content">父子组件以及子父组件一,概念描述
+比如现在有两个页面,页面一,页面二,你想在页面二中使用页面一的变量,这时你就可以通过父子组件之间的通信来进行传递数据,使得你在页面二可以使用页面一的数据,这就是组件传值
+二,应用场景
+比如当你在其他页面也需要后端的某些数据时,你要想减少与后端数据库的交互的时候,你可以利用组件间的传递来减少与后端数据库的交互
+三,功能实现
+父子传递
+1234567// 父组件&lt;template&gt;  &lt;div&gt;        // 将需要传递的变量通过v-bind绑定    &lt;Courseheader :course_detail=&quot;course_detail&quot;&gt;&lt;/Courseheader&gt;  &lt;/div&gt;&lt;/template&gt;
+1234567891011//子组件接收&lt;template&gt;  &lt;div&gt;  //输出父组件传过来的变量值    &lt;span&gt;&#123;&#123;course_detail&#125;&#125;&lt;/span ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/Vue%E8%AF%B7%E6%B1%82%E6%8B%A6%E6%88%AA%E5%99%A8%E5%8F%8A%E5%93%8D%E5%BA%94%E6%8B%A6%E6%88%AA%E5%99%A8/" title="Vue请求拦截器">     <img class="post_bg" data-lazy-src="/img/banner/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue请求拦截器"></a></div><div class="recent-post-info"><a class="article-title" href="/Vue%E8%AF%B7%E6%B1%82%E6%8B%A6%E6%88%AA%E5%99%A8%E5%8F%8A%E5%93%8D%E5%BA%94%E6%8B%A6%E6%88%AA%E5%99%A8/" title="Vue请求拦截器">Vue请求拦截器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-08-30T12:08:31.000Z" title="Created 2020-08-30 20:08:31">2020-08-30</time></span></div><div class="content">Vue拦截器一，概念部分：
+什么是vue拦截器及作用?
+
+简单来说,一般像数据交互之类的项目,都要用到不同的身份验证,比如登录token验证,来验证他是否登录,如果没有登录他就不能查看这个页面的东西,这就是拦截器的作用
+
+
+vue中常见的拦截器?
+
+请求拦截器和响应拦截器
+
+
+
+二，应用场景：
+比如你前端传token的时候,你每发送一次请求就要获取一下,相比较麻烦,此时我们可以将token放在前端的请求拦截器中,这样他就会自动向后端发送token
+
+三，功能实现：1234567891011121314151617181920212223242526272829// 先把axios的包导进来import axios from &#x27;axios&#x27;// 请求拦截器axios.interceptors.request.use(config =&gt; &#123;    // 获取自己状态保持的token  let token = sessionStorage.getItem(&#x27;token&#x27;);  // 判断他是否存在,如果存在就将它保存到jwt头部里  i ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/Vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/" title="Vue路由钩子">     <img class="post_bg" data-lazy-src="/img/banner/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue路由钩子"></a></div><div class="recent-post-info"><a class="article-title" href="/Vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/" title="Vue路由钩子">Vue路由钩子</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-08-30T12:08:31.000Z" title="Created 2020-08-30 20:08:31">2020-08-30</time></span></div><div class="content">Vue路由钩子一,什么是路由钩子?
+简单来讲,就是当路由跳转前或者跳转后，需要做一些操作，就可以使用Vue中的路由钩子来监听路由的变化。二,路由钩子分为几类?
+全局路由钩子
+每一次跳转都会执行
+
+
+单个路由钩子
+在跳转前执行
+
+
+组件内路由钩子三,代码实现
+全局路由钩子
+
+12345678910111213// 全局路由钩子router.beforeEach((to, from, next) =&gt; &#123;    //会在任意路由跳转前执行，next一定要记着执行，不然路由不能跳转了  console.log(to)  console.log(from)  console.log(next)  // 首先来说全局路由的三个参数  // to:   就是跳转路由参数  // from: 就是离开路由参数  // next: 是否允许跳转  next();  // 这个next()必须有,没有就无法跳转了&#125;)
+
+单个路由钩子12345678910// 单个路由钩子routes: [    &#123;      path: &#x27;/index&#x27;,     ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/redis%E5%8F%91%E5%B8%83%E8%80%85%E8%AE%A2%E9%98%85%E8%80%85/" title="redis发布者订阅者">     <img class="post_bg" data-lazy-src="/img/banner/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="redis发布者订阅者"></a></div><div class="recent-post-info"><a class="article-title" href="/redis%E5%8F%91%E5%B8%83%E8%80%85%E8%AE%A2%E9%98%85%E8%80%85/" title="redis发布者订阅者">redis发布者订阅者</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-08-30T12:08:31.000Z" title="Created 2020-08-30 20:08:31">2020-08-30</time></span></div><div class="content">redis发布者订阅者一，概念知识
+
+什么是发布者？
+redis提供 一组命令实现订阅者发布者模式，publisher subscriber。实现进程间通信，而发布者顾名思义就是发送数据包的
+
+
+什么是订阅者？
+每个订阅者会等待接收发布者发送的消息，当发布者发布消息后，订阅者全部接收到
+
+
+
+二，应用场景
+
+比如打车类软件，当你发送你要打车时，这个消息就会同时发送到司机师傅那，然后他们选择离你最近的，他们就属于订阅者，而你是发布者
+
+三，代码实现
+12345#发布者pubimport redisconn = redis.Redis(host=&#x27;127.0.0.1&#x27;, decode_responses=True)conn.publish(&#x27;zheng&#x27;, &#x27;18&#x27;)
+
+1234567891011121314import redisconn = redis.Redis(host=&#x27;127.0.0.1&#x27;, decode_responses=True)# 生成一个订阅者对象subpubsub = conn.pubs ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/redis%E9%94%AE%E7%A9%BA%E9%97%B4/" title="redis键空间">     <img class="post_bg" data-lazy-src="/img/banner/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="redis键空间"></a></div><div class="recent-post-info"><a class="article-title" href="/redis%E9%94%AE%E7%A9%BA%E9%97%B4/" title="redis键空间">redis键空间</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-08-30T12:08:31.000Z" title="Created 2020-08-30 20:08:31">2020-08-30</time></span></div><div class="content">Redis键空间一，什么是Redis键空间
+客户端可以通过订阅频道或模式， 来接收那些以某种方式改动了 Redis 数据集的事件二，应用场景
+比如打车类软件或者淘宝，对某个用户或者商品进行评价，在规定的时间里用户没有给予评价那么系统就会自动进行评价，可以理解为这个key过期了。三，代码实现想要开启键空间通知必须得进行对notify-keyspace-events进行配置
+notify-keyspace-events 为空字符串时，键空间通知关闭
+当给notify-keyspace-events 设值时，表示键空间通知开启
+
+这是对notify-keyspace-events的相关啊配置
+123456789101112131415161718192021K &amp; 键空间通知，所有通知以 `__keyspace@&lt;db&gt;__` 为前缀E &amp; 键事件通知，所有通知以 `__keyevent@&lt;db&gt;__` 为前缀g &amp; DEL 、 EXPIRE 、 RENAME 等类型无关的通用命令的通知$ &amp; 字符串命令的通知l &amp; 列表命令的 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/websell/" title="Webshell在浏览器中实现终端">     <img class="post_bg" data-lazy-src="/img/banner/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Webshell在浏览器中实现终端"></a></div><div class="recent-post-info"><a class="article-title" href="/websell/" title="Webshell在浏览器中实现终端">Webshell在浏览器中实现终端</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-08-30T12:08:31.000Z" title="Created 2020-08-30 20:08:31">2020-08-30</time></span></div><div class="content">websell一，概念：
+
+什么是websell：
+webshell就是以asp、php、jsp或者cgi等网页文件形式存在的一种代码执行环境，也可以将其称做为一种网页后门。黑客在入侵了一个网站后，通常会将asp或php后门文件与网站服务器WEB目录下正常的网页文件混在一起，然后就可以使用浏览器来访问asp或者php后门，得到一个命令执行环境，以达到控制网站服务器的目的。
+他是一个集成了一堆Linux命令的控制台界面
+
+
+sell的分类： 
+SH：编程方面相当优秀，输入命令优秀
+BASH：Linux系统中的一个默认shell，命令多
+
+
+
+二，应用场景：
+
+比如实验楼，他就是在浏览器中实现的黑窗口，供用户进行学习使用，非常方便
+
+三，代码实现：
+12// 安装xterm npm install xterm@3.1.0 --save
+
+12// 在main.js中导入css样式import &#x27;xterm/dist/xterm.css&#x27; 
+
+123// 在你对应的页面上放上这个div标签，这就是那个黑窗口&lt;div id=&quot;terminal&quot;&g ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85redis%E6%95%B0%E6%8D%AE%E5%BA%93/" title="云主机安装redis数据库">     <img class="post_bg" data-lazy-src="/img/banner/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="云主机安装redis数据库"></a></div><div class="recent-post-info"><a class="article-title" href="/%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85redis%E6%95%B0%E6%8D%AE%E5%BA%93/" title="云主机安装redis数据库">云主机安装redis数据库</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-08-30T12:08:31.000Z" title="Created 2020-08-30 20:08:31">2020-08-30</time></span></div><div class="content">1.安装redis数据库
+1yum install redis
+
+
+
+2.下载fedora的epel仓库
+1yum install epel-release
+
+
+
+
+
+3.启动redis服务
+1systemctl start redis
+4.查看redis状态
+1systemctl status redis
+
+
+停止服务
+1systemctl stop redis 
+
+
+重启服务
+1systemctl restart redis
+
+5.查看redis进程
+1ps -ef |grep redis
+
+
+
+6.设置开机自启动
+1systemctl enable redis
+
+
+
+7.开放端口号 (若端口已开放此步可省略，可先8后7)
+ 
+linux 操作防火墙: linux开放防火墙端口
+ 
+12firewall-cmd --zone&#x3D;public --add-port&#x3D;80&#x2F;tcp --permanentfirewall-cmd --zone&#x3D;public --add-port&#x3D;6379&#x2F;tcp --permanent
+注意：80 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E2%80%94%E2%80%94Silence%E4%B8%BB%E9%A2%98%E7%9A%AE%E8%82%A4/" title="博客美化——Silence主题皮肤">     <img class="post_bg" data-lazy-src="/img/banner/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="博客美化——Silence主题皮肤"></a></div><div class="recent-post-info"><a class="article-title" href="/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E2%80%94%E2%80%94Silence%E4%B8%BB%E9%A2%98%E7%9A%AE%E8%82%A4/" title="博客美化——Silence主题皮肤">博客美化——Silence主题皮肤</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-08-30T12:08:31.000Z" title="Created 2020-08-30 20:08:31">2020-08-30</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/">博客园博文</a><i class="fas fa-angle-right"></i><a class="article-meta__categories" href="/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/">博客美化</a></span></div><div class="content">介绍&emsp;&emsp;一款专注阅读的博客园主题，主要面向于经常混迹 博客园 的朋友。其追求大道至简的终极真理，界面追求简洁、运行追求高效、部署追求简单。
+
+博客皮肤源码地址
+预览地址
+如何部署、使用皮肤
+Silence作者的友链
+
+特点
+简洁优雅、精致漂亮的 UI 设计
+提供多种风格主题以便适应各类用户的偏好
+响应式设计，兼容手机端浏览器
+提供事无巨细的部署文档
+源码结构清晰并且注释完整，方便扩展
+
+开发&emsp;&emsp;请先确保您正在使用的机器已经安装 Node.js 和 Git 客户端。
+ git clone https://github.com/esofar/cnblogs-theme-silence.git   # 克隆源码
+ cd cnblogs-theme-silence                                        # 进入项目
+ npm install                                                     # 安装依赖
+ npm run build
+
+&emsp;&emsp;如 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">阿正</div><div class="author-info__description">没有伞的孩子要努力奔跑</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives"><div class="headline">Articles</div><div class="length_num">17</div></a></div><div class="card-info-data-item is-center">      <a href="/tags"><div class="headline">Tags</div><div class="length_num">6</div></a></div><div class="card-info-data-item is-center"><a href="/categories"><div class="headline">Categories</div><div class="length_num">4</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/glassy-sky-lisong"><i class="fab fa-github"></i><span>关注一下</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://space.bilibili.com/476991968" target="_blank" title="B站"><i class="iconfont icon-bilibili1"></i></a><a class="social-icon" href="https://cnblogs.com/glassysky" target="_blank" title="博客园"><i class="iconfont icon-bokeyuan"></i></a><a class="social-icon" href="https://github.com/glassy-sky-lisong" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/1990691193@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="iconfont icon-RSS"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">欢迎远方有阿正的博客<img src="https://cdn.jsdelivr.net/gh/lete114/CDN/Use/my_bg.gif"></div></div></div><div class="card-widget card-calendar"><div class="card-content"><div class="item-headline"><i class="far fa-calendar-alt faa-passing animated" aria-hidden="true"></i><span>日历</span></div><div class="widget-wrap"></div><div class="widget" id="calendar"></div></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-music faa-wrench animated"></i><span>音乐盒<center><span>首次加载不会自动播放哦</span><meting-js id="5201307931" server="netease" type="playlist" order="random" mini="mini" autoplay="autoplay" list-folded="list-folded"></meting-js></center></span></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history faa-spin animated"></i><span>Recent Post</span></div><div class="aside-recent-item"><div class="aside-recent-post"><a class="aside-post-cover" href="/Java%E6%B3%9B%E5%9E%8B%E4%B9%8B%E4%B8%8A%E3%80%81%E4%B8%8B%E8%BE%B9%E7%95%8C%E9%80%9A%E9%85%8D%E7%AC%A6%E7%9A%84%E7%90%86%E8%A7%A3-%E9%80%82%E5%90%88%E5%88%9D%E5%AD%A6/" title="Java泛型之上、下边界通配符的理解(适合初学)"><img class="aside-post-bg" data-lazy-src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post-cover/3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java泛型之上、下边界通配符的理解(适合初学)"/></a><div class="aside-post-info"><a class="aside-post-title" href="/Java%E6%B3%9B%E5%9E%8B%E4%B9%8B%E4%B8%8A%E3%80%81%E4%B8%8B%E8%BE%B9%E7%95%8C%E9%80%9A%E9%85%8D%E7%AC%A6%E7%9A%84%E7%90%86%E8%A7%A3-%E9%80%82%E5%90%88%E5%88%9D%E5%AD%A6/" title="Java泛型之上、下边界通配符的理解(适合初学)">Java泛型之上、下边界通配符的理解(适合初学)</a><time class="aside-post_meta post-meta-date" datetime="2020-09-02T11:15:25.000Z" title="Created 2020-09-02 19:15:25">2020-09-02</time></div></div><div class="aside-recent-post"><a class="aside-post-cover" href="/%E8%B6%85%E5%AE%9E%E7%94%A8%E7%9A%84SQL%E8%AF%AD%E5%8F%A5%E4%B9%8B%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2/" title="超实用的SQL语句之嵌套查询"><img class="aside-post-bg" data-lazy-src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post-cover/2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="超实用的SQL语句之嵌套查询"/></a><div class="aside-post-info"><a class="aside-post-title" href="/%E8%B6%85%E5%AE%9E%E7%94%A8%E7%9A%84SQL%E8%AF%AD%E5%8F%A5%E4%B9%8B%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2/" title="超实用的SQL语句之嵌套查询">超实用的SQL语句之嵌套查询</a><time class="aside-post_meta post-meta-date" datetime="2020-08-31T11:40:33.000Z" title="Created 2020-08-31 19:40:33">2020-08-31</time></div></div><div class="aside-recent-post"><a class="aside-post-cover" href="/Vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/" title="Vue父子组件传参"><img class="aside-post-bg" data-lazy-src="/img/banner/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue父子组件传参"/></a><div class="aside-post-info"><a class="aside-post-title" href="/Vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/" title="Vue父子组件传参">Vue父子组件传参</a><time class="aside-post_meta post-meta-date" datetime="2020-08-30T12:08:31.000Z" title="Created 2020-08-30 20:08:31">2020-08-30</time></div></div><div class="aside-recent-post"><a class="aside-post-cover" href="/Vue%E8%AF%B7%E6%B1%82%E6%8B%A6%E6%88%AA%E5%99%A8%E5%8F%8A%E5%93%8D%E5%BA%94%E6%8B%A6%E6%88%AA%E5%99%A8/" title="Vue请求拦截器"><img class="aside-post-bg" data-lazy-src="/img/banner/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue请求拦截器"/></a><div class="aside-post-info"><a class="aside-post-title" href="/Vue%E8%AF%B7%E6%B1%82%E6%8B%A6%E6%88%AA%E5%99%A8%E5%8F%8A%E5%93%8D%E5%BA%94%E6%8B%A6%E6%88%AA%E5%99%A8/" title="Vue请求拦截器">Vue请求拦截器</a><time class="aside-post_meta post-meta-date" datetime="2020-08-30T12:08:31.000Z" title="Created 2020-08-30 20:08:31">2020-08-30</time></div></div><div class="aside-recent-post"><a class="aside-post-cover" href="/Vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/" title="Vue路由钩子"><img class="aside-post-bg" data-lazy-src="/img/banner/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue路由钩子"/></a><div class="aside-post-info"><a class="aside-post-title" href="/Vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/" title="Vue路由钩子">Vue路由钩子</a><time class="aside-post_meta post-meta-date" datetime="2020-08-30T12:08:31.000Z" title="Created 2020-08-30 20:08:31">2020-08-30</time></div></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open faa-pulse animated"></i><span>Categories</span></div><ul class="card-category-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hexo/"><span class="card-category-list-name">Hexo</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item parent"><a class="card-category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/"><span class="card-category-list-name">博客园博文</span><span class="card-category-list-count">3</span><i class="fas fa-caret-left "></i></a></li><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/mybatis/"><span class="card-category-list-name">mybatis</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/"><span class="card-category-list-name">博客美化</span><span class="card-category-list-count">2</span></a></li></ul>
+                       
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags faa-rising animated"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/Hexo/" style="font-size: 16px; color: #999">Hexo</a> <a href="/tags/MyBatis/" style="font-size: 16px; color: #999">MyBatis</a> <a href="/tags/MySQL/" style="font-size: 16px; color: #999">MySQL</a> <a href="/tags/SQL%E6%8A%80%E5%B7%A7/" style="font-size: 16px; color: #999">SQL技巧</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%9B%AD/" style="font-size: 22px; color: #99a9bf">博客园</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/" style="font-size: 16px; color: #999">博客美化</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive faa-horizontal animated"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/09/"><span class="card-archive-list-date">September 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">August 2020</span><span class="card-archive-list-count">11</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/07/"><span class="card-archive-list-date">July 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/04/"><span class="card-archive-list-date">April 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/03/"><span class="card-archive-list-date">March 2020</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/08/"><span class="card-archive-list-date">August 2019</span><span class="card-archive-list-count">1</span></a></li></ul></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By 阿正</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">远方有你伴余生</div></div><div class="container" id="jsi-flying-fish-container"></div><script src="/js/third-party/fish.js"></script></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">简</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog"></i></button><button id="chat_btn" type="button" title="联系我"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.spacingElementById('content-inner')
+  else {
+    $.getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js', () => {
+      pangu.spacingElementById('content-inner')
+    })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguFn)</script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script><div class="js-pjax"><script>function subtitleType () {
+  $.getJSON('https://api.btstu.cn/yan/api.php?charset=utf-8&encode=json',function (data) {
+    if (true) {
+      var sub = "今日事&#44;今日畢,Never put off till tomorrow what you can do today".length == 0 ? new Array() : "今日事&#44;今日畢,Never put off till tomorrow what you can do today".split(',')
+      var both = sub.unshift(data.text)
+      typed = new Typed('#subtitle', {
+        strings: sub,
+        startDelay: 300,
+        typeSpeed: 150,
+        loop: false,
+        backSpeed: 50,
+      })
+    } else {
+      document.getElementById('subtitle').innerHTML = data.text
+    }
+  })
+}
+
+if (true) {
+  if (typeof Typed === 'function') subtitleType()
+  else $.getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js', subtitleType)
+} else {
+  subtitleType()
+}
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/js/VolantisTags.js"></script><script src="/js/volantis.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script src="/js/third-party/ClickShowText.js" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  'meta[name=description]',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+const pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+})
+
+document.addEventListener('pjax:complete', function () {
+  refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+})
+
+document.addEventListener('pjax:send', function () {
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+  //reset font-size
+  $('body').css('font-size') !== originFontSize && $('body').css('font-size', parseFloat(originFontSize))
+})</script></div></body></html>
