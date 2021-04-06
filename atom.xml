@@ -136,6 +136,26 @@
   </entry>
   
   <entry>
+    <title>redis键空间</title>
+    <link href="https://zhaozheng.link/redis%E9%94%AE%E7%A9%BA%E9%97%B4/"/>
+    <id>https://zhaozheng.link/redis%E9%94%AE%E7%A9%BA%E9%97%B4/</id>
+    <published>2020-08-30T12:08:31.000Z</published>
+    <updated>2021-04-02T03:47:57.993Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Redis键空间"><a href="#Redis键空间" class="headerlink" title="Redis键空间"></a>Redis键空间</h1><h2 id="一，什么是Redis键空间"><a href="#一，什么是Redis键空间" class="headerlink" title="一，什么是Redis键空间"></a>一，什么是Redis键空间</h2><ul><li>客户端可以通过订阅频道或模式， 来接收那些以某种方式改动了 Redis 数据集的事件<h2 id="二，应用场景"><a href="#二，应用场景" class="headerlink" title="二，应用场景"></a>二，应用场景</h2></li><li>比如打车类软件或者淘宝，对某个用户或者商品进行评价，在规定的时间里用户没有给予评价那么系统就会自动进行评价，可以理解为这个key过期了。<h2 id="三，代码实现"><a href="#三，代码实现" class="headerlink" title="三，代码实现"></a>三，代码实现</h2><h3 id="想要开启键空间通知必须得进行对notify-keyspace-events进行配置"><a href="#想要开启键空间通知必须得进行对notify-keyspace-events进行配置" class="headerlink" title="想要开启键空间通知必须得进行对notify-keyspace-events进行配置"></a>想要开启键空间通知必须得进行对notify-keyspace-events进行配置</h3></li><li>notify-keyspace-events 为空字符串时，键空间通知关闭</li><li>当给notify-keyspace-events 设值时，表示键空间通知开启</li></ul><p>这是对notify-keyspace-events的相关啊配置</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">K &amp; 键空间通知，所有通知以 `__keyspace@<span class="tag">&lt;<span class="name">db</span>&gt;</span>__` 为前缀</span><br><span class="line"></span><br><span class="line">E &amp; 键事件通知，所有通知以 `__keyevent@<span class="tag">&lt;<span class="name">db</span>&gt;</span>__` 为前缀</span><br><span class="line"></span><br><span class="line">g &amp; DEL 、 EXPIRE 、 RENAME 等类型无关的通用命令的通知</span><br><span class="line"></span><br><span class="line">$ &amp; 字符串命令的通知</span><br><span class="line"></span><br><span class="line">l &amp; 列表命令的通知</span><br><span class="line"></span><br><span class="line">s &amp; 集合命令的通知</span><br><span class="line"></span><br><span class="line">h &amp; 哈希命令的通知</span><br><span class="line"></span><br><span class="line">z &amp; 有序集合命令的通知</span><br><span class="line"></span><br><span class="line">x &amp; 过期事件：每当有过期键被删除时发送</span><br><span class="line"></span><br><span class="line">e &amp; 驱逐(evict)事件：每当有键因为 maxmemory 政策而被删除时发送</span><br><span class="line"></span><br><span class="line">A &amp; 参数 g$lshzxe 的别名，即all</span><br></pre></td></tr></table></figure><blockquote><p>注意：输入的参数中至少要有一个 K 或者 E ， 否则的话， 不管其余的参数是什么， 都不会有任何通知被分发</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ redis-cli config set notify-keyspace-events KEA</span><br><span class="line">$ redis-cli --csv psubscribe &#39;__key*__:*&#39;</span><br><span class="line">Reading messages... (press Ctrl-C to quit)</span><br><span class="line">&quot;psubscribe&quot;,&quot;__key*__:*&quot;,1</span><br></pre></td></tr></table></figure><p>然后在其他终端向redis终端发送命令就可以看到通知了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;pmessage&quot;,&quot;__key*__:*&quot;,&quot;__keyspace@0__:foo&quot;,&quot;set&quot;</span><br><span class="line">&quot;pmessage&quot;,&quot;__key*__:*&quot;,&quot;__keyevent@0__:set&quot;,&quot;foo&quot;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Redis键空间&quot;&gt;&lt;a href=&quot;#Redis键空间&quot; class=&quot;headerlink&quot; title=&quot;Redis键空间&quot;&gt;&lt;/a&gt;Redis键空间&lt;/h1&gt;&lt;h2 id=&quot;一，什么是Redis键空间&quot;&gt;&lt;a href=&quot;#一，什么是Redis键空间&quot; c</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>redis发布者订阅者</title>
     <link href="https://zhaozheng.link/redis%E5%8F%91%E5%B8%83%E8%80%85%E8%AE%A2%E9%98%85%E8%80%85/"/>
     <id>https://zhaozheng.link/redis%E5%8F%91%E5%B8%83%E8%80%85%E8%AE%A2%E9%98%85%E8%80%85/</id>
@@ -151,26 +171,6 @@
 &lt;ul&gt;
 &lt;li&gt;什么是发布者？&lt;ul&gt;
 &lt;l</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>redis键空间</title>
-    <link href="https://zhaozheng.link/redis%E9%94%AE%E7%A9%BA%E9%97%B4/"/>
-    <id>https://zhaozheng.link/redis%E9%94%AE%E7%A9%BA%E9%97%B4/</id>
-    <published>2020-08-30T12:08:31.000Z</published>
-    <updated>2021-04-02T03:47:57.993Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Redis键空间"><a href="#Redis键空间" class="headerlink" title="Redis键空间"></a>Redis键空间</h1><h2 id="一，什么是Redis键空间"><a href="#一，什么是Redis键空间" class="headerlink" title="一，什么是Redis键空间"></a>一，什么是Redis键空间</h2><ul><li>客户端可以通过订阅频道或模式， 来接收那些以某种方式改动了 Redis 数据集的事件<h2 id="二，应用场景"><a href="#二，应用场景" class="headerlink" title="二，应用场景"></a>二，应用场景</h2></li><li>比如打车类软件或者淘宝，对某个用户或者商品进行评价，在规定的时间里用户没有给予评价那么系统就会自动进行评价，可以理解为这个key过期了。<h2 id="三，代码实现"><a href="#三，代码实现" class="headerlink" title="三，代码实现"></a>三，代码实现</h2><h3 id="想要开启键空间通知必须得进行对notify-keyspace-events进行配置"><a href="#想要开启键空间通知必须得进行对notify-keyspace-events进行配置" class="headerlink" title="想要开启键空间通知必须得进行对notify-keyspace-events进行配置"></a>想要开启键空间通知必须得进行对notify-keyspace-events进行配置</h3></li><li>notify-keyspace-events 为空字符串时，键空间通知关闭</li><li>当给notify-keyspace-events 设值时，表示键空间通知开启</li></ul><p>这是对notify-keyspace-events的相关啊配置</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">K &amp; 键空间通知，所有通知以 `__keyspace@<span class="tag">&lt;<span class="name">db</span>&gt;</span>__` 为前缀</span><br><span class="line"></span><br><span class="line">E &amp; 键事件通知，所有通知以 `__keyevent@<span class="tag">&lt;<span class="name">db</span>&gt;</span>__` 为前缀</span><br><span class="line"></span><br><span class="line">g &amp; DEL 、 EXPIRE 、 RENAME 等类型无关的通用命令的通知</span><br><span class="line"></span><br><span class="line">$ &amp; 字符串命令的通知</span><br><span class="line"></span><br><span class="line">l &amp; 列表命令的通知</span><br><span class="line"></span><br><span class="line">s &amp; 集合命令的通知</span><br><span class="line"></span><br><span class="line">h &amp; 哈希命令的通知</span><br><span class="line"></span><br><span class="line">z &amp; 有序集合命令的通知</span><br><span class="line"></span><br><span class="line">x &amp; 过期事件：每当有过期键被删除时发送</span><br><span class="line"></span><br><span class="line">e &amp; 驱逐(evict)事件：每当有键因为 maxmemory 政策而被删除时发送</span><br><span class="line"></span><br><span class="line">A &amp; 参数 g$lshzxe 的别名，即all</span><br></pre></td></tr></table></figure><blockquote><p>注意：输入的参数中至少要有一个 K 或者 E ， 否则的话， 不管其余的参数是什么， 都不会有任何通知被分发</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ redis-cli config set notify-keyspace-events KEA</span><br><span class="line">$ redis-cli --csv psubscribe &#39;__key*__:*&#39;</span><br><span class="line">Reading messages... (press Ctrl-C to quit)</span><br><span class="line">&quot;psubscribe&quot;,&quot;__key*__:*&quot;,1</span><br></pre></td></tr></table></figure><p>然后在其他终端向redis终端发送命令就可以看到通知了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;pmessage&quot;,&quot;__key*__:*&quot;,&quot;__keyspace@0__:foo&quot;,&quot;set&quot;</span><br><span class="line">&quot;pmessage&quot;,&quot;__key*__:*&quot;,&quot;__keyevent@0__:set&quot;,&quot;foo&quot;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;Redis键空间&quot;&gt;&lt;a href=&quot;#Redis键空间&quot; class=&quot;headerlink&quot; title=&quot;Redis键空间&quot;&gt;&lt;/a&gt;Redis键空间&lt;/h1&gt;&lt;h2 id=&quot;一，什么是Redis键空间&quot;&gt;&lt;a href=&quot;#一，什么是Redis键空间&quot; c</summary>
       
     
     
