@@ -313,9 +313,9 @@
   &#125;
 &#125;
 </code></pre>
-<h2 id="什么是上边界通配符"><a href="#什么是上边界通配符" class="headerlink" title="什么是上边界通配符"></a>什么是上边界通配符</h2><p>&emsp;&emsp;当泛型T给定形如<T extends A> 的A类型到A类型任何子类的限制域，可以匹配任何在此限制域中的类型，此种表示叫上边界通配符。<br>###上边界通配符理解<br><img src= "/img/hhj.png" data-src="https://images2015.cnblogs.com/blog/820480/201611/820480-20161125004120143-1731938777.png" alt="png"></p>
+<h2 id="什么是上边界通配符"><a href="#什么是上边界通配符" class="headerlink" title="什么是上边界通配符"></a>什么是上边界通配符</h2><p>&emsp;&emsp;当泛型T给定形如<T extends A> 的A类型到A类型任何子类的限制域，可以匹配任何在此限制域中的类型，此种表示叫上边界通配符。<br>###上边界通配符理解<br><img src="https://images2015.cnblogs.com/blog/820480/201611/820480-20161125004120143-1731938777.png" alt="png"></p>
 <h2 id="什么是下边界通配符"><a href="#什么是下边界通配符" class="headerlink" title="什么是下边界通配符"></a>什么是下边界通配符</h2><p>&emsp;&emsp;当泛型T给定形如<T super A> 的A类型到A类型任何父类的限制域，可以匹配任何在此限制域中的类型，此种表示叫下边界通配符。</p>
-<h3 id="下边界通配符理解"><a href="#下边界通配符理解" class="headerlink" title="下边界通配符理解"></a>下边界通配符理解</h3><p><img src= "/img/hhj.png" data-src="https://images2015.cnblogs.com/blog/820480/201611/820480-20161125004216471-1377946016.png" alt="png"></p>
+<h3 id="下边界通配符理解"><a href="#下边界通配符理解" class="headerlink" title="下边界通配符理解"></a>下边界通配符理解</h3><p><img src="https://images2015.cnblogs.com/blog/820480/201611/820480-20161125004216471-1377946016.png" alt="png"></p>
 <h2 id="上下边界通配符的缺点"><a href="#上下边界通配符的缺点" class="headerlink" title="上下边界通配符的缺点"></a>上下边界通配符的缺点</h2><p>&emsp;&emsp;上界&lt;? extends T&gt;不能往里存，只能往外取。<br>###解释<br>&emsp;&emsp;因为编译器只知道传入的是T的子类，但具体是哪一个编译器不知道，他只标注了一个占位符，当？传过来时，他不知道这能不能和占位符匹配，所以set不了。<br>&emsp;&emsp;下界&lt;? super T&gt;不影响往里存，但往外取只能放在Object对象里。</p>
 <h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>&emsp;&emsp;因为下边界已经限制了？的粒度，他只可能是T本身或者是T的父类。我们想想，我想要一个T，你却返回给我一个比T小的Object，这样我们就因为精度损失而拿不到想要的数据了。</p>
 <blockquote>

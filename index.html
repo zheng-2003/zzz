@@ -315,9 +315,9 @@
   &#125;
 &#125;
 </code></pre>
-<h2 id="什么是上边界通配符"><a href="#什么是上边界通配符" class="headerlink" title="什么是上边界通配符"></a>什么是上边界通配符</h2><p>&emsp;&emsp;当泛型T给定形如<T extends A> 的A类型到A类型任何子类的限制域，可以匹配任何在此限制域中的类型，此种表示叫上边界通配符。<br>###上边界通配符理解<br><img src= "/img/hhj.png" data-src="https://images2015.cnblogs.com/blog/820480/201611/820480-20161125004120143-1731938777.png" alt="png"></p>
+<h2 id="什么是上边界通配符"><a href="#什么是上边界通配符" class="headerlink" title="什么是上边界通配符"></a>什么是上边界通配符</h2><p>&emsp;&emsp;当泛型T给定形如<T extends A> 的A类型到A类型任何子类的限制域，可以匹配任何在此限制域中的类型，此种表示叫上边界通配符。<br>###上边界通配符理解<br><img src="https://images2015.cnblogs.com/blog/820480/201611/820480-20161125004120143-1731938777.png" alt="png"></p>
 <h2 id="什么是下边界通配符"><a href="#什么是下边界通配符" class="headerlink" title="什么是下边界通配符"></a>什么是下边界通配符</h2><p>&emsp;&emsp;当泛型T给定形如<T super A> 的A类型到A类型任何父类的限制域，可以匹配任何在此限制域中的类型，此种表示叫下边界通配符。</p>
-<h3 id="下边界通配符理解"><a href="#下边界通配符理解" class="headerlink" title="下边界通配符理解"></a>下边界通配符理解</h3><p><img src= "/img/hhj.png" data-src="https://images2015.cnblogs.com/blog/820480/201611/820480-20161125004216471-1377946016.png" alt="png"></p>
+<h3 id="下边界通配符理解"><a href="#下边界通配符理解" class="headerlink" title="下边界通配符理解"></a>下边界通配符理解</h3><p><img src="https://images2015.cnblogs.com/blog/820480/201611/820480-20161125004216471-1377946016.png" alt="png"></p>
 <h2 id="上下边界通配符的缺点"><a href="#上下边界通配符的缺点" class="headerlink" title="上下边界通配符的缺点"></a>上下边界通配符的缺点</h2><p>&emsp;&emsp;上界&lt;? extends T&gt;不能往里存，只能往外取。<br>###解释<br>&emsp;&emsp;因为编译器只知道传入的是T的子类，但具体是哪一个编译器不知道，他只标注了一个占位符，当？传过来时，他不知道这能不能和占位符匹配，所以set不了。<br>&emsp;&emsp;下界&lt;? super T&gt;不影响往里存，但往外取只能放在Object对象里。</p>
 <h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>&emsp;&emsp;因为下边界已经限制了？的粒度，他只可能是T本身或者是T的父类。我们想想，我想要一个T，你却返回给我一个比T小的Object，这样我们就因为精度损失而拿不到想要的数据了。</p>
 <blockquote>
@@ -398,7 +398,7 @@ where age &gt;
         where name = &#39;孙权&#39;
     )
 </code></pre>
-<p><strong>输出结果为：</strong><br><img src= "/img/hhj.png" data-src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/4.jpg" alt="1"></p>
+<p><strong>输出结果为：</strong><br><img src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/4.jpg" alt="1"></p>
 <h2>in嵌套查询</h2>
  　　in关键字用于where子句中用来判断查询的表达式是否在多个值的列表中。返回满足in列表中的满足条件的记录。
 
@@ -411,7 +411,7 @@ where countryname = &#39;魏国&#39;
 )
 </code></pre>
 <p><strong>输出结果为：</strong></p>
-<img src= "/img/hhj.png" data-src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/3.jpg" alt="2">
+<img src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/3.jpg" alt="2">
 <h2>some嵌套查询</h2>
 <h3>语法</h3>
  　　some在sql中的逻辑运算符号，如果在一系列比较中，有些值为True，那么结果就为True。some的语法是：
@@ -426,7 +426,7 @@ select countryid from country
 where countryname = &#39;魏国&#39;
 )
 </code></pre>
-<p><strong>输出结果为：</strong><br><img src= "/img/hhj.png" data-src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/2.jpg" alt="3"></p>
+<p><strong>输出结果为：</strong><br><img src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/2.jpg" alt="3"></p>
 <h2>all嵌套查询</h2>
  　　all是sql中的逻辑运算符好，如果一系列的比较都为true，那么结果才能为true。
 <h3>语法</h3>
@@ -441,7 +441,7 @@ select countryid from country
 where countryname = &#39;魏国&#39;
 )
 </code></pre>
-<p><strong>输出结果为：</strong><br><img src= "/img/hhj.png" data-src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/1.jpg" alt="4"></p>
+<p><strong>输出结果为：</strong><br><img src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/1.jpg" alt="4"></p>
 <h2>exists嵌套查询</h2>
 <h3>语法</h3>
  　　exists是sql中的逻辑运算符号。如果子查询有结果集返回，那么就为True。exists代表“存在”的意义，它只查找满足条件的那些记录。<span style="color:red">一旦找到第一个匹配的记录后，就马上停止查找。</span>
@@ -464,62 +464,6 @@ WHERE Person_Id = 100    --如果不存在Person_Id的记录，则子查询没�
 )
 </code></pre>
 <!-- 最后感谢<a target="_blank" rel="noopener" href="https://www.cnblogs.com/kissdodog/archive/2013/06/03/3116284.html">不玩博客了！</a>同学的分享，么么哒！ -->
-
-             
-          </div>
-        </div>
-      <div class="post-footer">
-        
-    </div>
-    
-      <div class="recent-post-item">
-          <div class="post-title ">
-            <a href="/Vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/">Vue路由钩子</a>
-          </div>
-          <div class="post-meta">
-            
-            
-              <div class="post-meta-item date">
-                <span title="Created 2020.08.30"><i class="far fa-calendar-alt"></i> 2020.08.30</span>
-              </div>
-              <div class="post-meta-item updated">
-                <span title="Updated 2021.04.02"><i class="far fa-calendar-check"></i> 2021.04.02</span>
-              </div>
-             
-             
-            
-             <div class="post-meta-item wordcount">
-                
-                  <i class="fas fa-pencil-alt"></i> <span class="post-count">343 words</span>
-                   
-                
-                  <i class="far fa-clock"></i> <span class="post-count">1 min</span>
-                                       
-              </div>
-             
-        </div>
-          <div class="content">
-            
-                  <h1 id="Vue路由钩子"><a href="#Vue路由钩子" class="headerlink" title="Vue路由钩子"></a>Vue路由钩子</h1><h3 id="一-什么是路由钩子"><a href="#一-什么是路由钩子" class="headerlink" title="一,什么是路由钩子?"></a>一,什么是路由钩子?</h3><ul>
-<li>简单来讲,就是当路由跳转前或者跳转后，需要做一些操作，就可以使用Vue中的路由钩子来监听路由的变化。<h3 id="二-路由钩子分为几类"><a href="#二-路由钩子分为几类" class="headerlink" title="二,路由钩子分为几类?"></a>二,路由钩子分为几类?</h3></li>
-<li>全局路由钩子<ul>
-<li>每一次跳转都会执行</li>
-</ul>
-</li>
-<li>单个路由钩子<ul>
-<li>在跳转前执行</li>
-</ul>
-</li>
-<li>组件内路由钩子<h3 id="三-代码实现"><a href="#三-代码实现" class="headerlink" title="三,代码实现"></a>三,代码实现</h3></li>
-<li>全局路由钩子</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局路由钩子</span></span><br><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//会在任意路由跳转前执行，next一定要记着执行，不然路由不能跳转了</span></span><br><span class="line">  <span class="built_in">console</span>.log(to)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">from</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(next)</span><br><span class="line">  <span class="comment">// 首先来说全局路由的三个参数</span></span><br><span class="line">  <span class="comment">// to:   就是跳转路由参数</span></span><br><span class="line">  <span class="comment">// from: 就是离开路由参数</span></span><br><span class="line">  <span class="comment">// next: 是否允许跳转</span></span><br><span class="line">  next();</span><br><span class="line">  <span class="comment">// 这个next()必须有,没有就无法跳转了</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>单个路由钩子<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单个路由钩子</span></span><br><span class="line">routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">&#x27;/index&#x27;</span>,</span><br><span class="line">      component: Index,</span><br><span class="line">      beforeEnter: <span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure></li>
-</ul>
-<ul>
-<li>组件内路由钩子<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 进入页面前调用</span></span><br><span class="line"><span class="function"><span class="title">beforeRouteEnter</span>(<span class="params">to, <span class="keyword">from</span>, next</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;进入路由前调用的方法&#x27;</span>)</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    next()</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 离开页面调用</span></span><br><span class="line"><span class="function"><span class="title">beforeRouteLeave</span>(<span class="params">to,<span class="keyword">from</span>, next</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;离开页面后调用的方法&#x27;</span>)</span><br><span class="line">    next()</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 页面路由改变时调用</span></span><br><span class="line"><span class="function"><span class="title">beforeRouteUpdate</span>(<span class="params">to, <span class="keyword">from</span>, next</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;路由发生改变的时候调用的方法&#x27;</span>)</span><br><span class="line">    next()</span><br><span class="line">&#125;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
 
              
           </div>
@@ -631,7 +575,7 @@ WHERE Person_Id = 100    --如果不存在Person_Id的记录，则子查询没�
     
       <div class="recent-post-item">
           <div class="post-title ">
-            <a href="/websell/">Webshell在浏览器中实现终端</a>
+            <a href="/Vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/">Vue路由钩子</a>
           </div>
           <div class="post-meta">
             
@@ -647,7 +591,7 @@ WHERE Person_Id = 100    --如果不存在Person_Id的记录，则子查询没�
             
              <div class="post-meta-item wordcount">
                 
-                  <i class="fas fa-pencil-alt"></i> <span class="post-count">436 words</span>
+                  <i class="fas fa-pencil-alt"></i> <span class="post-count">343 words</span>
                    
                 
                   <i class="far fa-clock"></i> <span class="post-count">1 min</span>
@@ -657,37 +601,26 @@ WHERE Person_Id = 100    --如果不存在Person_Id的记录，则子查询没�
         </div>
           <div class="content">
             
-                  <h1 id="websell"><a href="#websell" class="headerlink" title="websell"></a>websell</h1><p>一，概念：</p>
-<ul>
-<li>什么是websell：<ul>
-<li>webshell就是以asp、php、jsp或者cgi等网页文件形式存在的一种代码执行环境，也可以将其称做为一种网页后门。黑客在入侵了一个网站后，通常会将asp或php后门文件与网站服务器WEB目录下正常的网页文件混在一起，然后就可以使用浏览器来访问asp或者php后门，得到一个命令执行环境，以达到控制网站服务器的目的。</li>
-<li>他是一个集成了一堆Linux命令的控制台界面</li>
+                  <h1 id="Vue路由钩子"><a href="#Vue路由钩子" class="headerlink" title="Vue路由钩子"></a>Vue路由钩子</h1><h3 id="一-什么是路由钩子"><a href="#一-什么是路由钩子" class="headerlink" title="一,什么是路由钩子?"></a>一,什么是路由钩子?</h3><ul>
+<li>简单来讲,就是当路由跳转前或者跳转后，需要做一些操作，就可以使用Vue中的路由钩子来监听路由的变化。<h3 id="二-路由钩子分为几类"><a href="#二-路由钩子分为几类" class="headerlink" title="二,路由钩子分为几类?"></a>二,路由钩子分为几类?</h3></li>
+<li>全局路由钩子<ul>
+<li>每一次跳转都会执行</li>
 </ul>
 </li>
-<li>sell的分类： <ul>
-<li>SH：编程方面相当优秀，输入命令优秀</li>
-<li>BASH：Linux系统中的一个默认shell，命令多</li>
+<li>单个路由钩子<ul>
+<li>在跳转前执行</li>
 </ul>
 </li>
+<li>组件内路由钩子<h3 id="三-代码实现"><a href="#三-代码实现" class="headerlink" title="三,代码实现"></a>三,代码实现</h3></li>
+<li>全局路由钩子</li>
 </ul>
-<p>二，应用场景：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局路由钩子</span></span><br><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//会在任意路由跳转前执行，next一定要记着执行，不然路由不能跳转了</span></span><br><span class="line">  <span class="built_in">console</span>.log(to)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">from</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(next)</span><br><span class="line">  <span class="comment">// 首先来说全局路由的三个参数</span></span><br><span class="line">  <span class="comment">// to:   就是跳转路由参数</span></span><br><span class="line">  <span class="comment">// from: 就是离开路由参数</span></span><br><span class="line">  <span class="comment">// next: 是否允许跳转</span></span><br><span class="line">  next();</span><br><span class="line">  <span class="comment">// 这个next()必须有,没有就无法跳转了</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <ul>
-<li>比如实验楼，他就是在浏览器中实现的黑窗口，供用户进行学习使用，非常方便</li>
+<li>单个路由钩子<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单个路由钩子</span></span><br><span class="line">routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">&#x27;/index&#x27;</span>,</span><br><span class="line">      component: Index,</span><br><span class="line">      beforeEnter: <span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>三，代码实现：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装xterm</span></span><br><span class="line"> npm install xterm@<span class="number">3.1</span><span class="number">.0</span> --save</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在main.js中导入css样式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;xterm/dist/xterm.css&#x27;</span> </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在你对应的页面上放上这个div标签，这就是那个黑窗口</span></span><br><span class="line">&lt;div id=<span class="string">&quot;terminal&quot;</span>&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Terminal &#125; <span class="keyword">from</span> <span class="string">&#x27;xterm&#x27;</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> attach <span class="keyword">from</span> <span class="string">&#x27;xterm/lib/addons/attach/attach&#x27;</span> <span class="comment">// 安装插件适，可以使用attach去添加</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> fit <span class="keyword">from</span> <span class="string">&#x27;xterm/lib/addons/fit/fit&#x27;</span> <span class="comment">// fit进行自适应大小的</span></span><br><span class="line"></span><br><span class="line">Terminal.applyAddon(attach) <span class="comment">// 添加插件</span></span><br><span class="line">Terminal.applyAddon(fit) <span class="comment">// 添加插件</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取到了div标签</span></span><br><span class="line"><span class="keyword">let</span> terminalContainer = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;terminal&#x27;</span>)</span><br><span class="line"><span class="comment">// 初始化黑窗口对象</span></span><br><span class="line"><span class="built_in">this</span>.term = <span class="keyword">new</span> Terminal(<span class="built_in">this</span>.terminal)</span><br><span class="line"><span class="comment">// 打开这个对象</span></span><br><span class="line"><span class="built_in">this</span>.term.open(terminalContainer)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这就实现了在浏览器中实现黑窗口，如果想完善的话可以连接docker容器，这样只是你自己的云主机，想看docker可以去我下一章博客</p>
-</blockquote>
+<ul>
+<li>组件内路由钩子<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 进入页面前调用</span></span><br><span class="line"><span class="function"><span class="title">beforeRouteEnter</span>(<span class="params">to, <span class="keyword">from</span>, next</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;进入路由前调用的方法&#x27;</span>)</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    next()</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 离开页面调用</span></span><br><span class="line"><span class="function"><span class="title">beforeRouteLeave</span>(<span class="params">to,<span class="keyword">from</span>, next</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;离开页面后调用的方法&#x27;</span>)</span><br><span class="line">    next()</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 页面路由改变时调用</span></span><br><span class="line"><span class="function"><span class="title">beforeRouteUpdate</span>(<span class="params">to, <span class="keyword">from</span>, next</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;路由发生改变的时候调用的方法&#x27;</span>)</span><br><span class="line">    next()</span><br><span class="line">&#125;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
 
              
           </div>
@@ -794,6 +727,181 @@ WHERE Person_Id = 100    --如果不存在Person_Id的记录，则子查询没�
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ redis-cli config set notify-keyspace-events KEA</span><br><span class="line">$ redis-cli --csv psubscribe &#39;__key*__:*&#39;</span><br><span class="line">Reading messages... (press Ctrl-C to quit)</span><br><span class="line">&quot;psubscribe&quot;,&quot;__key*__:*&quot;,1</span><br></pre></td></tr></table></figure>
 <p>然后在其他终端向redis终端发送命令就可以看到通知了</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;pmessage&quot;,&quot;__key*__:*&quot;,&quot;__keyspace@0__:foo&quot;,&quot;set&quot;</span><br><span class="line">&quot;pmessage&quot;,&quot;__key*__:*&quot;,&quot;__keyevent@0__:set&quot;,&quot;foo&quot;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+             
+          </div>
+        </div>
+      <div class="post-footer">
+        
+    </div>
+    
+      <div class="recent-post-item">
+          <div class="post-title ">
+            <a href="/websell/">Webshell在浏览器中实现终端</a>
+          </div>
+          <div class="post-meta">
+            
+            
+              <div class="post-meta-item date">
+                <span title="Created 2020.08.30"><i class="far fa-calendar-alt"></i> 2020.08.30</span>
+              </div>
+              <div class="post-meta-item updated">
+                <span title="Updated 2021.04.02"><i class="far fa-calendar-check"></i> 2021.04.02</span>
+              </div>
+             
+             
+            
+             <div class="post-meta-item wordcount">
+                
+                  <i class="fas fa-pencil-alt"></i> <span class="post-count">436 words</span>
+                   
+                
+                  <i class="far fa-clock"></i> <span class="post-count">1 min</span>
+                                       
+              </div>
+             
+        </div>
+          <div class="content">
+            
+                  <h1 id="websell"><a href="#websell" class="headerlink" title="websell"></a>websell</h1><p>一，概念：</p>
+<ul>
+<li>什么是websell：<ul>
+<li>webshell就是以asp、php、jsp或者cgi等网页文件形式存在的一种代码执行环境，也可以将其称做为一种网页后门。黑客在入侵了一个网站后，通常会将asp或php后门文件与网站服务器WEB目录下正常的网页文件混在一起，然后就可以使用浏览器来访问asp或者php后门，得到一个命令执行环境，以达到控制网站服务器的目的。</li>
+<li>他是一个集成了一堆Linux命令的控制台界面</li>
+</ul>
+</li>
+<li>sell的分类： <ul>
+<li>SH：编程方面相当优秀，输入命令优秀</li>
+<li>BASH：Linux系统中的一个默认shell，命令多</li>
+</ul>
+</li>
+</ul>
+<p>二，应用场景：</p>
+<ul>
+<li>比如实验楼，他就是在浏览器中实现的黑窗口，供用户进行学习使用，非常方便</li>
+</ul>
+<p>三，代码实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装xterm</span></span><br><span class="line"> npm install xterm@<span class="number">3.1</span><span class="number">.0</span> --save</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在main.js中导入css样式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;xterm/dist/xterm.css&#x27;</span> </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在你对应的页面上放上这个div标签，这就是那个黑窗口</span></span><br><span class="line">&lt;div id=<span class="string">&quot;terminal&quot;</span>&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Terminal &#125; <span class="keyword">from</span> <span class="string">&#x27;xterm&#x27;</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> attach <span class="keyword">from</span> <span class="string">&#x27;xterm/lib/addons/attach/attach&#x27;</span> <span class="comment">// 安装插件适，可以使用attach去添加</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> fit <span class="keyword">from</span> <span class="string">&#x27;xterm/lib/addons/fit/fit&#x27;</span> <span class="comment">// fit进行自适应大小的</span></span><br><span class="line"></span><br><span class="line">Terminal.applyAddon(attach) <span class="comment">// 添加插件</span></span><br><span class="line">Terminal.applyAddon(fit) <span class="comment">// 添加插件</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取到了div标签</span></span><br><span class="line"><span class="keyword">let</span> terminalContainer = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;terminal&#x27;</span>)</span><br><span class="line"><span class="comment">// 初始化黑窗口对象</span></span><br><span class="line"><span class="built_in">this</span>.term = <span class="keyword">new</span> Terminal(<span class="built_in">this</span>.terminal)</span><br><span class="line"><span class="comment">// 打开这个对象</span></span><br><span class="line"><span class="built_in">this</span>.term.open(terminalContainer)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这就实现了在浏览器中实现黑窗口，如果想完善的话可以连接docker容器，这样只是你自己的云主机，想看docker可以去我下一章博客</p>
+</blockquote>
+
+             
+          </div>
+        </div>
+      <div class="post-footer">
+        
+    </div>
+    
+      <div class="recent-post-item">
+          <div class="post-title ">
+            <a href="/%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85redis%E6%95%B0%E6%8D%AE%E5%BA%93/">云主机安装redis数据库</a>
+          </div>
+          <div class="post-meta">
+            
+            
+              <div class="post-meta-item date">
+                <span title="Created 2020.08.30"><i class="far fa-calendar-alt"></i> 2020.08.30</span>
+              </div>
+              <div class="post-meta-item updated">
+                <span title="Updated 2021.04.02"><i class="far fa-calendar-check"></i> 2021.04.02</span>
+              </div>
+             
+             
+            
+             <div class="post-meta-item wordcount">
+                
+                  <i class="fas fa-pencil-alt"></i> <span class="post-count">630 words</span>
+                   
+                
+                  <i class="far fa-clock"></i> <span class="post-count">3 min</span>
+                                       
+              </div>
+             
+        </div>
+          <div class="content">
+            
+                  <p>1.安装redis数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install redis</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2.下载fedora的epel仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>3.启动redis服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start redis</span><br></pre></td></tr></table></figure>
+<p>4.查看redis状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status redis</span><br></pre></td></tr></table></figure>
+
+
+<p>停止服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop redis </span><br></pre></td></tr></table></figure>
+
+
+<p>重启服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart redis</span><br></pre></td></tr></table></figure>
+
+<p>5.查看redis进程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef |grep redis</span><br></pre></td></tr></table></figure>
+
+
+
+<p>6.设置开机自启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable redis</span><br></pre></td></tr></table></figure>
+
+
+
+<p>7.开放端口号 (若端口已开放此步可省略，可先8后7)</p>
+<p> </p>
+<p>linux 操作防火墙: linux开放防火墙端口</p>
+<p> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;80&#x2F;tcp --permanent</span><br><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;6379&#x2F;tcp --permanent</span><br></pre></td></tr></table></figure>
+<p>注意：80端口是必须要开放的</p>
+<p>重启防火墙：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart firewalld</span><br></pre></td></tr></table></figure>
+<p>8.查看端口 （若此命令无效可百度自行安装）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -lnp|grep 6379</span><br></pre></td></tr></table></figure>
+<p>9.设置redis 远程连接和密码</p>
+<p>输入命令进入编辑模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi &#x2F;etc&#x2F;redis.conf</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>将这部注释掉，否则只有本机才能访问  bind 127.0.0.1 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">##################################NETWORK#####################################</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        # IF YOU ARE SURE YOU WANT YOUR INSTANCE TO LISTEN TO ALL THE INTERFACES</span><br><span class="line">        # JUST COMMENT THE FOLLOWING LINE.</span><br><span class="line">        # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span><br><span class="line">        #bind 127.0.0.1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        # Protected mode is a layer of security protection, in order to avoid that</span><br><span class="line">        # Redis instances left open on the internet are accessed and exploited.</span><br><span class="line">      </span><br><span class="line">    9.2     保护模式修改为no</span><br><span class="line">        #bind 127.0.0.1</span><br><span class="line">        # Protected mode is a layer of security protection, in order to avoid that</span><br><span class="line">        # Redis instances left open on the internet are accessed and exploited.</span><br><span class="line">        #</span><br><span class="line">        # When protected mode is on and if:</span><br><span class="line">        #</span><br><span class="line">        # 1) The server is not binding explicitly to a set of addresses using the</span><br><span class="line">        #    &quot;bind&quot; directive.</span><br><span class="line">        # 2) No password is configured.</span><br><span class="line">        #</span><br><span class="line">        # The server only accepts connections from clients connecting from the</span><br><span class="line">        # IPv4 and IPv6 loopback addresses 127.0.0.1 and ::1, and from Unix domain</span><br><span class="line">        # sockets.</span><br><span class="line">        #</span><br><span class="line">        # By default protected mode is enabled. You should disable it only if</span><br><span class="line">        # you are sure you want clients from other hosts to connect to Redis</span><br><span class="line">        # even if no authentication is configured, nor a specific set of interfaces</span><br><span class="line">        # are explicitly listed using the &quot;bind&quot; directive.</span><br><span class="line">        protected-mode no</span><br></pre></td></tr></table></figure>
+
+
+
+<p>    9.3        如果修改端口号，修改这里就可以了，本文默认6379端口<br> <figure class="highlight plain"><figcaption><span>no</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">        # Accept connections on the specified port, default is 6379 (IANA #815344).</span><br><span class="line">        # If port 0 is specified Redis will not listen on a TCP socket.</span><br><span class="line">        port 6379</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>    9.4        修改密码为 111111</p>
+<p>           这个密码为登陆redis所需要的密码，请记好</p>
+<p>        ################################## SECURITY ###################################<br>        # Warning: since Redis is pretty fast an outside user can try up to<br>        # 150k passwords per second against a good box. This means that you should<br>        # use a very strong password otherwise it will be very easy to break.<br>        #<br>        requirepass 111111
+        </p>
+<p>10.保存并退出编辑重启redis</p>
+<p>systemctl restart redis</p>
+<p>11.进入redis</p>
+<p>    11.1：命令：</p>
+<p>redis-cli -h 127.0.0.1 -p 6379</p>
+<p>    11.2：输入用户名和密码 auth 111111</p>
+<p>    返回OK<br>    11.3：然后再输入    info</p>
+<p>12.获取当前的db数 </p>
+<p>config get databases</p>
+<p>或者</p>
+<p>empty list or set  代表的是当前数据为空，不影响</p>
+<p>  13.切换指定db  select 1  (可为0-15)</p>
+
              
           </div>
         </div>
@@ -929,118 +1037,10 @@ WHERE Person_Id = 100    --如果不存在Person_Id的记录，则子查询没�
 &lt;script type=&quot;text/javascript&quot;&gt;$(&#39;#cnblogs_post_body img&#39;).attr(&#39;data-action&#39;, &#39;zoom&#39;);&lt;/script&gt;
 </code></pre>
 <h2 id="博客的皮肤风格"><a href="#博客的皮肤风格" class="headerlink" title="博客的皮肤风格"></a>博客的皮肤风格</h2><ul>
-<li>简约·蓝<br><img src= "/img/hhj.png" data-src="https://github.com/esofar/cnblogs-theme-silence/raw/master/docs/theme_default.png" alt="img1"> </li>
-<li>暗黑·绿<br><img src= "/img/hhj.png" data-src="https://github.com/esofar/cnblogs-theme-silence/raw/master/docs/theme_dark.png" alt="img2"></li>
-<li>女神·粉<br><img src= "/img/hhj.png" data-src="https://github.com/esofar/cnblogs-theme-silence/raw/master/docs/theme_goddess.png" alt="img3">  </li>
+<li>简约·蓝<br><img src="https://github.com/esofar/cnblogs-theme-silence/raw/master/docs/theme_default.png" alt="img1"> </li>
+<li>暗黑·绿<br><img src="https://github.com/esofar/cnblogs-theme-silence/raw/master/docs/theme_dark.png" alt="img2"></li>
+<li>女神·粉<br><img src="https://github.com/esofar/cnblogs-theme-silence/raw/master/docs/theme_goddess.png" alt="img3">  </li>
 </ul>
-
-             
-          </div>
-        </div>
-      <div class="post-footer">
-        
-    </div>
-    
-      <div class="recent-post-item">
-          <div class="post-title ">
-            <a href="/%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85redis%E6%95%B0%E6%8D%AE%E5%BA%93/">云主机安装redis数据库</a>
-          </div>
-          <div class="post-meta">
-            
-            
-              <div class="post-meta-item date">
-                <span title="Created 2020.08.30"><i class="far fa-calendar-alt"></i> 2020.08.30</span>
-              </div>
-              <div class="post-meta-item updated">
-                <span title="Updated 2021.04.02"><i class="far fa-calendar-check"></i> 2021.04.02</span>
-              </div>
-             
-             
-            
-             <div class="post-meta-item wordcount">
-                
-                  <i class="fas fa-pencil-alt"></i> <span class="post-count">630 words</span>
-                   
-                
-                  <i class="far fa-clock"></i> <span class="post-count">3 min</span>
-                                       
-              </div>
-             
-        </div>
-          <div class="content">
-            
-                  <p>1.安装redis数据库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install redis</span><br></pre></td></tr></table></figure>
-
-
-
-<p>2.下载fedora的epel仓库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<p>3.启动redis服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start redis</span><br></pre></td></tr></table></figure>
-<p>4.查看redis状态</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status redis</span><br></pre></td></tr></table></figure>
-
-
-<p>停止服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop redis </span><br></pre></td></tr></table></figure>
-
-
-<p>重启服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart redis</span><br></pre></td></tr></table></figure>
-
-<p>5.查看redis进程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef |grep redis</span><br></pre></td></tr></table></figure>
-
-
-
-<p>6.设置开机自启动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable redis</span><br></pre></td></tr></table></figure>
-
-
-
-<p>7.开放端口号 (若端口已开放此步可省略，可先8后7)</p>
-<p> </p>
-<p>linux 操作防火墙: linux开放防火墙端口</p>
-<p> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;80&#x2F;tcp --permanent</span><br><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;6379&#x2F;tcp --permanent</span><br></pre></td></tr></table></figure>
-<p>注意：80端口是必须要开放的</p>
-<p>重启防火墙：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart firewalld</span><br></pre></td></tr></table></figure>
-<p>8.查看端口 （若此命令无效可百度自行安装）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -lnp|grep 6379</span><br></pre></td></tr></table></figure>
-<p>9.设置redis 远程连接和密码</p>
-<p>输入命令进入编辑模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi &#x2F;etc&#x2F;redis.conf</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>将这部注释掉，否则只有本机才能访问  bind 127.0.0.1 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">##################################NETWORK#####################################</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        # IF YOU ARE SURE YOU WANT YOUR INSTANCE TO LISTEN TO ALL THE INTERFACES</span><br><span class="line">        # JUST COMMENT THE FOLLOWING LINE.</span><br><span class="line">        # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span><br><span class="line">        #bind 127.0.0.1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        # Protected mode is a layer of security protection, in order to avoid that</span><br><span class="line">        # Redis instances left open on the internet are accessed and exploited.</span><br><span class="line">      </span><br><span class="line">    9.2     保护模式修改为no</span><br><span class="line">        #bind 127.0.0.1</span><br><span class="line">        # Protected mode is a layer of security protection, in order to avoid that</span><br><span class="line">        # Redis instances left open on the internet are accessed and exploited.</span><br><span class="line">        #</span><br><span class="line">        # When protected mode is on and if:</span><br><span class="line">        #</span><br><span class="line">        # 1) The server is not binding explicitly to a set of addresses using the</span><br><span class="line">        #    &quot;bind&quot; directive.</span><br><span class="line">        # 2) No password is configured.</span><br><span class="line">        #</span><br><span class="line">        # The server only accepts connections from clients connecting from the</span><br><span class="line">        # IPv4 and IPv6 loopback addresses 127.0.0.1 and ::1, and from Unix domain</span><br><span class="line">        # sockets.</span><br><span class="line">        #</span><br><span class="line">        # By default protected mode is enabled. You should disable it only if</span><br><span class="line">        # you are sure you want clients from other hosts to connect to Redis</span><br><span class="line">        # even if no authentication is configured, nor a specific set of interfaces</span><br><span class="line">        # are explicitly listed using the &quot;bind&quot; directive.</span><br><span class="line">        protected-mode no</span><br></pre></td></tr></table></figure>
-
-
-
-<p>    9.3        如果修改端口号，修改这里就可以了，本文默认6379端口<br> <figure class="highlight plain"><figcaption><span>no</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">        # Accept connections on the specified port, default is 6379 (IANA #815344).</span><br><span class="line">        # If port 0 is specified Redis will not listen on a TCP socket.</span><br><span class="line">        port 6379</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<p>    9.4        修改密码为 111111</p>
-<p>           这个密码为登陆redis所需要的密码，请记好</p>
-<p>        ################################## SECURITY ###################################<br>        # Warning: since Redis is pretty fast an outside user can try up to<br>        # 150k passwords per second against a good box. This means that you should<br>        # use a very strong password otherwise it will be very easy to break.<br>        #<br>        requirepass 111111
-        </p>
-<p>10.保存并退出编辑重启redis</p>
-<p>systemctl restart redis</p>
-<p>11.进入redis</p>
-<p>    11.1：命令：</p>
-<p>redis-cli -h 127.0.0.1 -p 6379</p>
-<p>    11.2：输入用户名和密码 auth 111111</p>
-<p>    返回OK<br>    11.3：然后再输入    info</p>
-<p>12.获取当前的db数 </p>
-<p>config get databases</p>
-<p>或者</p>
-<p>empty list or set  代表的是当前数据为空，不影响</p>
-<p>  13.切换指定db  select 1  (可为0-15)</p>
 
              
           </div>
