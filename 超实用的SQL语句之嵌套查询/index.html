@@ -1,0 +1,726 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <meta name="author" content="阿正">
+  
+  
+  
+  
+  
+    <link rel="alternate" href="/atom.xml " title="欢迎来到阿正的博客" type="application/atom+xml">
+  
+
+  
+
+  <title>超实用的SQL语句之嵌套查询 | 欢迎来到阿正的博客</title>
+
+  
+
+  
+
+  
+
+  <link rel="stylesheet" href="/css/style.css" >
+  <link rel="stylesheet" href="/css/partial/dark.css" >
+
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&amp;display=swap"  media="print" onload="this.media='all'">
+  
+  
+  
+
+  
+    
+      <link rel="stylesheet" href="/css/partial/highlight/atom-one-light.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/a2396837/CDN@latest/css/iconfont.css">
+    
+  
+
+  
+    <script src="/js/todark.js"></script>
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+</html>
+    
+<div class="nav index" style="height: 60px;">
+    <div class="title animated fadeInDown">
+        <div class="layui-container">
+                <div class="nav-title"><a href="/" title="欢迎来到阿正的博客">欢迎来到阿正的博客</a></div>
+            <div class="nav-list">
+                <button> <span class=""></span><span style="display: block;"></span><span class=""></span> </button>
+                <ul class="layui-nav" lay-filter="">
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/blong/data/links.yml/">
+                            <i class="" style="color:;"></i>
+                            <span class="layui-nav-item-name">Search</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/ ">
+                            <i class=" fab fa-fort-awesome " style="color: rgb(255 107 107);"></i>
+                            <span class="layui-nav-item-name">Home</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/blong/archives/">
+                            <i class="" style="color:;"></i>
+                            <span class="layui-nav-item-name">Archives</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/blong/tags/">
+                            <i class="" style="color:;"></i>
+                            <span class="layui-nav-item-name">Tags</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/blong/categories/">
+                            <i class="" style="color:;"></i>
+                            <span class="layui-nav-item-name">Categories</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/blong/about/">
+                            <i class="" style="color:;"></i>
+                            <span class="layui-nav-item-name">About</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/guestbook/ ">
+                            <i class=" fab fa-telegram " style="color: hsl(205deg 100% 50%);"></i>
+                            <span class="layui-nav-item-name">Guestbook</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/blong/link/">
+                            <i class="" style="color:;"></i>
+                            <span class="layui-nav-item-name">Friends</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/shuoshuo/ ">
+                            <i class=" fas fa-coffee " style="color:#31c7c1;"></i>
+                            <span class="layui-nav-item-name">说说</span>
+                        </a>
+                    </li>
+                    
+                    
+                        <li class="layui-nav-item" id="btn-toggle-dark">🌙</li>
+                    
+                    <span class="layui-nav-bar" style="left: 342px; top: 78px; width: 0px; opacity: 0;"></span>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<header class="header">
+        
+            <div class="logo">
+                    <a href="/"><img src="/img/hhj.png/" onerror=this.onerror=null,this.src="/img/hhj.png"></a>
+            </div>
+         
+    </div>
+     
+    
+            <div class="social">
+                
+                        <a class="social-icon" href="https://github.com/a2396837" target="_blank" title="Github">
+                            <i class="iconfont icon-GitHub" aria-hidden="true"></i>
+                          </a>
+                 
+                        <a class="social-icon" href="mailto:894049579@qq.com" target="_blank" title="Email">
+                            <i class="iconfont icon-email" aria-hidden="true"></i>
+                          </a>
+                 
+                        <a class="social-icon" href="https://steamcommunity.com/id/a2396837" target="_blank" title="Steam">
+                            <i class="iconfont icon-steam" aria-hidden="true"></i>
+                          </a>
+                 
+                        <a class="social-icon" href="https://space.bilibili.com/8823569" target="_blank" title="Bilibili">
+                            <i class="iconfont icon-bilibili" aria-hidden="true"></i>
+                          </a>
+                 
+                        <a class="social-icon" href="https://music.163.com/#/user/home?id=262078590" target="_blank" title="Netmusic">
+                            <i class="iconfont icon-wangyiyunyinle1" aria-hidden="true"></i>
+                          </a>
+                 
+                        <a class="social-icon" href="/atom.xml" target="_blank" title="rss">
+                            <i class="iconfont icon-rss" aria-hidden="true"></i>
+                          </a>
+                 
+            </div>
+     
+</header>
+
+    
+<article id="post">
+  <div class="post-title">超实用的SQL语句之嵌套查询</div>
+  
+<div class="post-meta">
+    
+    
+      <div class="post-meta-item date">
+        <span title="Created 2020.08.31"><i class="far fa-calendar-alt"></i> 2020.08.31</span>
+      </div>
+      <div class="post-meta-item updated">
+        <span title="Updated 2021.04.02"><i class="far fa-calendar-check"></i> 2021.04.02</span>
+      </div>
+     
+    
+      <div class="post-meta-item categories">
+        
+          <i class="fas fa-inbox article-meta__icon"></i> <a href="/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/">博客园博文</a>
+        
+          <i class="fas fa-inbox article-meta__icon"></i> <a href="/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/mybatis/">mybatis</a>
+        
+      </div>
+     
+    
+     <div class="post-meta-item wordcount">
+        
+          <i class="fas fa-pencil-alt"></i> <span class="post-count">924 words</span>
+           
+        
+          <i class="far fa-clock"></i> <span class="post-count">3 min</span>
+                               
+      </div>
+     
+</div>
+
+
+  
+  <div class="content">
+        <div><h2>嵌套查询</h2>
+<h3>什么是嵌套查询</h3>.
+ 　　嵌套查询的意思是，一个查询语句(select-from-where)查询语句块可以嵌套在另外一个查询块的where子句中，称为嵌套查询。其中外层查询也称为父查询，主查询。内层查询也称子查询，从查询。
+<h3>嵌套查询的工作方式</h3>
+ 　　先处理内查询，由内向外处理，外层查询利用内层查询的结果嵌套查询不仅仅可以用于父查询select语句使用。还可以用于insert、update、delete语句或其他子查询中。
+
+<h2>子查询的组成</h2>
+ 1、包含标准选择列表组件的标准select查询。
+
+<p> 2、包含一个或多个表或者视图名称的标准from子句。</p>
+<p> 3、可选的where子句。</p>
+<p> 4、可选的group by子句。</p>
+<p> 5、可选的having子句。</p>
+<h2>子查询的语法规则</h2>
+ 1、子查询的select查询总是使用圆括号括起来。
+
+<p> 2、不能包括compute或for.browse子句。</p>
+<p> 3、如果同时指定top子句，则可能只包括order by子句。</p>
+<p> 4、子查询最多可以嵌套到32层。个别查询可能会不支持32层嵌套。</p>
+<p> 5、任何可以使用表达式的地方都可以使用子查询，只要它返回的是单个值。</p>
+<p> 6、如果某个表只出现在子查询中二不出现在外部查询中，那么该表的列就无法包含在输出中。</p>
+<h2>简单子查询</h2>
+<strong>示例：</strong>
+
+<pre><code>select name,age from person 
+where age &gt; 
+    (
+        select age from person 
+        where name = &#39;孙权&#39;
+    )
+</code></pre>
+<p><strong>输出结果为：</strong><br><img src= "/img/hhj.png" data-src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/4.jpg" alt="1"></p>
+<h2>in嵌套查询</h2>
+ 　　in关键字用于where子句中用来判断查询的表达式是否在多个值的列表中。返回满足in列表中的满足条件的记录。
+
+<p><strong>示例：</strong></p>
+<pre><code>select name from person 
+where countryid in 
+(
+select countryid from country
+where countryname = &#39;魏国&#39;
+)
+</code></pre>
+<p><strong>输出结果为：</strong></p>
+<img src= "/img/hhj.png" data-src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/3.jpg" alt="2">
+<h2>some嵌套查询</h2>
+<h3>语法</h3>
+ 　　some在sql中的逻辑运算符号，如果在一系列比较中，有些值为True，那么结果就为True。some的语法是：
+
+<pre><code>&lt;表达式&gt;&#123; =|&lt;&gt;|!=|&gt;|&gt;=|!&gt;|&lt;|&lt;=|!&lt;&#125;some(子查询)
+</code></pre>
+<p><strong>示例：</strong></p>
+<pre><code>select name from person 
+where countryid = some 　　　　　　--用等号和以下查询到的值比较，如果与其中一个相等，就返回
+(
+select countryid from country
+where countryname = &#39;魏国&#39;
+)
+</code></pre>
+<p><strong>输出结果为：</strong><br><img src= "/img/hhj.png" data-src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/2.jpg" alt="3"></p>
+<h2>all嵌套查询</h2>
+ 　　all是sql中的逻辑运算符好，如果一系列的比较都为true，那么结果才能为true。
+<h3>语法</h3>
+
+<pre><code>&lt;表达式&gt;&#123; =|&lt;&gt;|!=|&gt;|&gt;=|!&gt;|&lt;|&lt;=|!&lt;&#125;all(子查询)
+</code></pre>
+<p><strong>示例：</strong></p>
+<pre><code>select name from person 
+where countryid &gt; all　　 --当countryid大于以下返回的所有id，此结果才为True，此结果才返回
+(
+select countryid from country
+where countryname = &#39;魏国&#39;
+)
+</code></pre>
+<p><strong>输出结果为：</strong><br><img src= "/img/hhj.png" data-src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/1.jpg" alt="4"></p>
+<h2>exists嵌套查询</h2>
+<h3>语法</h3>
+ 　　exists是sql中的逻辑运算符号。如果子查询有结果集返回，那么就为True。exists代表“存在”的意义，它只查找满足条件的那些记录。<span style="color:red">一旦找到第一个匹配的记录后，就马上停止查找。</span>
+
+<pre><code>exists　子查询
+</code></pre>
+<p> 　　其中子查询是一个首先的select语句，不允许有compute子句和into关键字。<br>exists 的意思是，子查询是否有结果集返回。<br><strong>例如：</strong></p>
+<pre><code>SELECT * FROM Person
+WHERE exists
+(
+SELECT 1      --SELECT 0  SELECT NULL 返回结果都一样，因为这三个子查询都有结果集返回，因此总是True  SELECT * FROM Person照常执行
+)
+</code></pre>
+<p> 　　但是如果子查询中因为加了条件而没有结果集返回，则主语句就不执行了：</p>
+<pre><code>SELECT * FROM Person
+WHERE exists
+(
+SELECT * FROM Person 
+WHERE Person_Id = 100    --如果不存在Person_Id的记录，则子查询没有结果集返回，主语句不执行
+)
+</code></pre>
+<!-- 最后感谢<a target="_blank" rel="noopener" href="https://www.cnblogs.com/kissdodog/archive/2013/06/03/3116284.html">不玩博客了！</a>同学的分享，么么哒！ -->
+</div>
+        
+          <div class="post-copyright">
+                  <div class="copyright-item">
+                      <span> Author: 阿正</span>
+                  </div>
+                  <div class="copyright-item">
+                      <span> Link: <a href="https://zhaozheng.link/%E8%B6%85%E5%AE%9E%E7%94%A8%E7%9A%84SQL%E8%AF%AD%E5%8F%A5%E4%B9%8B%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2/">https://zhaozheng.link/%E8%B6%85%E5%AE%9E%E7%94%A8%E7%9A%84SQL%E8%AF%AD%E5%8F%A5%E4%B9%8B%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2/</a></span>
+                  </div>
+                  <div class="copyright-item">
+                      <span> License: 本博客所有文章除特别声明外，均采用许可协议 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> 转载请注明出处！</span>
+                  </div>
+          </div>
+        
+  </div>
+
+  <div class="share-reward">
+    <div class="share">
+        
+<div class="social-share" data-sites="facebook,twitter,wechat,weibo,qq"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script>
+
+
+      </div>
+        <div class="reward">
+          
+  <div style="padding: 10px 0; margin-left: 20px; width: 90%; text-align: center;">
+    <div class="reward-content">
+        <ul id="donateBox" class="list pos-a">
+          
+           <li id="PayPal"><a href="https://paypal.me" target="_blank" title="PayPal">PayPal</a></li>
+            
+          
+            <li id="AliPay" title="Alipay"><img data-img="/img/alipay.jpg" onerror=this.onerror=null,this.src="/img/hhj.png"></img></li>
+               
+                 
+            <li id="WeChat" title="Wechatpay"><img date-img="/img/wechat.jpg" onerror=this.onerror=null,this.src="/img/hhj.png"></img></li>
+                      
+          </ul>
+        <div id="QRBox" class="pos-f left-100">
+          <div id="MainBox"></div>
+        </div>
+    </div>
+  </div>
+  
+        </div>
+    </div>
+    
+    <div class="post_tags">
+      
+        <i class="fas fa-tag"></i> <a href="/tags/MySQL/" class="tag">MySQL</a>
+      
+        <i class="fas fa-tag"></i> <a href="/tags/MyBatis/" class="tag">MyBatis</a>
+      
+        <i class="fas fa-tag"></i> <a href="/tags/SQL%E6%8A%80%E5%B7%A7/" class="tag">SQL技巧</a>
+      
+    </div>
+    <div class="post-nav">
+      
+        <div class="post-nav-prev post-nav-item">
+            <a href="/Java%E6%B3%9B%E5%9E%8B%E4%B9%8B%E4%B8%8A%E3%80%81%E4%B8%8B%E8%BE%B9%E7%95%8C%E9%80%9A%E9%85%8D%E7%AC%A6%E7%9A%84%E7%90%86%E8%A7%A3-%E9%80%82%E5%90%88%E5%88%9D%E5%AD%A6/" >Java泛型之上、下边界通配符的理解(适合初学)<i class="fa fa-chevron-left"></i></a>
+        </div>
+      
+      
+        <div class="post-nav-next post-nav-item">
+            <a href="/Vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/" >Vue父子组件传参<i class="fa fa-chevron-right"></i></a>
+        </div>
+      
+    </div>
+      
+
+    <script src='//unpkg.com/@waline/client/dist/Waline.min.js'></script>
+    <div id="waline"></div>
+    <script>
+    new Waline({
+        el: '#waline',
+        path: location.pathname,
+        serverURL: "",
+        avatar: "monsterid",
+        placeholder: "Just go go"
+    });
+    </script>
+
+
+
+  <div id="valine"></div>
+  <script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script>
+  <script>
+        new Valine({
+          el: '#valine',
+          appId: "",
+          appKey: "",
+          avatar: "mm",
+          lang: "",
+          meta: 'nick,mail,link'.split(','),
+          requiredFields: 'nick,mail'.split(','),
+          placeholder: "评论记得带上邮箱,你的留言我会马上收到邮箱提醒哒",
+          pageSize:'10',
+          recordIP: 'false',
+          serverURLs: "",
+          emojiCDN: "",
+          enableQQ: "true",
+        });
+  </script>
+  
+
+</article>
+
+    
+<a id="gotop" href="javascript:" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    
+
+
+
+
+
+
+    
+<div id="bottom-outer">
+    <div id="bottom-inner">
+        © 2020 <i class="fa fa-heart" id="heart"></i> 阿正 
+        <br>
+        Powered by 
+        <a target="_blank" rel="noopener" href="http://hexo.io">hexo</a> | Theme is <a target="_blank" rel="noopener" href="https://github.com/a2396837/hexo-theme-blank/">blank</a>
+        
+          <div class="icp-info">
+            
+          <a href="" target="_blank"> </a>
+        </div>
+        
+    </div>  
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/layui-src@2.5.5/dist/layui.min.js"></script>
+
+
+
+  
+    <script src="/js/script.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+  
+
+ 
+
+
+
+  <script>
+    window.lazyLoadOptions = {
+      elements_selector: 'img',
+      threshold: 0
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script>   
+  
+
+
+  <script>
+    var images = $('img').not('.nav-logo img').not('.card img').not($('a>img')).not('.reward-content img')
+    images.each(function (i, o) {
+      var lazyloadSrc = $(o).attr('data-src') ? $(o).attr('data-src') : $(o).attr('src')
+      $(o).wrap(`<a href="${lazyloadSrc}" data-fancybox="group" data-caption="${$(o).attr('alt')}" class="fancybox"></a>`)
+    })
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script>
+  <script>
+        $().fancybox({
+      selector: '[data-fancybox]',
+      loop: true,
+      transitionEffect: 'slide',
+      protect: true,
+      buttons: ['slideShow', 'fullScreen', 'thumbs', 'close']
+    })
+  </script>   
+  
+
+
+  <script>
+  if (!window.MathJax) {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]],
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/)
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+              const text = document.createTextNode('')
+              node.parentNode.replaceChild(text, node)
+              math.start = {node: text, delim: '', n: 0}
+              math.end = {node: text, delim: '', n: 0}
+              doc.math.push(math)
+            }
+          }, '']
+        }
+      }
+    }
+    
+    var script = document.createElement('script')
+    script.src = "https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"
+    script.id = 'MathJax-script'
+    script.async = true
+    document.head.appendChild(script)
+  } else {
+    MathJax.startup.document.state(0)
+    MathJax.texReset()
+    MathJax.typeset()
+  }
+  </script>
+  
+
+
+  
+<script>
+if (document.getElementsByClassName('mermaid').length) {
+    if (window.mermaidJsLoad) mermaid.init()
+    else {
+      $.getScript("https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js", function () {
+        window.mermaidJsLoad = true
+        mermaid.initialize({
+          theme: "default",
+        })
+      })
+    }
+  }
+  </script>
+  
+
+
+  <script>
+    jQuery(document).ready(function () {
+      var QRBox = $('#QRBox');
+      var MainBox = $('#MainBox');
+      var AliPayQR = '/img/alipay.jpg';
+      var WeChanQR = '/img/wechat.jpg';
+
+      function showQR(QR) {
+        if (QR) {
+          MainBox.css('background-image', 'url(' + QR + ')');
+        }
+        $('#donateBox').addClass('blur');
+        QRBox.fadeIn(300, function (argument) {
+          MainBox.addClass('showQR');
+        });
+      }
+
+      $('#donateBox>li').click(function (event) {
+        var thisID = $(this).attr('id');
+        if (thisID === 'AliPay') {
+          showQR(AliPayQR);
+        } else if (thisID === 'WeChat') {
+          showQR(WeChanQR);
+        }
+      });
+
+      MainBox.click(function (event) {
+        MainBox.removeClass('showQR').addClass('hideQR');
+        setTimeout(function (a) {
+          QRBox.fadeOut(300, function (argument) {
+            MainBox.removeClass('hideQR');
+          });
+          $('#DonateText,#donateBox,#github').removeClass('blur');
+        }, 600);
+
+      });
+    });
+  </script>
+  
+
+
+  
+<div id="QPlayer">
+	<div id="pContent">
+		<div id="player">
+			<span class="cover"></span>
+			<div class="ctrl">
+				<div class="musicTag marquee">
+					<strong>Title</strong>
+					 <span> - </span>
+					<span class="artist">Artist</span>
+				</div>
+				<div class="progress">
+					<div class="timer left">0:00</div>
+					<div class="contr">
+						<div class="rewind icon"></div>
+						<div class="playback icon"></div>
+						<div class="fastforward icon"></div>
+					</div>
+					<div class="right">
+						<div class="liebiao icon"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ssBtn">
+				<div class="adf"><i class="fas fa-music" style="color: #Fff;"></i></div>
+		</div>
+	</div>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/a2396837/CDN@latest/css/audio.css">
+	<ol id="playlist"></ol>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js"></script>
+<script>
+	var playlist = [];
+	
+	var isRotate = true;
+	var autoplay = false;
+  </script>
+<script src="https://cdn.jsdelivr.net/gh/a2396837/CDN@latest/js/player.js"></script>
+<script>
+  function bgChange(){
+	var lis= $('.lib');
+	for(var i=0; i<lis.length; i+=2)
+	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+  }
+  window.onload = bgChange;
+</script>
+
+  
+
+
+  <script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script>
+  
+
+
+  <script src="https://cdn.jsdelivr.net/gh/a2396837/CDN@latest/js/firework.js"></script>
+  
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js"></script>
+<script>
+!function (e, t, a) {
+  var initCopyCode = function(){
+    var copyHtml = '';
+    copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+    copyHtml += '  <i class="fa fa-clipboard"></i><span>复制</span>';
+    copyHtml += '</button>';
+    $(".highlight .code pre").before(copyHtml);
+    new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+  }
+  initCopyCode();
+}(window, document);
+</script>  
+  
+
+<script>
+  var btntop = $('#gotop');
+  btntop.on('click', function (e) {
+    e.preventDefault();
+    $('html, body').animate({ scrollTop: 0 }, '300');
+  });
+
+  var $table = $('.content table').not($('figure.highlight > table'))
+$table.each(function () {
+  $(this).wrap('<div class="table-wrap"></div>')
+})
+</script>
+
+
+
+</html>
