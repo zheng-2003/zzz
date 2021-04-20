@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zhaozheng.link/%E4%BA%91%E4%B8%BB%E6%9C%BACentOS7%E5%AE%89%E8%A3%85Mysql%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    
+    <lastmod>2021-04-20</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zhaozheng.link/%E4%BA%91%E4%B8%BB%E6%9C%BACentOS7%E5%AE%89%E8%A3%85python3.6%E5%92%8CDjango/</loc>
+    
+    <lastmod>2021-04-20</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://zhaozheng.link/python%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/</loc>
     
     <lastmod>2021-04-13</lastmod>
@@ -137,57 +151,57 @@
 
   <url>
     <loc>https://zhaozheng.link/</loc>
-    <lastmod>2021-04-13</lastmod>
+    <lastmod>2021-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://zhaozheng.link/tags/gitee/</loc>
-    <lastmod>2021-04-13</lastmod>
+    <loc>https://zhaozheng.link/tags/%E5%8D%9A%E5%AE%A2%E5%9B%AD/</loc>
+    <lastmod>2021-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://zhaozheng.link/tags/%E5%8D%9A%E5%AE%A2%E5%9B%AD/</loc>
-    <lastmod>2021-04-13</lastmod>
+    <loc>https://zhaozheng.link/tags/gitee/</loc>
+    <lastmod>2021-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhaozheng.link/tags/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</loc>
-    <lastmod>2021-04-13</lastmod>
+    <lastmod>2021-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhaozheng.link/tags/Hexo/</loc>
-    <lastmod>2021-04-13</lastmod>
+    <lastmod>2021-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhaozheng.link/tags/MySQL/</loc>
-    <lastmod>2021-04-13</lastmod>
+    <lastmod>2021-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhaozheng.link/tags/MyBatis/</loc>
-    <lastmod>2021-04-13</lastmod>
+    <lastmod>2021-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhaozheng.link/tags/SQL%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2021-04-13</lastmod>
+    <lastmod>2021-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -196,28 +210,28 @@
   
   <url>
     <loc>https://zhaozheng.link/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/</loc>
-    <lastmod>2021-04-13</lastmod>
+    <lastmod>2021-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhaozheng.link/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</loc>
-    <lastmod>2021-04-13</lastmod>
+    <lastmod>2021-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhaozheng.link/categories/Hexo/</loc>
-    <lastmod>2021-04-13</lastmod>
+    <lastmod>2021-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhaozheng.link/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/mybatis/</loc>
-    <lastmod>2021-04-13</lastmod>
+    <lastmod>2021-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

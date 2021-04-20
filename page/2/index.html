@@ -220,7 +220,7 @@
     
       <div class="recent-post-item">
           <div class="post-title ">
-            <a href="/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E2%80%94%E2%80%94Silence%E4%B8%BB%E9%A2%98%E7%9A%AE%E8%82%A4/">博客美化——Silence主题皮肤</a>
+            <a href="/websell/">Webshell在浏览器中实现终端</a>
           </div>
           <div class="post-meta">
             
@@ -229,127 +229,54 @@
                 <span title="Created 2020.08.30"><i class="far fa-calendar-alt"></i> 2020.08.30</span>
               </div>
               <div class="post-meta-item updated">
-                <span title="Updated 2021.03.17"><i class="far fa-calendar-check"></i> 2021.03.17</span>
+                <span title="Updated 2021.04.02"><i class="far fa-calendar-check"></i> 2021.04.02</span>
               </div>
              
-            
-              <div class="post-meta-item categories">
-                
-                  <i class="fas fa-inbox article-meta__icon"></i> <a href="/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/">博客园博文</a>
-                
-                  <i class="fas fa-inbox article-meta__icon"></i> <a href="/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/">博客美化</a>
-                
-              </div>
              
             
              <div class="post-meta-item wordcount">
                 
-                  <i class="fas fa-pencil-alt"></i> <span class="post-count">805 words</span>
+                  <i class="fas fa-pencil-alt"></i> <span class="post-count">436 words</span>
                    
                 
-                  <i class="far fa-clock"></i> <span class="post-count">3 min</span>
+                  <i class="far fa-clock"></i> <span class="post-count">1 min</span>
                                        
               </div>
              
         </div>
           <div class="content">
             
-                  <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>&emsp;&emsp;一款专注阅读的博客园主题，主要面向于经常混迹 博客园 的朋友。其追求大道至简的终极真理，界面追求简洁、运行追求高效、部署追求简单。</p>
+                  <h1 id="websell"><a href="#websell" class="headerlink" title="websell"></a>websell</h1><p>一，概念：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/glassy-sky-lisong/SilenceSkin">博客皮肤源码地址</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/esofar">预览地址</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/esofar/cnblogs-theme-silence/blob/master/docs/deploy.md">如何部署、使用皮肤</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/esofar/p/cnblogs-theme-silence.html">Silence作者的友链</a></li>
+<li>什么是websell：<ul>
+<li>webshell就是以asp、php、jsp或者cgi等网页文件形式存在的一种代码执行环境，也可以将其称做为一种网页后门。黑客在入侵了一个网站后，通常会将asp或php后门文件与网站服务器WEB目录下正常的网页文件混在一起，然后就可以使用浏览器来访问asp或者php后门，得到一个命令执行环境，以达到控制网站服务器的目的。</li>
+<li>他是一个集成了一堆Linux命令的控制台界面</li>
 </ul>
-<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
-<li>简洁优雅、精致漂亮的 UI 设计</li>
-<li>提供多种风格主题以便适应各类用户的偏好</li>
-<li>响应式设计，兼容手机端浏览器</li>
-<li>提供事无巨细的部署文档</li>
-<li>源码结构清晰并且注释完整，方便扩展</li>
+</li>
+<li>sell的分类： <ul>
+<li>SH：编程方面相当优秀，输入命令优秀</li>
+<li>BASH：Linux系统中的一个默认shell，命令多</li>
 </ul>
-<h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><p>&emsp;&emsp;请先确保您正在使用的机器已经安装 Node.js 和 Git 客户端。</p>
-<pre><code> git clone https://github.com/esofar/cnblogs-theme-silence.git   # 克隆源码
- cd cnblogs-theme-silence                                        # 进入项目
- npm install                                                     # 安装依赖
- npm run build
-</code></pre>
-<p>&emsp;&emsp;如果没有安装node。js或者不会使用的童鞋可以在我的GitHub，也就是博客皮肤源码地址中。</p>
-<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>&emsp;&emsp;重点部署之前使用博客园的cutorm皮肤，具体部署细节请详见’如何部署、使用皮肤’，如果又不会的话可以看一看我的配置作为参考（仅作为参考，找不回来别哭鼻子）<br><em><strong>CSS</strong></em></p>
-<pre><code>&lt;!-- 溢出隐藏设置（放置在管理--&gt; 设置--&gt; css模块中） --&gt;
-#topics, #mainContent &#123;
-    overflow: visible;
-&#125;
-.cnblogs-markdown .hljs&#123;
-    display:block;
-    color:#333;
-    overflow-x:auto;
-    background:#F2F4F5!important;
-    border:none!important;
-    font-family:Consolas,Monaco,&#39;Andale Mono&#39;,&#39;Ubuntu Mono&#39;,monospace!important;
-    padding:1em!important;
-    font-size:14px!important
-    &#125;
-</code></pre>
-<p><em><strong>侧边栏公告</strong></em></p>
-<pre><code>&lt;!-- 在管理--&gt; 设置-&gt; 侧边栏公告(支持js代码、支持html代码) --&gt;
-&lt;script src=&quot;https://blog-static.cnblogs.com/files/glassysky/silence.min.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    $.silence(&#123;
-        profile: &#123;
-            enable: true,
-            avatar: &#39;https://gitee.com/glassyskyforgame/glassysky/blob/master/4c67d1a20cf431ade2873e284836acaf2fdd989e.jpg&#39;,
-            favicon: &#39;https://gitee.com/glassyskyforgame/glassysky/raw/master/4c67d1a20cf431ade2873e284836acaf2fdd989e.jpg&#39;,
-        &#125;,
-        catalog: &#123;
-            enable: true,
-            move: true,
-            index: true,
-            level1: &#39;h2&#39;,
-            level2: &#39;h3&#39;,
-            level3: &#39;h4&#39;,
-        &#125;,
-        signature: &#123;
-            enable: true,
-            home: &#39;https://www.cnblogs.com/glassysky/&#39;,
-            license: &#39;署名 4.0 国际&#39;,
-            link: &#39;https://creativecommons.org/licenses/by/4.0&#39;
-        &#125;,
-        reward: &#123;
-            enable: true,
-            title: &#39;感谢小可爱投食&#39;,
-            wechat: &#39;https://images.cnblogs.com/cnblogs_com/esofar/972540/o_wechat.png&#39;,
-            alipay: &#39;https://images.cnblogs.com/cnblogs_com/esofar/972540/o_alipay.png&#39;
-        &#125;,
-        github: &#123;
-            enable: true,
-            color: &#39;#fff&#39;,
-            fill: null,
-            link: &#39;https://github.com/glassy-sky-lisong&#39;
-        &#125;
-    &#125;);
-&lt;/script&gt;
-&lt;!--外置主题css补丁--&gt;
-&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://blog-static.cnblogs.com/files/glassysky/sli.css&quot;/&gt;
-</code></pre>
-<p><em><strong>会动的title</strong></em></p>
-<pre><code>&lt;!-- 动态titlejs --&gt;
-&lt;script&gt; var OriginTitle = document.title; var titleTime; document.addEventListener(&#39;visibilitychange&#39;, function () &#123; if                 
-(document.hidden) &#123; document.title = &#39;╭(°A°`)╮ 页面崩溃啦 ~&#39;; clearTimeout(titleTime); &#125; else &#123; document.title = &#39;(ฅ&gt;ω&lt;*ฅ) 噫又    
-好了~&#39; + OriginTitle; titleTime = setTimeout(function () &#123; document.title = OriginTitle; &#125;, 2000); &#125; &#125;); &lt;/script&gt;
-</code></pre>
-<p><em><strong>图片放大功能</strong></em></p>
-<pre><code>&lt;!--图片放大的zoomcss和js--&gt;
-&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://blog-static.cnblogs.com/files/glassysky/zoom.css&quot;/&gt;
-&lt;script src=&quot;https://blog-static.cnblogs.com/files/glassysky/zoom.js&quot;&gt;&lt;/script&gt;
-&lt;!-- Bootstrap 的 transition.js cdn（过渡动画插件）--&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;$(&#39;#cnblogs_post_body img&#39;).attr(&#39;data-action&#39;, &#39;zoom&#39;);&lt;/script&gt;
-</code></pre>
-<h2 id="博客的皮肤风格"><a href="#博客的皮肤风格" class="headerlink" title="博客的皮肤风格"></a>博客的皮肤风格</h2><ul>
-<li>简约·蓝<br><img src= "/img/hhj.png" data-src="https://github.com/esofar/cnblogs-theme-silence/raw/master/docs/theme_default.png" alt="img1"> </li>
-<li>暗黑·绿<br><img src= "/img/hhj.png" data-src="https://github.com/esofar/cnblogs-theme-silence/raw/master/docs/theme_dark.png" alt="img2"></li>
-<li>女神·粉<br><img src= "/img/hhj.png" data-src="https://github.com/esofar/cnblogs-theme-silence/raw/master/docs/theme_goddess.png" alt="img3">  </li>
+</li>
 </ul>
+<p>二，应用场景：</p>
+<ul>
+<li>比如实验楼，他就是在浏览器中实现的黑窗口，供用户进行学习使用，非常方便</li>
+</ul>
+<p>三，代码实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装xterm</span></span><br><span class="line"> npm install xterm@<span class="number">3.1</span><span class="number">.0</span> --save</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在main.js中导入css样式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;xterm/dist/xterm.css&#x27;</span> </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在你对应的页面上放上这个div标签，这就是那个黑窗口</span></span><br><span class="line">&lt;div id=<span class="string">&quot;terminal&quot;</span>&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Terminal &#125; <span class="keyword">from</span> <span class="string">&#x27;xterm&#x27;</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> attach <span class="keyword">from</span> <span class="string">&#x27;xterm/lib/addons/attach/attach&#x27;</span> <span class="comment">// 安装插件适，可以使用attach去添加</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> fit <span class="keyword">from</span> <span class="string">&#x27;xterm/lib/addons/fit/fit&#x27;</span> <span class="comment">// fit进行自适应大小的</span></span><br><span class="line"></span><br><span class="line">Terminal.applyAddon(attach) <span class="comment">// 添加插件</span></span><br><span class="line">Terminal.applyAddon(fit) <span class="comment">// 添加插件</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取到了div标签</span></span><br><span class="line"><span class="keyword">let</span> terminalContainer = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;terminal&#x27;</span>)</span><br><span class="line"><span class="comment">// 初始化黑窗口对象</span></span><br><span class="line"><span class="built_in">this</span>.term = <span class="keyword">new</span> Terminal(<span class="built_in">this</span>.terminal)</span><br><span class="line"><span class="comment">// 打开这个对象</span></span><br><span class="line"><span class="built_in">this</span>.term.open(terminalContainer)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这就实现了在浏览器中实现黑窗口，如果想完善的话可以连接docker容器，这样只是你自己的云主机，想看docker可以去我下一章博客</p>
+</blockquote>
 
              
           </div>
@@ -435,6 +362,182 @@
     
       <div class="recent-post-item">
           <div class="post-title ">
+            <a href="/%E4%BA%91%E4%B8%BB%E6%9C%BACentOS7%E5%AE%89%E8%A3%85Mysql%E6%95%B0%E6%8D%AE%E5%BA%93/">云主机安装数据库</a>
+          </div>
+          <div class="post-meta">
+            
+            
+              <div class="post-meta-item date">
+                <span title="Created 2020.08.30"><i class="far fa-calendar-alt"></i> 2020.08.30</span>
+              </div>
+              <div class="post-meta-item updated">
+                <span title="Updated 2021.04.20"><i class="far fa-calendar-check"></i> 2021.04.20</span>
+              </div>
+             
+             
+            
+             <div class="post-meta-item wordcount">
+                
+                  <i class="fas fa-pencil-alt"></i> <span class="post-count">787 words</span>
+                   
+                
+                  <i class="far fa-clock"></i> <span class="post-count">3 min</span>
+                                       
+              </div>
+             
+        </div>
+          <div class="content">
+            
+                  <p>安装MySQL<br>在CentOS中默认安装有MariaDB，这个是MySQL的分支，但为了需要，还是要在系统中安装MySQL，而且安装完成之后可以直接覆盖掉MariaDB。</p>
+<p>1.下载并安装MySQL官方的 Yum Repository<br>1<br>wget -i -c <a target="_blank" rel="noopener" href="http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm">http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm</a><br>2.yum安装<br>1<br>yum -y install mysql57-community-release-el7-10.noarch.rpm<br>3.安装MySQL服务器, 这步可能会花些时间，安装完成后就会覆盖掉之前的mariadb。<br>1<br>yum -y install mysql-community-server<br>4.MySQL数据库设置, 首先启动mysql服务器<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>systemctl start mysqld.service</p>
+<p>systemctl status mysqld.service  # 查看服务器状态</p>
+<h1 id="●-mysqld-service-MySQL-Server"><a href="#●-mysqld-service-MySQL-Server" class="headerlink" title="● mysqld.service - MySQL Server"></a>● mysqld.service - MySQL Server</h1><h1 id="Loaded-loaded-usr-lib-systemd-system-mysqld-service-enabled-vendor-preset-disabled"><a href="#Loaded-loaded-usr-lib-systemd-system-mysqld-service-enabled-vendor-preset-disabled" class="headerlink" title="Loaded: loaded (/usr/lib/systemd/system/mysqld.service; enabled; vendor preset: disabled)"></a>Loaded: loaded (/usr/lib/systemd/system/mysqld.service; enabled; vendor preset: disabled)</h1><p>   Active: active (running) since Wed 2021-03-31 18:57:38 CST; 1h 8min ago</p>
+<h1 id="Docs-man-mysqld-8"><a href="#Docs-man-mysqld-8" class="headerlink" title="Docs: man:mysqld(8)"></a>Docs: man:mysqld(8)</h1><h1 id="http-dev-mysql-com-doc-refman-en-using-systemd-html"><a href="#http-dev-mysql-com-doc-refman-en-using-systemd-html" class="headerlink" title="http://dev.mysql.com/doc/refman/en/using-systemd.html"></a><a target="_blank" rel="noopener" href="http://dev.mysql.com/doc/refman/en/using-systemd.html">http://dev.mysql.com/doc/refman/en/using-systemd.html</a></h1><h1 id="Process-3496-ExecStart-usr-sbin-mysqld-–daemonize-–pid-file-var-run-mysqld-mysqld-pid-MYSQLD-OPTS-code-exited-status-0-SUCCESS"><a href="#Process-3496-ExecStart-usr-sbin-mysqld-–daemonize-–pid-file-var-run-mysqld-mysqld-pid-MYSQLD-OPTS-code-exited-status-0-SUCCESS" class="headerlink" title="Process: 3496 ExecStart=/usr/sbin/mysqld –daemonize –pid-file=/var/run/mysqld/mysqld.pid $MYSQLD_OPTS (code=exited, status=0/SUCCESS)"></a>Process: 3496 ExecStart=/usr/sbin/mysqld –daemonize –pid-file=/var/run/mysqld/mysqld.pid $MYSQLD_OPTS (code=exited, status=0/SUCCESS)</h1><h1 id="Process-3475-ExecStartPre-usr-bin-mysqld-pre-systemd-code-exited-status-0-SUCCESS"><a href="#Process-3475-ExecStartPre-usr-bin-mysqld-pre-systemd-code-exited-status-0-SUCCESS" class="headerlink" title="Process: 3475 ExecStartPre=/usr/bin/mysqld_pre_systemd (code=exited, status=0/SUCCESS)"></a>Process: 3475 ExecStartPre=/usr/bin/mysqld_pre_systemd (code=exited, status=0/SUCCESS)</h1><h1 id="Main-PID-3500-mysqld"><a href="#Main-PID-3500-mysqld" class="headerlink" title="Main PID: 3500 (mysqld)"></a>Main PID: 3500 (mysqld)</h1><h1 id="CGroup-system-slice-mysqld-service"><a href="#CGroup-system-slice-mysqld-service" class="headerlink" title="CGroup: /system.slice/mysqld.service"></a>CGroup: /system.slice/mysqld.service</h1><h1 id="└─3500-usr-sbin-mysqld-–daemonize-–pid-file-var-run-mysqld-mysqld-pid"><a href="#└─3500-usr-sbin-mysqld-–daemonize-–pid-file-var-run-mysqld-mysqld-pid" class="headerlink" title="└─3500 /usr/sbin/mysqld –daemonize –pid-file=/var/run/mysqld/mysqld.pid"></a>└─3500 /usr/sbin/mysqld –daemonize –pid-file=/var/run/mysqld/mysqld.pid</h1><h1 id="Mar-31-18-57-37-iz2zeio2pnjhu6acetcrilz-systemd-1-Starting-MySQL-Server…"><a href="#Mar-31-18-57-37-iz2zeio2pnjhu6acetcrilz-systemd-1-Starting-MySQL-Server…" class="headerlink" title="Mar 31 18:57:37 iz2zeio2pnjhu6acetcrilz systemd[1]: Starting MySQL Server…"></a>Mar 31 18:57:37 iz2zeio2pnjhu6acetcrilz systemd[1]: Starting MySQL Server…</h1><h1 id="Mar-31-18-57-38-iz2zeio2pnjhu6acetcrilz-systemd-1-Started-MySQL-Server"><a href="#Mar-31-18-57-38-iz2zeio2pnjhu6acetcrilz-systemd-1-Started-MySQL-Server" class="headerlink" title="Mar 31 18:57:38 iz2zeio2pnjhu6acetcrilz systemd[1]: Started MySQL Server."></a>Mar 31 18:57:38 iz2zeio2pnjhu6acetcrilz systemd[1]: Started MySQL Server.</h1><p>5.找出此时root用户的密码<br>1<br>2<br>3<br>grep “password” /var/log/mysqld.log</p>
+<h1 id="2021-03-31T07-40-25-106445Z-1-Note-A-temporary-password-is-generated-for-root-localhost-GWmqHjoou4-D"><a href="#2021-03-31T07-40-25-106445Z-1-Note-A-temporary-password-is-generated-for-root-localhost-GWmqHjoou4-D" class="headerlink" title="2021-03-31T07:40:25.106445Z 1 [Note] A temporary password is generated for root@localhost: GWmqHjoou4;D"></a>2021-03-31T07:40:25.106445Z 1 [Note] A temporary password is generated for root@localhost: GWmqHjoou4;D</h1><p>6.进入数据库并修改密码<br>1<br>2<br>3<br>4<br>5<br>mysql -uroot -p  # 密码为初始密码: GWmqHjoou4;D</p>
+<h1 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h1><p>ALTER USER ‘root’@’localhost’ IDENTIFIED BY ‘new password’;  </p>
+<h1 id="其中‘new-password’替换成你要设置的密码，注意-密码设置必须要大小写字母数字和特殊符号（-‘-等）-不然不能配置成功"><a href="#其中‘new-password’替换成你要设置的密码，注意-密码设置必须要大小写字母数字和特殊符号（-‘-等）-不然不能配置成功" class="headerlink" title="其中‘new password’替换成你要设置的密码，注意:密码设置必须要大小写字母数字和特殊符号（,/‘;:等）,不然不能配置成功"></a>其中‘new password’替换成你要设置的密码，注意:密码设置必须要大小写字母数字和特殊符号（,/‘;:等）,不然不能配置成功</h1><p>7.开启mysql的远程访问<br>1<br>2<br>3<br>4<br>5</p>
+<h1 id="执行以下命令开启远程访问限制（注意：下面命令开启的IP是127-0-0-0）"><a href="#执行以下命令开启远程访问限制（注意：下面命令开启的IP是127-0-0-0）" class="headerlink" title="执行以下命令开启远程访问限制（注意：下面命令开启的IP是127.0.0.0）"></a>执行以下命令开启远程访问限制（注意：下面命令开启的IP是127.0.0.0）</h1><p>grant all privileges on <em>.</em> to ‘root’@’127.0.0.0’ identified by ‘password’ with grant option;</p>
+<h1 id="如要开启所有的，用-代替IP"><a href="#如要开启所有的，用-代替IP" class="headerlink" title="如要开启所有的，用%代替IP"></a>如要开启所有的，用%代替IP</h1><p>grant all privileges on <em>.</em> to ‘root’@’%’ identified by ‘password’ with grant option;</p>
+<h1 id="password为数据库密码"><a href="#password为数据库密码" class="headerlink" title="password为数据库密码"></a>password为数据库密码</h1><p>8.执行命令<br>1<br>2<br>3<br>flush privileges; </p>
+<p>exit<br>9.为firewalld添加开放端口<br>如果你是阿里云云端服务器, 与redis一样需要对防火墙进行设置, 开放端口3306<br>若不是添加mysql端口3306和Tomcat端口8080<br>1<br>2<br>3<br>4<br>5<br>[root@localhost ~]# firewall-cmd –zone=public –add-port=3306/tcp –permanent<br>[root@localhost ~]# firewall-cmd –zone=public –add-port=8080/tcp –permanent</p>
+<h1 id="然后再重新载入"><a href="#然后再重新载入" class="headerlink" title="然后再重新载入"></a>然后再重新载入</h1><p>[root@localhost <del>]# firewall-cmd –reload<br>10.更改mysql的语言<br>重新登录mysql，然后输入status：<br>Snipaste_2021-03-31_20-41-11.jpg<br>可以看到，绿色箭头处不是utf-8<br>因此我们先退出mysql，然后再到</del>, etc目录下的my.cnf文件下修改一下文件内容</p>
+<p>1<br>[root@localhost ~]# vi /etc/my.cnf<br>进入文件后，新增四行代码</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33</p>
+<p>[client]  # 第一行<br>default-character-set=utf8  # 第二行</p>
+<h1 id="For-advice-on-how-to-change-settings-please-see"><a href="#For-advice-on-how-to-change-settings-please-see" class="headerlink" title="For advice on how to change settings please see"></a>For advice on how to change settings please see</h1><h1 id="http-dev-mysql-com-doc-refman-5-7-en-server-configuration-defaults-html"><a href="#http-dev-mysql-com-doc-refman-5-7-en-server-configuration-defaults-html" class="headerlink" title="http://dev.mysql.com/doc/refman/5.7/en/server-configuration-defaults.html"></a><a target="_blank" rel="noopener" href="http://dev.mysql.com/doc/refman/5.7/en/server-configuration-defaults.html">http://dev.mysql.com/doc/refman/5.7/en/server-configuration-defaults.html</a></h1><p>[mysqld]<br>#</p>
+<h1 id="Remove-leading-and-set-to-the-amount-of-RAM-for-the-most-important-data"><a href="#Remove-leading-and-set-to-the-amount-of-RAM-for-the-most-important-data" class="headerlink" title="Remove leading # and set to the amount of RAM for the most important data"></a>Remove leading # and set to the amount of RAM for the most important data</h1><h1 id="cache-in-MySQL-Start-at-70-of-total-RAM-for-dedicated-server-else-10"><a href="#cache-in-MySQL-Start-at-70-of-total-RAM-for-dedicated-server-else-10" class="headerlink" title="cache in MySQL. Start at 70% of total RAM for dedicated server, else 10%."></a>cache in MySQL. Start at 70% of total RAM for dedicated server, else 10%.</h1><h1 id="innodb-buffer-pool-size-128M"><a href="#innodb-buffer-pool-size-128M" class="headerlink" title="innodb_buffer_pool_size = 128M"></a>innodb_buffer_pool_size = 128M</h1><h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="Remove-leading-to-turn-on-a-very-important-data-integrity-option-logging"><a href="#Remove-leading-to-turn-on-a-very-important-data-integrity-option-logging" class="headerlink" title="Remove leading # to turn on a very important data integrity option: logging"></a>Remove leading # to turn on a very important data integrity option: logging</h1><h1 id="changes-to-the-binary-log-between-backups"><a href="#changes-to-the-binary-log-between-backups" class="headerlink" title="changes to the binary log between backups."></a>changes to the binary log between backups.</h1><h1 id="log-bin"><a href="#log-bin" class="headerlink" title="log_bin"></a>log_bin</h1><h1 id="-1"><a href="#-1" class="headerlink" title=""></a></h1><h1 id="Remove-leading-to-set-options-mainly-useful-for-reporting-servers"><a href="#Remove-leading-to-set-options-mainly-useful-for-reporting-servers" class="headerlink" title="Remove leading # to set options mainly useful for reporting servers."></a>Remove leading # to set options mainly useful for reporting servers.</h1><h1 id="The-server-defaults-are-faster-for-transactions-and-fast-SELECTs"><a href="#The-server-defaults-are-faster-for-transactions-and-fast-SELECTs" class="headerlink" title="The server defaults are faster for transactions and fast SELECTs."></a>The server defaults are faster for transactions and fast SELECTs.</h1><h1 id="Adjust-sizes-as-needed-experiment-to-find-the-optimal-values"><a href="#Adjust-sizes-as-needed-experiment-to-find-the-optimal-values" class="headerlink" title="Adjust sizes as needed, experiment to find the optimal values."></a>Adjust sizes as needed, experiment to find the optimal values.</h1><h1 id="join-buffer-size-128M"><a href="#join-buffer-size-128M" class="headerlink" title="join_buffer_size = 128M"></a>join_buffer_size = 128M</h1><h1 id="sort-buffer-size-2M"><a href="#sort-buffer-size-2M" class="headerlink" title="sort_buffer_size = 2M"></a>sort_buffer_size = 2M</h1><h1 id="read-rnd-buffer-size-2M"><a href="#read-rnd-buffer-size-2M" class="headerlink" title="read_rnd_buffer_size = 2M"></a>read_rnd_buffer_size = 2M</h1><p>datadir=/var/lib/mysql<br>socket=/var/lib/mysql/mysql.sock<br>character-set-server=utf8   # 第三行<br>collation-server=utf8_general_ci  # 第四行</p>
+<h1 id="Disabling-symbolic-links-is-recommended-to-prevent-assorted-security-risks"><a href="#Disabling-symbolic-links-is-recommended-to-prevent-assorted-security-risks" class="headerlink" title="Disabling symbolic-links is recommended to prevent assorted security risks"></a>Disabling symbolic-links is recommended to prevent assorted security risks</h1><p>symbolic-links=0</p>
+<p>log-error=/var/log/mysqld.log<br>pid-file=/var/run/mysqld/mysqld.pid</p>
+
+             
+          </div>
+        </div>
+      <div class="post-footer">
+        
+    </div>
+    
+      <div class="recent-post-item">
+          <div class="post-title ">
+            <a href="/%E4%BA%91%E4%B8%BB%E6%9C%BACentOS7%E5%AE%89%E8%A3%85python3.6%E5%92%8CDjango/">云主机安装Python</a>
+          </div>
+          <div class="post-meta">
+            
+            
+              <div class="post-meta-item date">
+                <span title="Created 2020.08.30"><i class="far fa-calendar-alt"></i> 2020.08.30</span>
+              </div>
+              <div class="post-meta-item updated">
+                <span title="Updated 2021.04.20"><i class="far fa-calendar-check"></i> 2021.04.20</span>
+              </div>
+             
+             
+            
+             <div class="post-meta-item wordcount">
+                
+                  <i class="fas fa-pencil-alt"></i> <span class="post-count">380 words</span>
+                   
+                
+                  <i class="far fa-clock"></i> <span class="post-count">1 min</span>
+                                       
+              </div>
+             
+        </div>
+          <div class="content">
+            
+                  <h3 id="进入官网"><a href="#进入官网" class="headerlink" title="进入官网"></a>进入官网</h3><ul>
+<li><p>拿取下载地址：<a target="_blank" rel="noopener" href="https://www.python.org/">https://www.python.org/</a></p>
+<ul>
+<li>  <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python/3.7.5/Python-3.7.5.tar.xz">https://www.python.org/ftp/python/3.7.5/Python-3.7.5.tar.xz</a></li>
+</ul>
+</li>
+<li><p>到云主机下载</p>
+<ul>
+<li>  wget：下载某个链接上的资源</li>
+</ul>
+</li>
+<li><p>  进入home目录</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd home&#x2F;     # 进入目录</span><br><span class="line">mkdir tools  # 创建目录</span><br><span class="line">wget https:&#x2F;&#x2F;www.python.org&#x2F;ftp&#x2F;python&#x2F;3.7.5&#x2F;Python-3.7.5.tar.xz  # 在该目录下下载python3的压缩文件</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>  过程中发现下载太慢了，实在受不了了，可以本地先下载，然后上传，推荐使用filezilla工具</p>
+</blockquote>
+<ul>
+<li>  解压xz格式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xz -d Python-3.7.5.tar.xz </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  打开tar归档模式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xvf Python-3.7.5.tar </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  安装依赖</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  进入目录</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd Python-3.7.5</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  创建一个python的安装目录</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir &#x2F;usr&#x2F;local&#x2F;python37</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  配置安装选项，安装python到python37目录下</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --prefix&#x3D;&#x2F;usr&#x2F;local&#x2F;python37</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  执行编译</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  执行安装</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install </span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Successfully installed pip-19.2.3 setuptools-41.2.0</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  构建软连接</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;python37&#x2F;bin&#x2F;python3 &#x2F;usr&#x2F;bin&#x2F;python3</span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;python37&#x2F;bin&#x2F;pip3 &#x2F;usr&#x2F;bin&#x2F;pip3</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li></li>
+<li>  安装django</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install django&#x3D;&#x3D;2.0.4 -i https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>  虽然安装好了django，但是他居然不能用，这是因为他也得需要设置软连接 </p>
+</blockquote>
+<ul>
+<li>  设置django-admin的软连接</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;python37&#x2F;bin&#x2F;django-admin &#x2F;usr&#x2F;bin&#x2F;django-admin</span><br></pre></td></tr></table></figure>
+
+
+             
+          </div>
+        </div>
+      <div class="post-footer">
+        
+    </div>
+    
+      <div class="recent-post-item">
+          <div class="post-title ">
             <a href="/%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB/">测试分类</a>
           </div>
           <div class="post-meta">
@@ -504,7 +607,7 @@
         </div>
           <div class="content">
             
-                  <h1 id="支付宝三方支付"><a href="#支付宝三方支付" class="headerlink" title="支付宝三方支付"></a>支付宝三方支付</h1><h3 id="一-下载一个支付宝开放平台开发助手生成秘钥"><a href="#一-下载一个支付宝开放平台开发助手生成秘钥" class="headerlink" title="一,下载一个支付宝开放平台开发助手生成秘钥"></a>一,下载一个支付宝开放平台开发助手生成秘钥</h3><h3 id="进入-https-www-alipay-com-并登陆-然后注册一个沙箱"><a href="#进入-https-www-alipay-com-并登陆-然后注册一个沙箱" class="headerlink" title="进入 https://www.alipay.com/ 并登陆,然后注册一个沙箱"></a>进入 <a target="_blank" rel="noopener" href="https://www.alipay.com/">https://www.alipay.com/</a> 并登陆,然后注册一个沙箱</h3><h3 id="下载-pip-install-python-alipay-sdk-–upgrade-模块"><a href="#下载-pip-install-python-alipay-sdk-–upgrade-模块" class="headerlink" title="下载 pip install python-alipay-sdk –upgrade 模块"></a>下载 pip install python-alipay-sdk –upgrade 模块</h3><p>流程图:<br><img src= "/img/hhj.png" data-src="https://i.loli.net/2021/01/30/QElYTGVxfKyX9P5.png" alt="支付宝支付流程图.png"></p>
+                  <h1 id="支付宝三方支付"><a href="#支付宝三方支付" class="headerlink" title="支付宝三方支付"></a>支付宝三方支付</h1><h3 id="一-下载一个支付宝开放平台开发助手生成秘钥"><a href="#一-下载一个支付宝开放平台开发助手生成秘钥" class="headerlink" title="一,下载一个支付宝开放平台开发助手生成秘钥"></a>一,下载一个支付宝开放平台开发助手生成秘钥</h3><h3 id="进入-https-www-alipay-com-并登陆-然后注册一个沙箱"><a href="#进入-https-www-alipay-com-并登陆-然后注册一个沙箱" class="headerlink" title="进入 https://www.alipay.com/ 并登陆,然后注册一个沙箱"></a>进入 <a target="_blank" rel="noopener" href="https://www.alipay.com/">https://www.alipay.com/</a> 并登陆,然后注册一个沙箱</h3><h3 id="下载-pip-install-python-alipay-sdk-–upgrade-模块"><a href="#下载-pip-install-python-alipay-sdk-–upgrade-模块" class="headerlink" title="下载 pip install python-alipay-sdk –upgrade 模块"></a>下载 pip install python-alipay-sdk –upgrade 模块</h3><p>流程图:<br><img src="https://i.loli.net/2021/01/30/QElYTGVxfKyX9P5.png" alt="支付宝支付流程图.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 将刚下载的模块中导出需要用的包</span></span><br><span class="line"><span class="keyword">from</span> alipay <span class="keyword">import</span> AliPay</span><br><span class="line"><span class="keyword">from</span> alipay.utils <span class="keyword">import</span> AliPayConfig</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开发一个支付接口</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AlipayView</span>(<span class="params">APIView</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span>(<span class="params">self, request</span>):</span></span><br><span class="line">        sn = request.data.get(<span class="string">&quot;sn&quot;</span>)</span><br><span class="line">        total = request.data.get(<span class="string">&quot;total&quot;</span>)</span><br><span class="line">        <span class="comment"># 获取秘钥信息</span></span><br><span class="line">        app_private_key_string = <span class="built_in">open</span>(<span class="string">&quot;buyapp/alipay/app_private_key.txt&quot;</span>).read()</span><br><span class="line">        alipay_public_key_string = <span class="built_in">open</span>(<span class="string">&quot;buyapp/alipay/alipay_public_key.txt&quot;</span>).read()</span><br><span class="line"></span><br><span class="line">        alipay = AliPay(</span><br><span class="line">            appid=<span class="string">&quot;2016101600696807&quot;</span>,</span><br><span class="line">            app_notify_url=<span class="literal">None</span>,  <span class="comment"># 默认回调url</span></span><br><span class="line">            app_private_key_string=app_private_key_string,</span><br><span class="line">            <span class="comment"># 支付宝的公钥，验证支付宝回传消息使用，不是你自己的公钥,</span></span><br><span class="line">            alipay_public_key_string=alipay_public_key_string,</span><br><span class="line">            sign_type=<span class="string">&quot;RSA2&quot;</span>,  <span class="comment"># RSA 或者 RSA2</span></span><br><span class="line">            debug=<span class="literal">True</span>,  <span class="comment"># 默认False</span></span><br><span class="line">            config=AliPayConfig(timeout=<span class="number">15</span>)  <span class="comment"># 可选, 请求超时时间</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 如果你是 Python 3的用户，使用默认的字符串即可</span></span><br><span class="line">        subject = <span class="string">&quot;阿正商城订单支付&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 电脑网站支付，需要跳转到https://openapi.alipay.com/gateway.do? + order_string</span></span><br><span class="line">        order_string = alipay.api_alipay_trade_page_pay(</span><br><span class="line">            out_trade_no=sn,  <span class="comment"># 订单号</span></span><br><span class="line">            total_amount=total,  <span class="comment"># 总金额</span></span><br><span class="line">            subject=subject,  <span class="comment"># 标题</span></span><br><span class="line">            return_url=<span class="string">&quot;http://localhost:8000/api/v1/buy/pay_callback&quot;</span>,</span><br><span class="line">            <span class="comment"># notify_url=&quot;https://example.com/notify&quot;  # 可选, 不填则使用默认notify url</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 生成一个支付超链接，返回给vue端， 点击就激活这个超链接</span></span><br><span class="line">        url = <span class="string">&quot;https://openapi.alipaydev.com/gateway.do?&quot;</span> + order_string</span><br><span class="line">        <span class="keyword">return</span> Response(&#123;<span class="string">&quot;url&quot;</span>: url&#125;)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置回调地址</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AliPayBackView</span>(<span class="params">View</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self, request</span>):</span></span><br><span class="line">        user = request.user</span><br><span class="line">        <span class="comment"># 获取回调的信息</span></span><br><span class="line">        <span class="comment"># 获取 订单号</span></span><br><span class="line">        sn = request.GET.get(<span class="string">&quot;out_trade_no&quot;</span>)</span><br><span class="line">        <span class="comment">#  获取 支付宝交易号</span></span><br><span class="line">        trade_no = request.GET.get(<span class="string">&quot;trade_no&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;sn:&quot;</span>, sn)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;trade_no:&quot;</span>, trade_no)</span><br><span class="line">        <span class="comment"># 找到这个订单 并更新状态</span></span><br><span class="line">        <span class="comment"># 修改了  订单状态  并添加了 支付宝交易号</span></span><br><span class="line">        Order.objects.<span class="built_in">filter</span>(sn=sn).update(trade_no=trade_no, status=<span class="number">2</span>)</span><br><span class="line">        <span class="comment">#  删除我们购物车中的 已经支付成功的购物信息</span></span><br><span class="line">        <span class="built_in">print</span>(user)</span><br><span class="line">        <span class="comment"># 查询所有的选中 然后删除</span></span><br><span class="line">        gid_set = r.smembers(<span class="string">&quot;select_%d&quot;</span> % user.<span class="built_in">id</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;gid_set:&quot;</span>, gid_set)</span><br><span class="line">        <span class="keyword">for</span> gid <span class="keyword">in</span> gid_set:</span><br><span class="line">            r.hdel(<span class="string">&quot;cart_%d&quot;</span> % user.<span class="built_in">id</span>, gid)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> redirect(<span class="string">&quot;http://127.0.0.1:8080/#/paysuccess?trade_no=&quot;</span> + trade_no)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -921,58 +1024,6 @@
         
     </div>
     
-      <div class="recent-post-item">
-          <div class="post-title ">
-            <a href="/%E5%BE%AE%E5%8D%9A%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95/">微博三方登录</a>
-          </div>
-          <div class="post-meta">
-            
-            
-              <div class="post-meta-item date">
-                <span title="Created 2019.08.30"><i class="far fa-calendar-alt"></i> 2019.08.30</span>
-              </div>
-              <div class="post-meta-item updated">
-                <span title="Updated 2021.04.02"><i class="far fa-calendar-check"></i> 2021.04.02</span>
-              </div>
-             
-             
-            
-             <div class="post-meta-item wordcount">
-                
-                  <i class="fas fa-pencil-alt"></i> <span class="post-count">1.1k words</span>
-                   
-                
-                  <i class="far fa-clock"></i> <span class="post-count">4 min</span>
-                                       
-              </div>
-             
-        </div>
-          <div class="content">
-            
-                  <h1 id="微博三方登录"><a href="#微博三方登录" class="headerlink" title="微博三方登录"></a>微博三方登录</h1><h3 id="一-微博三方登录特点"><a href="#一-微博三方登录特点" class="headerlink" title="一,微博三方登录特点:"></a>一,微博三方登录特点:</h3><ul>
-<li>  微博登录包括身份认证、用户关系以及内容传播。允许用户使用微博帐号登录访问第三方网站，分享内容，同步信息。它有如下特点：</li>
-<li>直接用微博账号登录你的应用或网站；</li>
-<li>获得高质量微博活跃用户；</li>
-<li>更便捷的分享到微博，提高网站信息传播力；<h3 id="二-应用场景"><a href="#二-应用场景" class="headerlink" title="二,应用场景:"></a>二,应用场景:</h3></li>
-<li>可以避免复杂繁琐的注册流程,让用户用自己已有的三方账号去登陆<h3 id="三-功能实现"><a href="#三-功能实现" class="headerlink" title="三,.功能实现"></a>三,.功能实现</h3></li>
-<li>首先进入微博开放平台 <a target="_blank" rel="noopener" href="https://open.weibo.com/">https://open.weibo.com/</a> 注册一个应用(个人,企业),填写应用信息及回调地址</li>
-<li>使用新浪微博的开放API，就需要跟新浪申请一个appkey和App Secret，这两个秘钥需要你的应用审核通过,官方才会给出</li>
-<li>参数传递</li>
-</ul>
-<p>| | 必选 | 类型及范围 | 说明 |<br>|:—–|:—–|:—–|:—–|:—–|:—–|<br>| client_id | true | string | 申请应用时分配的AppKey |<br>| redirect_uri | true | string |授权回调地址，站外应用需与设置的回调地址一致，站内应用需填写canvas page的地址 |<br>scope | false|string |申请scope权限所需参数，可一次申请多个scope权限，用逗号分隔。使用文档<br>| state |false | string | 用于保持请求和回调的状态，在回调时，会在Query Parameter中回传该参数。开发者可以用这个参数验证请求有效性，也可以记录用户请求授权页前的位置。这个参数可用于防止跨站请求伪造（CSRF）攻击|<br>| display | false | string | 授权页面的终端类型，取值见下面的说明 |<br>forcelogin    false    boolean    是否强制用户重新登录，true：是，false：否。默认false|<br>| language | false | string | 授权页语言，缺省为中文简体版，en为英文版。英文版测试中，开发者任何意见可反馈至 @微博API|</p>
-<p>display说明：<br>| 参数取值 | 类型说明 |<br>|:—–|:—–|:—–|:—–|:—–|:—–|<br>| default | 默认的授权页面，适用于web浏览器 |<br>| mobile | 移动终端的授权页面，适用于支持html5的手机。注：使用此版授权页请用<a target="_blank" rel="noopener" href="https://open.weibo.cn/oauth2/authorize">https://open.weibo.cn/oauth2/authorize</a> 授权接口|<br>| wap    | wap版授权页面，适用于非智能手机 |<br>| client | 客户端版本授权页面，适用于PC桌面应用 |<br>| apponweibo | 默认的站内应用授权页，授权后不返回access_token，只刷新站内应用父框架。|</p>
-<p>| 返回值字段 | 字段类型 |字段说明|<br>|:—–|:—–|:—–|:—–|:—–|:—–|<br>| code | string | 用于第二步调用oauth2/access_token接口，获取授权后的access token。|<br>| state | string | 如果传递参数，会回传该参数| </p>
-<ul>
-<li>去后端settings里配置秘钥及信息<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置 微博 三方登录的 应用信息</span></span><br><span class="line">WEIBO_App_Key = <span class="string">&quot;&quot;</span></span><br><span class="line">WEIBO_App_Secret = <span class="string">&quot;&quot;</span></span><br><span class="line">WEIBO_URL = <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开发一个 获取微博 认证页接口</span></span><br><span class="line"><span class="comment"># 导入你在settings里配置的信息</span></span><br><span class="line"><span class="keyword">from</span> <span class="number">2004</span>(这个地方是你自己的项目名称).settings <span class="keyword">import</span> WEIBO_App_Key, WEIBO_URL, WEIBO_App_Secret</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlencode</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WeiboUrlView</span>(<span class="params">APIView</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self, request</span>):</span></span><br><span class="line">        weibo_url_base = <span class="string">&quot;https://api.weibo.com/oauth2/authorize?&quot;</span></span><br><span class="line"></span><br><span class="line">        params = &#123;</span><br><span class="line">            <span class="string">&quot;client_id&quot;</span>: WEIBO_App_Key,</span><br><span class="line">            <span class="string">&quot;redirect_uri&quot;</span>: WEIBO_URL,</span><br><span class="line">        &#125;</span><br><span class="line">        weibo_url = weibo_url_base + urlencode(params)</span><br><span class="line">        <span class="keyword">return</span> Response(&#123;<span class="string">&quot;url&quot;</span>: weibo_url&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span>(<span class="params">self, request</span>):</span></span><br><span class="line">        <span class="comment">#  获取到code，然后 去 访问token</span></span><br><span class="line">        code = request.data.get(<span class="string">&quot;code&quot;</span>)</span><br><span class="line"></span><br><span class="line">        r = requests.post(<span class="string">&quot;https://api.weibo.com/oauth2/access_token&quot;</span>, &#123;</span><br><span class="line">            <span class="string">&quot;client_id&quot;</span>: WEIBO_App_Key,</span><br><span class="line">            <span class="string">&quot;client_secret&quot;</span>: WEIBO_App_Secret,</span><br><span class="line">            <span class="string">&quot;grant_type&quot;</span>: <span class="string">&quot;authorization_code&quot;</span>,</span><br><span class="line">            <span class="string">&quot;code&quot;</span>: code,</span><br><span class="line">            <span class="string">&quot;redirect_uri&quot;</span>: WEIBO_URL</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 获取 返回的对象</span></span><br><span class="line">        <span class="built_in">print</span>(r.json())</span><br><span class="line">        access_token = r.json()[<span class="string">&quot;access_token&quot;</span>]</span><br><span class="line">        uid = r.json()[<span class="string">&quot;uid&quot;</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 进行 三方用户的 注册操作，</span></span><br><span class="line">        <span class="comment"># 首先判断 用户有没有 之前 登录过，如果登录过呢 则 不注册，如果没有登录过 则注册</span></span><br><span class="line">        openUser = OpenUser.objects.<span class="built_in">filter</span>(uid=<span class="string">&quot;wb&quot;</span> + uid).first()</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> openUser <span class="keyword">or</span> <span class="keyword">not</span> openUser.user:</span><br><span class="line">            <span class="comment"># 不存在，则注册</span></span><br><span class="line">            openUser = OpenUser.objects.create(uid=<span class="string">&quot;wb&quot;</span> + uid, <span class="built_in">type</span>=<span class="string">&quot;微博&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> Response(&#123;<span class="string">&quot;msg&quot;</span>: <span class="string">&quot;还没有绑定本地账号&quot;</span>, <span class="string">&quot;uid&quot;</span>: openUser.uid, <span class="string">&quot;code&quot;</span>: <span class="number">400</span>&#125;)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 有这个月的三方账号，且已经绑定成功, 需要返回令牌</span></span><br><span class="line">            <span class="comment"># 判断</span></span><br><span class="line">            user = openUser.user</span><br><span class="line">            <span class="keyword">if</span> user:</span><br><span class="line">                payload = &#123;</span><br><span class="line">                    <span class="string">&quot;uid&quot;</span>: user.<span class="built_in">id</span>,</span><br><span class="line">                    <span class="string">&#x27;exp&#x27;</span>: datetime.datetime.utcnow() + datetime.timedelta(hours=<span class="number">2</span>),</span><br><span class="line">                &#125;</span><br><span class="line">                token = jwt.encode(payload, SECRET_KEY)</span><br><span class="line">                <span class="keyword">return</span> Response(&#123;<span class="string">&quot;msg&quot;</span>: <span class="string">&quot;登录成功&quot;</span>, <span class="string">&quot;token&quot;</span>: token, <span class="string">&quot;code&quot;</span>: <span class="number">200</span>, <span class="string">&quot;username&quot;</span>: user.username&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 回调地址</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">weibo_callback</span>(<span class="params">request</span>):</span></span><br><span class="line">    code = request.GET.get(<span class="string">&quot;code&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> redirect(<span class="string">&quot;http://127.0.0.1:8080/#/oauth?code=&quot;</span> + code)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-             
-          </div>
-        </div>
-      <div class="post-footer">
-        
-    </div>
-    
   </div>
 
 
@@ -981,6 +1032,8 @@
       
             <a class="prev" href="/">< Prev</a>
             
+            
+            <a class="next" href="/page/3/">Next ></a>
             
 </nav>
 

@@ -383,9 +383,9 @@
   &#125;
 &#125;
 </code></pre>
-<h2 id="什么是上边界通配符"><a href="#什么是上边界通配符" class="headerlink" title="什么是上边界通配符"></a>什么是上边界通配符</h2><p>&emsp;&emsp;当泛型T给定形如<T extends A> 的A类型到A类型任何子类的限制域，可以匹配任何在此限制域中的类型，此种表示叫上边界通配符。<br>###上边界通配符理解<br><img src= "/img/hhj.png" data-src="https://images2015.cnblogs.com/blog/820480/201611/820480-20161125004120143-1731938777.png" alt="png"></p>
+<h2 id="什么是上边界通配符"><a href="#什么是上边界通配符" class="headerlink" title="什么是上边界通配符"></a>什么是上边界通配符</h2><p>&emsp;&emsp;当泛型T给定形如<T extends A> 的A类型到A类型任何子类的限制域，可以匹配任何在此限制域中的类型，此种表示叫上边界通配符。<br>###上边界通配符理解<br><img src="https://images2015.cnblogs.com/blog/820480/201611/820480-20161125004120143-1731938777.png" alt="png"></p>
 <h2 id="什么是下边界通配符"><a href="#什么是下边界通配符" class="headerlink" title="什么是下边界通配符"></a>什么是下边界通配符</h2><p>&emsp;&emsp;当泛型T给定形如<T super A> 的A类型到A类型任何父类的限制域，可以匹配任何在此限制域中的类型，此种表示叫下边界通配符。</p>
-<h3 id="下边界通配符理解"><a href="#下边界通配符理解" class="headerlink" title="下边界通配符理解"></a>下边界通配符理解</h3><p><img src= "/img/hhj.png" data-src="https://images2015.cnblogs.com/blog/820480/201611/820480-20161125004216471-1377946016.png" alt="png"></p>
+<h3 id="下边界通配符理解"><a href="#下边界通配符理解" class="headerlink" title="下边界通配符理解"></a>下边界通配符理解</h3><p><img src="https://images2015.cnblogs.com/blog/820480/201611/820480-20161125004216471-1377946016.png" alt="png"></p>
 <h2 id="上下边界通配符的缺点"><a href="#上下边界通配符的缺点" class="headerlink" title="上下边界通配符的缺点"></a>上下边界通配符的缺点</h2><p>&emsp;&emsp;上界&lt;? extends T&gt;不能往里存，只能往外取。<br>###解释<br>&emsp;&emsp;因为编译器只知道传入的是T的子类，但具体是哪一个编译器不知道，他只标注了一个占位符，当？传过来时，他不知道这能不能和占位符匹配，所以set不了。<br>&emsp;&emsp;下界&lt;? super T&gt;不影响往里存，但往外取只能放在Object对象里。</p>
 <h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>&emsp;&emsp;因为下边界已经限制了？的粒度，他只可能是T本身或者是T的父类。我们想想，我想要一个T，你却返回给我一个比T小的Object，这样我们就因为精度损失而拿不到想要的数据了。</p>
 <blockquote>
@@ -466,7 +466,7 @@ where age &gt;
         where name = &#39;孙权&#39;
     )
 </code></pre>
-<p><strong>输出结果为：</strong><br><img src= "/img/hhj.png" data-src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/4.jpg" alt="1"></p>
+<p><strong>输出结果为：</strong><br><img src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/4.jpg" alt="1"></p>
 <h2>in嵌套查询</h2>
  　　in关键字用于where子句中用来判断查询的表达式是否在多个值的列表中。返回满足in列表中的满足条件的记录。
 
@@ -479,7 +479,7 @@ where countryname = &#39;魏国&#39;
 )
 </code></pre>
 <p><strong>输出结果为：</strong></p>
-<img src= "/img/hhj.png" data-src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/3.jpg" alt="2">
+<img src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/3.jpg" alt="2">
 <h2>some嵌套查询</h2>
 <h3>语法</h3>
  　　some在sql中的逻辑运算符号，如果在一系列比较中，有些值为True，那么结果就为True。some的语法是：
@@ -494,7 +494,7 @@ select countryid from country
 where countryname = &#39;魏国&#39;
 )
 </code></pre>
-<p><strong>输出结果为：</strong><br><img src= "/img/hhj.png" data-src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/2.jpg" alt="3"></p>
+<p><strong>输出结果为：</strong><br><img src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/2.jpg" alt="3"></p>
 <h2>all嵌套查询</h2>
  　　all是sql中的逻辑运算符好，如果一系列的比较都为true，那么结果才能为true。
 <h3>语法</h3>
@@ -509,7 +509,7 @@ select countryid from country
 where countryname = &#39;魏国&#39;
 )
 </code></pre>
-<p><strong>输出结果为：</strong><br><img src= "/img/hhj.png" data-src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/1.jpg" alt="4"></p>
+<p><strong>输出结果为：</strong><br><img src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/1.jpg" alt="4"></p>
 <h2>exists嵌套查询</h2>
 <h3>语法</h3>
  　　exists是sql中的逻辑运算符号。如果子查询有结果集返回，那么就为True。exists代表“存在”的意义，它只查找满足条件的那些记录。<span style="color:red">一旦找到第一个匹配的记录后，就马上停止查找。</span>
@@ -589,6 +589,62 @@ WHERE Person_Id = 100    --如果不存在Person_Id的记录，则子查询没�
     
       <div class="recent-post-item">
           <div class="post-title ">
+            <a href="/Vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/">Vue路由钩子</a>
+          </div>
+          <div class="post-meta">
+            
+            
+              <div class="post-meta-item date">
+                <span title="Created 2020.08.30"><i class="far fa-calendar-alt"></i> 2020.08.30</span>
+              </div>
+              <div class="post-meta-item updated">
+                <span title="Updated 2021.04.02"><i class="far fa-calendar-check"></i> 2021.04.02</span>
+              </div>
+             
+             
+            
+             <div class="post-meta-item wordcount">
+                
+                  <i class="fas fa-pencil-alt"></i> <span class="post-count">343 words</span>
+                   
+                
+                  <i class="far fa-clock"></i> <span class="post-count">1 min</span>
+                                       
+              </div>
+             
+        </div>
+          <div class="content">
+            
+                  <h1 id="Vue路由钩子"><a href="#Vue路由钩子" class="headerlink" title="Vue路由钩子"></a>Vue路由钩子</h1><h3 id="一-什么是路由钩子"><a href="#一-什么是路由钩子" class="headerlink" title="一,什么是路由钩子?"></a>一,什么是路由钩子?</h3><ul>
+<li>简单来讲,就是当路由跳转前或者跳转后，需要做一些操作，就可以使用Vue中的路由钩子来监听路由的变化。<h3 id="二-路由钩子分为几类"><a href="#二-路由钩子分为几类" class="headerlink" title="二,路由钩子分为几类?"></a>二,路由钩子分为几类?</h3></li>
+<li>全局路由钩子<ul>
+<li>每一次跳转都会执行</li>
+</ul>
+</li>
+<li>单个路由钩子<ul>
+<li>在跳转前执行</li>
+</ul>
+</li>
+<li>组件内路由钩子<h3 id="三-代码实现"><a href="#三-代码实现" class="headerlink" title="三,代码实现"></a>三,代码实现</h3></li>
+<li>全局路由钩子</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局路由钩子</span></span><br><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//会在任意路由跳转前执行，next一定要记着执行，不然路由不能跳转了</span></span><br><span class="line">  <span class="built_in">console</span>.log(to)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">from</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(next)</span><br><span class="line">  <span class="comment">// 首先来说全局路由的三个参数</span></span><br><span class="line">  <span class="comment">// to:   就是跳转路由参数</span></span><br><span class="line">  <span class="comment">// from: 就是离开路由参数</span></span><br><span class="line">  <span class="comment">// next: 是否允许跳转</span></span><br><span class="line">  next();</span><br><span class="line">  <span class="comment">// 这个next()必须有,没有就无法跳转了</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>单个路由钩子<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单个路由钩子</span></span><br><span class="line">routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">&#x27;/index&#x27;</span>,</span><br><span class="line">      component: Index,</span><br><span class="line">      beforeEnter: <span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li>组件内路由钩子<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 进入页面前调用</span></span><br><span class="line"><span class="function"><span class="title">beforeRouteEnter</span>(<span class="params">to, <span class="keyword">from</span>, next</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;进入路由前调用的方法&#x27;</span>)</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    next()</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 离开页面调用</span></span><br><span class="line"><span class="function"><span class="title">beforeRouteLeave</span>(<span class="params">to,<span class="keyword">from</span>, next</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;离开页面后调用的方法&#x27;</span>)</span><br><span class="line">    next()</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 页面路由改变时调用</span></span><br><span class="line"><span class="function"><span class="title">beforeRouteUpdate</span>(<span class="params">to, <span class="keyword">from</span>, next</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;路由发生改变的时候调用的方法&#x27;</span>)</span><br><span class="line">    next()</span><br><span class="line">&#125;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+             
+          </div>
+        </div>
+      <div class="post-footer">
+        
+    </div>
+    
+      <div class="recent-post-item">
+          <div class="post-title ">
             <a href="/Vue%E8%AF%B7%E6%B1%82%E6%8B%A6%E6%88%AA%E5%99%A8%E5%8F%8A%E5%93%8D%E5%BA%94%E6%8B%A6%E6%88%AA%E5%99%A8/">Vue请求拦截器</a>
           </div>
           <div class="post-meta">
@@ -643,7 +699,7 @@ WHERE Person_Id = 100    --如果不存在Person_Id的记录，则子查询没�
     
       <div class="recent-post-item">
           <div class="post-title ">
-            <a href="/Vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/">Vue路由钩子</a>
+            <a href="/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E2%80%94%E2%80%94Silence%E4%B8%BB%E9%A2%98%E7%9A%AE%E8%82%A4/">博客美化——Silence主题皮肤</a>
           </div>
           <div class="post-meta">
             
@@ -652,42 +708,126 @@ WHERE Person_Id = 100    --如果不存在Person_Id的记录，则子查询没�
                 <span title="Created 2020.08.30"><i class="far fa-calendar-alt"></i> 2020.08.30</span>
               </div>
               <div class="post-meta-item updated">
-                <span title="Updated 2021.04.02"><i class="far fa-calendar-check"></i> 2021.04.02</span>
+                <span title="Updated 2021.03.17"><i class="far fa-calendar-check"></i> 2021.03.17</span>
               </div>
              
+            
+              <div class="post-meta-item categories">
+                
+                  <i class="fas fa-inbox article-meta__icon"></i> <a href="/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/">博客园博文</a>
+                
+                  <i class="fas fa-inbox article-meta__icon"></i> <a href="/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/">博客美化</a>
+                
+              </div>
              
             
              <div class="post-meta-item wordcount">
                 
-                  <i class="fas fa-pencil-alt"></i> <span class="post-count">343 words</span>
+                  <i class="fas fa-pencil-alt"></i> <span class="post-count">805 words</span>
                    
                 
-                  <i class="far fa-clock"></i> <span class="post-count">1 min</span>
+                  <i class="far fa-clock"></i> <span class="post-count">3 min</span>
                                        
               </div>
              
         </div>
           <div class="content">
             
-                  <h1 id="Vue路由钩子"><a href="#Vue路由钩子" class="headerlink" title="Vue路由钩子"></a>Vue路由钩子</h1><h3 id="一-什么是路由钩子"><a href="#一-什么是路由钩子" class="headerlink" title="一,什么是路由钩子?"></a>一,什么是路由钩子?</h3><ul>
-<li>简单来讲,就是当路由跳转前或者跳转后，需要做一些操作，就可以使用Vue中的路由钩子来监听路由的变化。<h3 id="二-路由钩子分为几类"><a href="#二-路由钩子分为几类" class="headerlink" title="二,路由钩子分为几类?"></a>二,路由钩子分为几类?</h3></li>
-<li>全局路由钩子<ul>
-<li>每一次跳转都会执行</li>
-</ul>
-</li>
-<li>单个路由钩子<ul>
-<li>在跳转前执行</li>
-</ul>
-</li>
-<li>组件内路由钩子<h3 id="三-代码实现"><a href="#三-代码实现" class="headerlink" title="三,代码实现"></a>三,代码实现</h3></li>
-<li>全局路由钩子</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局路由钩子</span></span><br><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//会在任意路由跳转前执行，next一定要记着执行，不然路由不能跳转了</span></span><br><span class="line">  <span class="built_in">console</span>.log(to)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">from</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(next)</span><br><span class="line">  <span class="comment">// 首先来说全局路由的三个参数</span></span><br><span class="line">  <span class="comment">// to:   就是跳转路由参数</span></span><br><span class="line">  <span class="comment">// from: 就是离开路由参数</span></span><br><span class="line">  <span class="comment">// next: 是否允许跳转</span></span><br><span class="line">  next();</span><br><span class="line">  <span class="comment">// 这个next()必须有,没有就无法跳转了</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+                  <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>&emsp;&emsp;一款专注阅读的博客园主题，主要面向于经常混迹 博客园 的朋友。其追求大道至简的终极真理，界面追求简洁、运行追求高效、部署追求简单。</p>
 <ul>
-<li>单个路由钩子<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单个路由钩子</span></span><br><span class="line">routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">&#x27;/index&#x27;</span>,</span><br><span class="line">      component: Index,</span><br><span class="line">      beforeEnter: <span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/glassy-sky-lisong/SilenceSkin">博客皮肤源码地址</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/esofar">预览地址</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/esofar/cnblogs-theme-silence/blob/master/docs/deploy.md">如何部署、使用皮肤</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/esofar/p/cnblogs-theme-silence.html">Silence作者的友链</a></li>
 </ul>
-<ul>
-<li>组件内路由钩子<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 进入页面前调用</span></span><br><span class="line"><span class="function"><span class="title">beforeRouteEnter</span>(<span class="params">to, <span class="keyword">from</span>, next</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;进入路由前调用的方法&#x27;</span>)</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    next()</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 离开页面调用</span></span><br><span class="line"><span class="function"><span class="title">beforeRouteLeave</span>(<span class="params">to,<span class="keyword">from</span>, next</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;离开页面后调用的方法&#x27;</span>)</span><br><span class="line">    next()</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 页面路由改变时调用</span></span><br><span class="line"><span class="function"><span class="title">beforeRouteUpdate</span>(<span class="params">to, <span class="keyword">from</span>, next</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;路由发生改变的时候调用的方法&#x27;</span>)</span><br><span class="line">    next()</span><br><span class="line">&#125;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>简洁优雅、精致漂亮的 UI 设计</li>
+<li>提供多种风格主题以便适应各类用户的偏好</li>
+<li>响应式设计，兼容手机端浏览器</li>
+<li>提供事无巨细的部署文档</li>
+<li>源码结构清晰并且注释完整，方便扩展</li>
+</ul>
+<h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><p>&emsp;&emsp;请先确保您正在使用的机器已经安装 Node.js 和 Git 客户端。</p>
+<pre><code> git clone https://github.com/esofar/cnblogs-theme-silence.git   # 克隆源码
+ cd cnblogs-theme-silence                                        # 进入项目
+ npm install                                                     # 安装依赖
+ npm run build
+</code></pre>
+<p>&emsp;&emsp;如果没有安装node。js或者不会使用的童鞋可以在我的GitHub，也就是博客皮肤源码地址中。</p>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>&emsp;&emsp;重点部署之前使用博客园的cutorm皮肤，具体部署细节请详见’如何部署、使用皮肤’，如果又不会的话可以看一看我的配置作为参考（仅作为参考，找不回来别哭鼻子）<br><em><strong>CSS</strong></em></p>
+<pre><code>&lt;!-- 溢出隐藏设置（放置在管理--&gt; 设置--&gt; css模块中） --&gt;
+#topics, #mainContent &#123;
+    overflow: visible;
+&#125;
+.cnblogs-markdown .hljs&#123;
+    display:block;
+    color:#333;
+    overflow-x:auto;
+    background:#F2F4F5!important;
+    border:none!important;
+    font-family:Consolas,Monaco,&#39;Andale Mono&#39;,&#39;Ubuntu Mono&#39;,monospace!important;
+    padding:1em!important;
+    font-size:14px!important
+    &#125;
+</code></pre>
+<p><em><strong>侧边栏公告</strong></em></p>
+<pre><code>&lt;!-- 在管理--&gt; 设置-&gt; 侧边栏公告(支持js代码、支持html代码) --&gt;
+&lt;script src=&quot;https://blog-static.cnblogs.com/files/glassysky/silence.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    $.silence(&#123;
+        profile: &#123;
+            enable: true,
+            avatar: &#39;https://gitee.com/glassyskyforgame/glassysky/blob/master/4c67d1a20cf431ade2873e284836acaf2fdd989e.jpg&#39;,
+            favicon: &#39;https://gitee.com/glassyskyforgame/glassysky/raw/master/4c67d1a20cf431ade2873e284836acaf2fdd989e.jpg&#39;,
+        &#125;,
+        catalog: &#123;
+            enable: true,
+            move: true,
+            index: true,
+            level1: &#39;h2&#39;,
+            level2: &#39;h3&#39;,
+            level3: &#39;h4&#39;,
+        &#125;,
+        signature: &#123;
+            enable: true,
+            home: &#39;https://www.cnblogs.com/glassysky/&#39;,
+            license: &#39;署名 4.0 国际&#39;,
+            link: &#39;https://creativecommons.org/licenses/by/4.0&#39;
+        &#125;,
+        reward: &#123;
+            enable: true,
+            title: &#39;感谢小可爱投食&#39;,
+            wechat: &#39;https://images.cnblogs.com/cnblogs_com/esofar/972540/o_wechat.png&#39;,
+            alipay: &#39;https://images.cnblogs.com/cnblogs_com/esofar/972540/o_alipay.png&#39;
+        &#125;,
+        github: &#123;
+            enable: true,
+            color: &#39;#fff&#39;,
+            fill: null,
+            link: &#39;https://github.com/glassy-sky-lisong&#39;
+        &#125;
+    &#125;);
+&lt;/script&gt;
+&lt;!--外置主题css补丁--&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://blog-static.cnblogs.com/files/glassysky/sli.css&quot;/&gt;
+</code></pre>
+<p><em><strong>会动的title</strong></em></p>
+<pre><code>&lt;!-- 动态titlejs --&gt;
+&lt;script&gt; var OriginTitle = document.title; var titleTime; document.addEventListener(&#39;visibilitychange&#39;, function () &#123; if                 
+(document.hidden) &#123; document.title = &#39;╭(°A°`)╮ 页面崩溃啦 ~&#39;; clearTimeout(titleTime); &#125; else &#123; document.title = &#39;(ฅ&gt;ω&lt;*ฅ) 噫又    
+好了~&#39; + OriginTitle; titleTime = setTimeout(function () &#123; document.title = OriginTitle; &#125;, 2000); &#125; &#125;); &lt;/script&gt;
+</code></pre>
+<p><em><strong>图片放大功能</strong></em></p>
+<pre><code>&lt;!--图片放大的zoomcss和js--&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://blog-static.cnblogs.com/files/glassysky/zoom.css&quot;/&gt;
+&lt;script src=&quot;https://blog-static.cnblogs.com/files/glassysky/zoom.js&quot;&gt;&lt;/script&gt;
+&lt;!-- Bootstrap 的 transition.js cdn（过渡动画插件）--&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;$(&#39;#cnblogs_post_body img&#39;).attr(&#39;data-action&#39;, &#39;zoom&#39;);&lt;/script&gt;
+</code></pre>
+<h2 id="博客的皮肤风格"><a href="#博客的皮肤风格" class="headerlink" title="博客的皮肤风格"></a>博客的皮肤风格</h2><ul>
+<li>简约·蓝<br><img src="https://github.com/esofar/cnblogs-theme-silence/raw/master/docs/theme_default.png" alt="img1"> </li>
+<li>暗黑·绿<br><img src="https://github.com/esofar/cnblogs-theme-silence/raw/master/docs/theme_dark.png" alt="img2"></li>
+<li>女神·粉<br><img src="https://github.com/esofar/cnblogs-theme-silence/raw/master/docs/theme_goddess.png" alt="img3">  </li>
 </ul>
 
              
@@ -745,122 +885,6 @@ WHERE Person_Id = 100    --如果不存在Person_Id的记录，则子查询没�
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis</span><br><span class="line"></span><br><span class="line">conn = redis.Redis(host=<span class="string">&#x27;127.0.0.1&#x27;</span>, decode_responses=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成一个订阅者对象sub</span></span><br><span class="line">pubsub = conn.pubsub()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这是订阅一个消息</span></span><br><span class="line">pubsub.subscribe(<span class="string">&#x27;zheng&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进行while循环，每次都进行接收</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    msg = pubsub.parse_response()</span><br><span class="line">    <span class="built_in">print</span>(msg)</span><br></pre></td></tr></table></figure>
 <h3 id="这是一些redis常用的一些发布订阅者命令："><a href="#这是一些redis常用的一些发布订阅者命令：" class="headerlink" title="这是一些redis常用的一些发布订阅者命令："></a>这是一些redis常用的一些发布订阅者命令：</h3><p>| 1 | PSUBSCRIBE pattern [pattern …] |订阅一个或多个符合给定模式的频道。|<br>|:—–|:—–|:—–|:—–|:—–|:—–|<br>| 2 | PUBSUB subcommand [argument [argument …]] |查看订阅与发布系统状态。|<br>| 3    | PUBLISH channel message |将信息发送到指定的频道。|<br>| 4    | PUNSUBSCRIBE [pattern [pattern …]] |退订所有给定模式的频道。|<br>| 5 |SUBSCRIBE channel [channel …] |订阅给定的一个或多个频道的信息。|<br>| 6    | UNSUBSCRIBE [channel [channel …]] |指退订给定的频道。|</p>
-
-             
-          </div>
-        </div>
-      <div class="post-footer">
-        
-    </div>
-    
-      <div class="recent-post-item">
-          <div class="post-title ">
-            <a href="/redis%E9%94%AE%E7%A9%BA%E9%97%B4/">redis键空间</a>
-          </div>
-          <div class="post-meta">
-            
-            
-              <div class="post-meta-item date">
-                <span title="Created 2020.08.30"><i class="far fa-calendar-alt"></i> 2020.08.30</span>
-              </div>
-              <div class="post-meta-item updated">
-                <span title="Updated 2021.04.02"><i class="far fa-calendar-check"></i> 2021.04.02</span>
-              </div>
-             
-             
-            
-             <div class="post-meta-item wordcount">
-                
-                  <i class="fas fa-pencil-alt"></i> <span class="post-count">471 words</span>
-                   
-                
-                  <i class="far fa-clock"></i> <span class="post-count">1 min</span>
-                                       
-              </div>
-             
-        </div>
-          <div class="content">
-            
-                  <h1 id="Redis键空间"><a href="#Redis键空间" class="headerlink" title="Redis键空间"></a>Redis键空间</h1><h2 id="一，什么是Redis键空间"><a href="#一，什么是Redis键空间" class="headerlink" title="一，什么是Redis键空间"></a>一，什么是Redis键空间</h2><ul>
-<li>客户端可以通过订阅频道或模式， 来接收那些以某种方式改动了 Redis 数据集的事件<h2 id="二，应用场景"><a href="#二，应用场景" class="headerlink" title="二，应用场景"></a>二，应用场景</h2></li>
-<li>比如打车类软件或者淘宝，对某个用户或者商品进行评价，在规定的时间里用户没有给予评价那么系统就会自动进行评价，可以理解为这个key过期了。<h2 id="三，代码实现"><a href="#三，代码实现" class="headerlink" title="三，代码实现"></a>三，代码实现</h2><h3 id="想要开启键空间通知必须得进行对notify-keyspace-events进行配置"><a href="#想要开启键空间通知必须得进行对notify-keyspace-events进行配置" class="headerlink" title="想要开启键空间通知必须得进行对notify-keyspace-events进行配置"></a>想要开启键空间通知必须得进行对notify-keyspace-events进行配置</h3></li>
-<li>notify-keyspace-events 为空字符串时，键空间通知关闭</li>
-<li>当给notify-keyspace-events 设值时，表示键空间通知开启</li>
-</ul>
-<p>这是对notify-keyspace-events的相关啊配置</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">K &amp; 键空间通知，所有通知以 `__keyspace@<span class="tag">&lt;<span class="name">db</span>&gt;</span>__` 为前缀</span><br><span class="line"></span><br><span class="line">E &amp; 键事件通知，所有通知以 `__keyevent@<span class="tag">&lt;<span class="name">db</span>&gt;</span>__` 为前缀</span><br><span class="line"></span><br><span class="line">g &amp; DEL 、 EXPIRE 、 RENAME 等类型无关的通用命令的通知</span><br><span class="line"></span><br><span class="line">$ &amp; 字符串命令的通知</span><br><span class="line"></span><br><span class="line">l &amp; 列表命令的通知</span><br><span class="line"></span><br><span class="line">s &amp; 集合命令的通知</span><br><span class="line"></span><br><span class="line">h &amp; 哈希命令的通知</span><br><span class="line"></span><br><span class="line">z &amp; 有序集合命令的通知</span><br><span class="line"></span><br><span class="line">x &amp; 过期事件：每当有过期键被删除时发送</span><br><span class="line"></span><br><span class="line">e &amp; 驱逐(evict)事件：每当有键因为 maxmemory 政策而被删除时发送</span><br><span class="line"></span><br><span class="line">A &amp; 参数 g$lshzxe 的别名，即all</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：输入的参数中至少要有一个 K 或者 E ， 否则的话， 不管其余的参数是什么， 都不会有任何通知被分发</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ redis-cli config set notify-keyspace-events KEA</span><br><span class="line">$ redis-cli --csv psubscribe &#39;__key*__:*&#39;</span><br><span class="line">Reading messages... (press Ctrl-C to quit)</span><br><span class="line">&quot;psubscribe&quot;,&quot;__key*__:*&quot;,1</span><br></pre></td></tr></table></figure>
-<p>然后在其他终端向redis终端发送命令就可以看到通知了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;pmessage&quot;,&quot;__key*__:*&quot;,&quot;__keyspace@0__:foo&quot;,&quot;set&quot;</span><br><span class="line">&quot;pmessage&quot;,&quot;__key*__:*&quot;,&quot;__keyevent@0__:set&quot;,&quot;foo&quot;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-             
-          </div>
-        </div>
-      <div class="post-footer">
-        
-    </div>
-    
-      <div class="recent-post-item">
-          <div class="post-title ">
-            <a href="/websell/">Webshell在浏览器中实现终端</a>
-          </div>
-          <div class="post-meta">
-            
-            
-              <div class="post-meta-item date">
-                <span title="Created 2020.08.30"><i class="far fa-calendar-alt"></i> 2020.08.30</span>
-              </div>
-              <div class="post-meta-item updated">
-                <span title="Updated 2021.04.02"><i class="far fa-calendar-check"></i> 2021.04.02</span>
-              </div>
-             
-             
-            
-             <div class="post-meta-item wordcount">
-                
-                  <i class="fas fa-pencil-alt"></i> <span class="post-count">436 words</span>
-                   
-                
-                  <i class="far fa-clock"></i> <span class="post-count">1 min</span>
-                                       
-              </div>
-             
-        </div>
-          <div class="content">
-            
-                  <h1 id="websell"><a href="#websell" class="headerlink" title="websell"></a>websell</h1><p>一，概念：</p>
-<ul>
-<li>什么是websell：<ul>
-<li>webshell就是以asp、php、jsp或者cgi等网页文件形式存在的一种代码执行环境，也可以将其称做为一种网页后门。黑客在入侵了一个网站后，通常会将asp或php后门文件与网站服务器WEB目录下正常的网页文件混在一起，然后就可以使用浏览器来访问asp或者php后门，得到一个命令执行环境，以达到控制网站服务器的目的。</li>
-<li>他是一个集成了一堆Linux命令的控制台界面</li>
-</ul>
-</li>
-<li>sell的分类： <ul>
-<li>SH：编程方面相当优秀，输入命令优秀</li>
-<li>BASH：Linux系统中的一个默认shell，命令多</li>
-</ul>
-</li>
-</ul>
-<p>二，应用场景：</p>
-<ul>
-<li>比如实验楼，他就是在浏览器中实现的黑窗口，供用户进行学习使用，非常方便</li>
-</ul>
-<p>三，代码实现：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装xterm</span></span><br><span class="line"> npm install xterm@<span class="number">3.1</span><span class="number">.0</span> --save</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在main.js中导入css样式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;xterm/dist/xterm.css&#x27;</span> </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在你对应的页面上放上这个div标签，这就是那个黑窗口</span></span><br><span class="line">&lt;div id=<span class="string">&quot;terminal&quot;</span>&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Terminal &#125; <span class="keyword">from</span> <span class="string">&#x27;xterm&#x27;</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> attach <span class="keyword">from</span> <span class="string">&#x27;xterm/lib/addons/attach/attach&#x27;</span> <span class="comment">// 安装插件适，可以使用attach去添加</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> fit <span class="keyword">from</span> <span class="string">&#x27;xterm/lib/addons/fit/fit&#x27;</span> <span class="comment">// fit进行自适应大小的</span></span><br><span class="line"></span><br><span class="line">Terminal.applyAddon(attach) <span class="comment">// 添加插件</span></span><br><span class="line">Terminal.applyAddon(fit) <span class="comment">// 添加插件</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取到了div标签</span></span><br><span class="line"><span class="keyword">let</span> terminalContainer = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;terminal&#x27;</span>)</span><br><span class="line"><span class="comment">// 初始化黑窗口对象</span></span><br><span class="line"><span class="built_in">this</span>.term = <span class="keyword">new</span> Terminal(<span class="built_in">this</span>.terminal)</span><br><span class="line"><span class="comment">// 打开这个对象</span></span><br><span class="line"><span class="built_in">this</span>.term.open(terminalContainer)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这就实现了在浏览器中实现黑窗口，如果想完善的话可以连接docker容器，这样只是你自己的云主机，想看docker可以去我下一章博客</p>
-</blockquote>
 
              
           </div>
@@ -970,6 +994,55 @@ WHERE Person_Id = 100    --如果不存在Person_Id的记录，则子查询没�
 <p>empty list or set  代表的是当前数据为空，不影响</p>
 <p>  13.切换指定db  select 1  (可为0-15)</p>
 
+             
+          </div>
+        </div>
+      <div class="post-footer">
+        
+    </div>
+    
+      <div class="recent-post-item">
+          <div class="post-title ">
+            <a href="/redis%E9%94%AE%E7%A9%BA%E9%97%B4/">redis键空间</a>
+          </div>
+          <div class="post-meta">
+            
+            
+              <div class="post-meta-item date">
+                <span title="Created 2020.08.30"><i class="far fa-calendar-alt"></i> 2020.08.30</span>
+              </div>
+              <div class="post-meta-item updated">
+                <span title="Updated 2021.04.02"><i class="far fa-calendar-check"></i> 2021.04.02</span>
+              </div>
+             
+             
+            
+             <div class="post-meta-item wordcount">
+                
+                  <i class="fas fa-pencil-alt"></i> <span class="post-count">471 words</span>
+                   
+                
+                  <i class="far fa-clock"></i> <span class="post-count">1 min</span>
+                                       
+              </div>
+             
+        </div>
+          <div class="content">
+            
+                  <h1 id="Redis键空间"><a href="#Redis键空间" class="headerlink" title="Redis键空间"></a>Redis键空间</h1><h2 id="一，什么是Redis键空间"><a href="#一，什么是Redis键空间" class="headerlink" title="一，什么是Redis键空间"></a>一，什么是Redis键空间</h2><ul>
+<li>客户端可以通过订阅频道或模式， 来接收那些以某种方式改动了 Redis 数据集的事件<h2 id="二，应用场景"><a href="#二，应用场景" class="headerlink" title="二，应用场景"></a>二，应用场景</h2></li>
+<li>比如打车类软件或者淘宝，对某个用户或者商品进行评价，在规定的时间里用户没有给予评价那么系统就会自动进行评价，可以理解为这个key过期了。<h2 id="三，代码实现"><a href="#三，代码实现" class="headerlink" title="三，代码实现"></a>三，代码实现</h2><h3 id="想要开启键空间通知必须得进行对notify-keyspace-events进行配置"><a href="#想要开启键空间通知必须得进行对notify-keyspace-events进行配置" class="headerlink" title="想要开启键空间通知必须得进行对notify-keyspace-events进行配置"></a>想要开启键空间通知必须得进行对notify-keyspace-events进行配置</h3></li>
+<li>notify-keyspace-events 为空字符串时，键空间通知关闭</li>
+<li>当给notify-keyspace-events 设值时，表示键空间通知开启</li>
+</ul>
+<p>这是对notify-keyspace-events的相关啊配置</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">K &amp; 键空间通知，所有通知以 `__keyspace@<span class="tag">&lt;<span class="name">db</span>&gt;</span>__` 为前缀</span><br><span class="line"></span><br><span class="line">E &amp; 键事件通知，所有通知以 `__keyevent@<span class="tag">&lt;<span class="name">db</span>&gt;</span>__` 为前缀</span><br><span class="line"></span><br><span class="line">g &amp; DEL 、 EXPIRE 、 RENAME 等类型无关的通用命令的通知</span><br><span class="line"></span><br><span class="line">$ &amp; 字符串命令的通知</span><br><span class="line"></span><br><span class="line">l &amp; 列表命令的通知</span><br><span class="line"></span><br><span class="line">s &amp; 集合命令的通知</span><br><span class="line"></span><br><span class="line">h &amp; 哈希命令的通知</span><br><span class="line"></span><br><span class="line">z &amp; 有序集合命令的通知</span><br><span class="line"></span><br><span class="line">x &amp; 过期事件：每当有过期键被删除时发送</span><br><span class="line"></span><br><span class="line">e &amp; 驱逐(evict)事件：每当有键因为 maxmemory 政策而被删除时发送</span><br><span class="line"></span><br><span class="line">A &amp; 参数 g$lshzxe 的别名，即all</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：输入的参数中至少要有一个 K 或者 E ， 否则的话， 不管其余的参数是什么， 都不会有任何通知被分发</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ redis-cli config set notify-keyspace-events KEA</span><br><span class="line">$ redis-cli --csv psubscribe &#39;__key*__:*&#39;</span><br><span class="line">Reading messages... (press Ctrl-C to quit)</span><br><span class="line">&quot;psubscribe&quot;,&quot;__key*__:*&quot;,1</span><br></pre></td></tr></table></figure>
+<p>然后在其他终端向redis终端发送命令就可以看到通知了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;pmessage&quot;,&quot;__key*__:*&quot;,&quot;__keyspace@0__:foo&quot;,&quot;set&quot;</span><br><span class="line">&quot;pmessage&quot;,&quot;__key*__:*&quot;,&quot;__keyevent@0__:set&quot;,&quot;foo&quot;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
              
           </div>
         </div>
