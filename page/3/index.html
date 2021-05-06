@@ -220,6 +220,305 @@
     
       <div class="recent-post-item">
           <div class="post-title ">
+            <a href="/docker%E7%9A%84%E4%BD%BF%E7%94%A8/">docker的基本命令及使用</a>
+          </div>
+          <div class="post-meta">
+            
+            
+              <div class="post-meta-item date">
+                <span title="Created 2020.03.30"><i class="far fa-calendar-alt"></i> 2020.03.30</span>
+              </div>
+              <div class="post-meta-item updated">
+                <span title="Updated 2021.04.02"><i class="far fa-calendar-check"></i> 2021.04.02</span>
+              </div>
+             
+             
+            
+             <div class="post-meta-item wordcount">
+                
+                  <i class="fas fa-pencil-alt"></i> <span class="post-count">1.2k words</span>
+                   
+                
+                  <i class="far fa-clock"></i> <span class="post-count">4 min</span>
+                                       
+              </div>
+             
+        </div>
+          <div class="content">
+            
+                  <h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><p>一，概念部分：</p>
+<ul>
+<li>docker是什么？<ul>
+<li>其实Docker是基于 linux 内核实现，Docker 最早采用 LXC 技术 ，LXC 是 Linux 原生支持的容器技术，可以提供轻量级的虚拟化 ，最初是 dotCloud 公司（后由于 Docker 开源后大受欢迎就将公司改名为 Docker Inc ，总部位于美国加州的旧金山）内部的一个开源的 PAAS 服务 (Platform as a ServiceService )的业余项目。</li>
+</ul>
+</li>
+<li>docker的优点：<ul>
+<li>  快速部署：短时间内可以部署成百上千个应用，更快速交付到线上</li>
+<li>  高效虚拟化：不需要额外hypervisor支持，基于linux内核实现应用虚拟化，相比虚拟机大幅提高性能和效率</li>
+<li>  节省开支：提高服务器利用率，降低IT支出</li>
+<li>  简化配置：将运行环境打包保存至容器，使用时直接启动即可</li>
+<li>  环境统一：将开发，测试，生产的应用运行环境进行标准化和统一，减少环境不一样带来的各种问题</li>
+<li>  快速迁移和扩展：可实现跨平台运行在物理机、虚拟机、公有云等环境，良好的兼容性可以方便将应用从A宿主机迁移到B宿主机，甚至是A平台迁移到B平台</li>
+</ul>
+</li>
+</ul>
+<p>二，应用场景：</p>
+<ul>
+<li>  节省项目部署时间</li>
+<li>  整体打包</li>
+<li>  配置linux环境等等</li>
+</ul>
+<p>三，功能实现</p>
+<h3 id="首先来说一下docker的镜像的一些常用命令"><a href="#首先来说一下docker的镜像的一些常用命令" class="headerlink" title="首先来说一下docker的镜像的一些常用命令"></a>首先来说一下docker的镜像的一些常用命令</h3><ul>
+<li>安装docker  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install docker</span><br></pre></td></tr></table></figure></li>
+<li>拉取镜像  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull 镜像名</span><br></pre></td></tr></table></figure></li>
+<li>查看所有镜像  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure></li>
+<li>删除镜像  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi 镜像<span class="built_in">id</span></span><br></pre></td></tr></table></figure></li>
+<li>启动服务  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service docker start</span><br></pre></td></tr></table></figure></li>
+<li>测试镜像  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run 镜像id</span><br></pre></td></tr></table></figure>
+<h3 id="然后就是docker容器"><a href="#然后就是docker容器" class="headerlink" title="然后就是docker容器"></a>然后就是docker容器</h3></li>
+<li>拉取镜像  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker pull ubuntu</span></span><br></pre></td></tr></table></figure></li>
+<li>启动容器  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -it ubuntu /<span class="built_in">bin</span>/bash</span><br></pre></td></tr></table></figure>
+<ul>
+<li>-i: 交互式操作。</li>
+<li>-t: 终端。</li>
+<li>ubuntu: ubuntu 镜像。</li>
+<li>/bin/bash：放在镜像名后的是命令，这里我们希望有个交互式 Shell，因此用的是 /bin/bas</li>
+</ul>
+</li>
+<li>查看所有容器  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps -a</span><br></pre></td></tr></table></figure></li>
+<li>停止容器  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker stop 容器<span class="built_in">id</span></span><br></pre></td></tr></table></figure></li>
+<li>启动容器  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker start 容器<span class="built_in">id</span></span><br></pre></td></tr></table></figure></li>
+<li>进入容器  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach 容器<span class="built_in">id</span></span><br></pre></td></tr></table></figure></li>
+<li>这里推荐用exec的因为这个容器退出不会导致容器停止  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it 容器<span class="built_in">id</span> /<span class="built_in">bin</span>/bash</span><br></pre></td></tr></table></figure>
+<h2 id="dockerfile"><a href="#dockerfile" class="headerlink" title="dockerfile"></a>dockerfile</h2></li>
+</ul>
+<ul>
+<li>  每一行以Dockerfile的指令开头，指令不区分大小写，但是惯例使用大写</li>
+<li>  使用 # 开始作为注释</li>
+<li>  每一行只支持一条指令，每条指令可以携带多个参数</li>
+<li>  指令按文件的顺序从上+</li>
+<li>  至下进行执行</li>
+<li>  每个指令的执行会生成一个新的镜像层，为了减少分层和镜像大小，尽可能将多条指令合并成一条指令</li>
+<li>  制作镜像一般可能需要反复多次，每次执行dockfile都按顺序执行，从头开始，已经执行过的指令已经缓存，不需要再执行，后续有一行指令没执行过，再往后的指令将会重新执行，所以为加速镜像制作，将最常变化的内容放下dockerfile的文件的后面</li>
+</ul>
+<h3 id="dockerfile的常用命令"><a href="#dockerfile的常用命令" class="headerlink" title="dockerfile的常用命令"></a>dockerfile的常用命令</h3><ul>
+<li><p>定制镜像</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FROM nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>exec启动镜像</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUN [<span class="string">&quot;可执行文件&quot;</span>, <span class="string">&quot;参数1&quot;</span>, <span class="string">&quot;参数2&quot;</span>]</span><br></pre></td></tr></table></figure></li>
+<li><p>拷贝本机文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COPY 原路径 目标路径</span><br></pre></td></tr></table></figure></li>
+<li><p>ADD</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ADD 与 copy 用法类似，可以说他比copy更加高级</span><br><span class="line"></span><br><span class="line"><span class="comment"># ADD 的优点：在执行 &lt;源文件&gt; 为 tar 压缩文件的话，压缩格式为 gzip, bzip2 以及 xz 的情况下，会自动复制并解压到 &lt;目标路径&gt;。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ADD 的缺点：在不解压的前提下，无法复制 tar 压缩文件。会令镜像构建缓存失效，从而可能会令镜像构建变得比较缓慢。具体是否使用，可以根据是否需要自动解压来决定。</span></span><br></pre></td></tr></table></figure></li>
+<li><p>CMD 每个 Dockerfile 只能有一条 CMD 命令。如指定了多条，只有最后一条被执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CMD [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]</span><br><span class="line">CMD &lt;shell&gt;</span><br><span class="line">CMD [&quot;shell&quot;,&quot;args&quot;...]</span><br></pre></td></tr></table></figure></li>
+<li><p>ENTRYPOINT</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 他跟CMD类似 每个 Dockerfile 中只能有一个 ENTRYPOINT，当指定多个时，只有最后一个生效</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXTRYPOINT [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]</span><br></pre></td></tr></table></figure></li>
+<li><p>ENV</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定一个环境变量，会被后续 RUN 指令使用，并在容器运行时保持</span></span><br><span class="line">ENV &lt;key&gt; &lt;value&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>EXPOSE</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 声明端口帮助镜像使用者理解这个镜像服务的守护端口，以方便配置映射</span></span><br><span class="line">EXPOSE &lt;端口<span class="number">1</span>&gt; [&lt;端口<span class="number">2</span>&gt;...]</span><br></pre></td></tr></table></figure></li>
+<li><p>WORKDIR</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 为后续的 RUN、CMD、ENTRYPOINT 指令配置工作目录，当容器运行后，进入容器内的默认目录</span></span><br><span class="line">WORKDIR /path</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+             
+          </div>
+        </div>
+      <div class="post-footer">
+        
+    </div>
+    
+      <div class="recent-post-item">
+          <div class="post-title ">
+            <a href="/python%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/">Python常见面试题总结</a>
+          </div>
+          <div class="post-meta">
+            
+            
+              <div class="post-meta-item date">
+                <span title="Created 2019.08.30"><i class="far fa-calendar-alt"></i> 2019.08.30</span>
+              </div>
+              <div class="post-meta-item updated">
+                <span title="Updated 2021.04.14"><i class="far fa-calendar-check"></i> 2021.04.14</span>
+              </div>
+             
+             
+            
+             <div class="post-meta-item wordcount">
+                
+                  <i class="fas fa-pencil-alt"></i> <span class="post-count">2.1k words</span>
+                   
+                
+                  <i class="far fa-clock"></i> <span class="post-count">7 min</span>
+                                       
+              </div>
+             
+        </div>
+          <div class="content">
+            
+                  <h1 id="Python基础部分"><a href="#Python基础部分" class="headerlink" title="Python基础部分"></a>Python基础部分</h1><h3 id="1-python2-和-python3的区别"><a href="#1-python2-和-python3的区别" class="headerlink" title="1.python2 和 python3的区别?"></a>1.python2 和 python3的区别?</h3><ul>
+<li><p>python2默认字节是ascii,而python3中是utf-8</p>
+<blockquote>
+<p>ASCII是每一个数字都有一个数值,UTF-8是不定长编码</p>
+</blockquote>
+</li>
+<li><p>python2中print是语句,而python3中print是方法</p>
+<blockquote>
+<p>语句就是不用括号括起来的,方法是用括号括起来耳朵</p>
+</blockquote>
+</li>
+<li><p>python2中map返回的是一个列表,而python3中返回的是一个可迭代对象</p>
+</li>
+<li><p>python2中默认字节数是4,python3中是2,</p>
+</li>
+<li><p>python2中除法是整形,python3中是一个浮点型</p>
+</li>
+</ul>
+<h3 id="2-您能列举几个PEP8规范吗"><a href="#2-您能列举几个PEP8规范吗" class="headerlink" title="2.您能列举几个PEP8规范吗?"></a>2.您能列举几个PEP8规范吗?</h3><ul>
+<li>RFC(Request For Comments): 专门来定义网络请求的标准文档</li>
+<li>PEP8:空格缩进<blockquote>
+<p>(每一级缩进4个空格)</p>
+</blockquote>
+</li>
+<li>导包的时候要分开导,不建议同行导入多个模块</li>
+<li>变量名不能以数字,字母,下划线开头</li>
+<li>类名定义用首字母大写,函数定义首字母用小写</li>
+</ul>
+<h3 id="3-什么是深浅拷贝"><a href="#3-什么是深浅拷贝" class="headerlink" title="3.什么是深浅拷贝?"></a>3.什么是深浅拷贝?</h3><ul>
+<li>浅拷贝:copy.copy()<blockquote>
+<p>只拷贝第一层,修改深层次两个变量就会互相影响了 </p>
+</blockquote>
+</li>
+<li>深拷贝:copy.deepcopy()<blockquote>
+<p>深拷贝呢,他又叫递归性质的浅拷贝,拷贝完之后修改任意一个变量都不会影响另一个变量</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="4-Python的自省"><a href="#4-Python的自省" class="headerlink" title="4.Python的自省"></a>4.Python的自省</h3><ul>
+<li>dir: 获取当前对象内部的属性</li>
+<li>type: 查看当前对象的类型</li>
+<li>hasattr: 判断当前对象是否包含某个属性</li>
+<li>getattr: 获取当前对象的属性</li>
+<li>isinstance: 判断对象是否是某个类的实例</li>
+</ul>
+<h3 id="5-您知道Python中的可变不可变的数据类型吗"><a href="#5-您知道Python中的可变不可变的数据类型吗" class="headerlink" title="5.您知道Python中的可变不可变的数据类型吗?"></a>5.您知道Python中的可变不可变的数据类型吗?</h3><ul>
+<li>可变的数据类型: 列表(list),字典(dict),集合(set)</li>
+<li>不可变数据类型: 数字(number),字符串(string),元祖(tuple),不可变集合(frozenset)</li>
+</ul>
+<h3 id="6-您能说说列表和元组的区别吗"><a href="#6-您能说说列表和元组的区别吗" class="headerlink" title="6.您能说说列表和元组的区别吗?"></a>6.您能说说列表和元组的区别吗?</h3><ul>
+<li><p>列表的数据可以动态变化而元祖不能</p>
+</li>
+<li><p>列表一般用于存储同构,列表具有顺序</p>
+</li>
+<li><p>元祖一般用于存储异构,元祖具有结构</p>
+<blockquote>
+<p>在数据量大的情况下元祖的操作还是比列表好用的</p>
+</blockquote>
+<h3 id="7-您能不能说说字典的低层"><a href="#7-您能不能说说字典的低层" class="headerlink" title="7.您能不能说说字典的低层"></a>7.您能不能说说字典的低层</h3></li>
+<li><p>字典是python中最通用的数据结构之一,他是以键值的方式存放的,他的查询速度比较快,是典型的那空间换时间</p>
+</li>
+<li><p>Cpython中使用了伪随机探测的散列表作为字典的低层数据结构,只有可哈希的对象才能作为字典的键</p>
+</li>
+<li><p>字典的三个基本操作(添加,获取,删除)的平均时间复杂度为O(1),但是他们的平摊最坏情况复杂度要高的多,O(n)</p>
+</li>
+<li><p>开放寻址法 : 字典在python3.6之前都是无序的,使用开放寻址法,实现散列表,所以在它产生哈希冲突时,他会用探测函数来去找,直到找到一个空槽来存放待插入的元素</p>
+<blockquote>
+<p>散列表就是哈希表</p>
+</blockquote>
+<blockquote>
+<p>哈希冲突:进行hash运算之后得到了位置进行存储,但是这个位置已经被占用了</p>
+</blockquote>
+</li>
+<li><p>拉链法:在python3.6之后,字典就变成了有序的,低层不再是散列表,而是拉链法,它不存在之前开放寻址法中的哈希冲突,遇到冲突他会直接追加到当前位置的尾部,,除非在极端的情况下,可能冲突都进入同一链表,导致当前遍历查询元素的时间较长,解决方案就是,升级为红黑树加快查询速度</p>
+<blockquote>
+<p>红黑树又称平衡二叉树</p>
+</blockquote>
+<ul>
+<li>根节点是黑色的节点,叶子节点是不存储数据的黑色空节点</li>
+<li>任何相邻的节点不能有用一个颜色</li>
+<li>任意节点到其可达到的叶子节点间包含相同数量的黑色节点</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-字符串内置的方法"><a href="#8-字符串内置的方法" class="headerlink" title="8.字符串内置的方法"></a>8.字符串内置的方法</h3><ul>
+<li>1.str.replace:替换字符串中的字符为新字符</li>
+<li>2.startswith:判断字符串是否以某个字符串开头</li>
+<li>3.str.split:将字符串进行切分,然后返回切分之后的列表</li>
+<li>4.str.join: 拼接字符串</li>
+<li>5.str.strip: 默认移出字符串首位的空白字符串</li>
+</ul>
+<h3 id="9-列表内置的方法"><a href="#9-列表内置的方法" class="headerlink" title="9.列表内置的方法"></a>9.列表内置的方法</h3><ul>
+<li>1.list.append:向列表添加新的元素</li>
+<li>2.list.extend:合并两个列表</li>
+<li>3.list.count:计算列表中元素的个数</li>
+<li>4.list.index:查询列表中某一个元素出现的位置</li>
+<li>5.list.insert:将指定元素插入到指定位置上<h3 id="10-字典内置的方法"><a href="#10-字典内置的方法" class="headerlink" title="10.字典内置的方法"></a>10.字典内置的方法</h3></li>
+<li>1.dict.keys: 查询所有键</li>
+<li>2.dict.values: 查询所有的值</li>
+<li>3.dict.item:查询所有的键值对</li>
+<li>4.dict.clear:清空字典中的元素</li>
+<li>5.dict.copy:拷贝一个新的字典</li>
+</ul>
+<h3 id="11-Python中内存管理-垃圾回收机制"><a href="#11-Python中内存管理-垃圾回收机制" class="headerlink" title="11.Python中内存管理(垃圾回收机制)"></a>11.Python中内存管理(垃圾回收机制)</h3><h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><blockquote>
+<p>引用计数就是当某一个变量被引用的时候,他的引用次数会加1,当引用计数变为0的时候,他将会被释放,当删除一个变量时,,他的引用计数就会减1,但是也会出现,两个变量相互引用,造成无法回收</p>
+</blockquote>
+<blockquote>
+<p>遇到这种情况可以用,标记-清除解决</p>
+</blockquote>
+<h3 id="标记-清除"><a href="#标记-清除" class="headerlink" title="标记-清除"></a>标记-清除</h3><blockquote>
+<p>标记就是他会自动给活跃的对象添加标识,添加标识的对象不会被清除<br>清除就是,他会对内存从头到尾的遍历一遍,然后讲那些没有被标识的对象进行内存,将那些原有的对象的标识抹掉,以便下次回收</p>
+</blockquote>
+<blockquote>
+<p>​    他最大的缺点就是在垃圾收集后可能有大量的内存碎片,其次就是需要遍历的内存节点比较多,每次回收都将花费大量时间</p>
+</blockquote>
+<blockquote>
+<p>遇到这种情况可以使用分代回收</p>
+</blockquote>
+<h3 id="分代回收-gc模块"><a href="#分代回收-gc模块" class="headerlink" title="分代回收(gc模块):"></a>分代回收(gc模块):</h3><blockquote>
+<p>分代回收就是一种典型的以空间换时间的方法,他会将回收对象分为年轻代,中年代,老年代,每一个代都是一个链表,当python触发垃圾回收机制的话,他会将那些没有被标记的对象进行回收,然后剩下的依次推到中年代,老年代</p>
+</blockquote>
+<blockquote>
+<p>你可以通过设置gc模块,默认执行700次青年代执行一次中年代,执行10次中年代执行1次老年代,这个可以自己设置,但是切记,不要随意改动,尽量让他间隔大一点,不然会导致他的回收频率过高</p>
+</blockquote>
+<h3 id="Python中的内置方法"><a href="#Python中的内置方法" class="headerlink" title="Python中的内置方法:"></a>Python中的内置方法:</h3><ul>
+<li><p>map函数:将条件依次作用在列表中的每一个元素上,最后返回一个新的可迭代对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span>(<span class="params">num</span>):</span></span><br><span class="line">  <span class="keyword">return</span> num*num</span><br><span class="line">r = <span class="built_in">map</span>(fun,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(r))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line"><span class="comment"># [1,4,9,16,25,36,49,64,81]</span></span><br></pre></td></tr></table></figure></li>
+<li><p>reduce 函数:累计运算的,接收两个参数,这两个参数的结果作为下一趟参数的第一个值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">x,y</span>):</span></span><br><span class="line">  <span class="keyword">return</span> x+y</span><br><span class="line"><span class="built_in">print</span>(reduce(add,[<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>]))</span><br><span class="line"><span class="comment"># 25</span></span><br></pre></td></tr></table></figure></li>
+<li><p>filter 函数: 起到一个过滤的作用,将你列表中的元素传给fifter,然后判断结果为True或者Flase将发回True的元素放在一个新的迭代器中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span>(<span class="params">n</span>):</span></span><br><span class="line">  <span class="keyword">return</span> n%<span class="number">2</span>==<span class="number">1</span>  <span class="comment">#判断是否为奇数</span></span><br><span class="line">  lst = fifter(fun,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>])</span><br><span class="line">  <span class="built_in">print</span>(<span class="built_in">list</span>(lst))</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 输出结果: [1,3,5,7,9]</span></span><br></pre></td></tr></table></figure></li>
+<li><p>sorted 函数:对可迭代对象进行排序,可选参数key(绝对值)为排序方法,也可以通过reverse逆置</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">sorted</span>([<span class="number">36</span>,<span class="number">5</span>,-<span class="number">12</span>,<span class="number">9</span>,-<span class="number">21</span>]))</span><br><span class="line"><span class="comment"># [-21,-12,5,9,36]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sorted</span>([<span class="number">36</span>,<span class="number">5</span>,-<span class="number">12</span>,<span class="number">9</span>,-<span class="number">21</span>],key=<span class="built_in">abs</span>))</span><br><span class="line"><span class="comment"># [5,9,-12,-21,36]</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="lambda表达式及跳转表您懂吗"><a href="#lambda表达式及跳转表您懂吗" class="headerlink" title="lambda表达式及跳转表您懂吗?"></a>lambda表达式及跳转表您懂吗?</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lambda</span> x:x+<span class="number">1</span> <span class="comment"># 结果+1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="不定长参数"><a href="#不定长参数" class="headerlink" title="不定长参数?"></a>不定长参数?</h3><ul>
+<li>*args: 接收的参数存在一个元祖里面</li>
+<li>**kwargs: 接收的额参数存在一个字典里面</li>
+</ul>
+<h3 id="pass语句你知道吗"><a href="#pass语句你知道吗" class="headerlink" title="pass语句你知道吗"></a>pass语句你知道吗</h3><ul>
+<li>这个pass 是一个空语句,作用是为了保证程序正常运行</li>
+</ul>
+<h3 id="global-和-nonlocal的作用你知道吗"><a href="#global-和-nonlocal的作用你知道吗" class="headerlink" title="global 和 nonlocal的作用你知道吗?"></a>global 和 nonlocal的作用你知道吗?</h3><ul>
+<li>global是全局变量,可以用在任何地方<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun1</span>():</span></span><br><span class="line">    <span class="keyword">global</span> a</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun2</span>():</span></span><br><span class="line">    b = a + <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>(b)</span><br><span class="line">    fun1()</span><br><span class="line"></span><br><span class="line">fun2()</span><br><span class="line"><span class="comment"># 结果:2</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>nonlocal是局部变量,只能用在当前函数当中<br>```python<br>def fun1():<br>  a = 1<br>  nonlocal a</li>
+</ul>
+<p>def fun2():<br>    b = a + 1<br>    print(b)<br>    fun1()</p>
+<p>fun2()</p>
+<h1 id="他会报错因为fun2找不到这个变量a-导致无法计算-这就是局部变量-是无法在另一个函数中引用的"><a href="#他会报错因为fun2找不到这个变量a-导致无法计算-这就是局部变量-是无法在另一个函数中引用的" class="headerlink" title="他会报错因为fun2找不到这个变量a,导致无法计算,这就是局部变量,是无法在另一个函数中引用的"></a>他会报错因为fun2找不到这个变量a,导致无法计算,这就是局部变量,是无法在另一个函数中引用的</h1><p>````</p>
+
+             
+          </div>
+        </div>
+      <div class="post-footer">
+        
+    </div>
+    
+      <div class="recent-post-item">
+          <div class="post-title ">
             <a href="/%E5%BE%AE%E5%8D%9A%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95/">微博三方登录</a>
           </div>
           <div class="post-meta">

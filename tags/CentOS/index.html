@@ -22,7 +22,7 @@
 
   
 
-  <title>Vue路由钩子 | 欢迎来到阿正的博客</title>
+  <title>Tags: CentOS | 欢迎来到阿正的博客</title>
 
   
 
@@ -215,157 +215,42 @@
 </header>
 
     
-<article id="post">
-  <div class="post-title">Vue路由钩子</div>
-  
-<div class="post-meta">
+<div class="post-wrap archive">
     
     
-      <div class="post-meta-item date">
-        <span title="Created 2020.08.30"><i class="far fa-calendar-alt"></i> 2020.08.30</span>
-      </div>
-      <div class="post-meta-item updated">
-        <span title="Updated 2021.04.02"><i class="far fa-calendar-check"></i> 2021.04.02</span>
-      </div>
-     
-     
+        
+        
+        <div class="yearzodiac">
+                <div class="years">
+                  <h1>2021  <i class="symbolic-animals icon-ox"></i></h1>
+                </div>
+        </div>
+        
+        <li class="archive-item">
+            <a class="archive-item-link" href="/CentOS%E9%83%A8%E7%BD%B2django%E9%A1%B9%E7%9B%AE/">nginx部署django项目</a>
+            <span class="archive-item-date">2021-04-22</span>
+        </li>
     
-     <div class="post-meta-item wordcount">
         
-          <i class="fas fa-pencil-alt"></i> <span class="post-count">343 words</span>
-           
         
-          <i class="far fa-clock"></i> <span class="post-count">1 min</span>
-                               
-      </div>
-     
-</div>
-
-
-  
-  <div class="content">
-        <div><h1 id="Vue路由钩子"><a href="#Vue路由钩子" class="headerlink" title="Vue路由钩子"></a>Vue路由钩子</h1><h3 id="一-什么是路由钩子"><a href="#一-什么是路由钩子" class="headerlink" title="一,什么是路由钩子?"></a>一,什么是路由钩子?</h3><ul>
-<li>简单来讲,就是当路由跳转前或者跳转后，需要做一些操作，就可以使用Vue中的路由钩子来监听路由的变化。<h3 id="二-路由钩子分为几类"><a href="#二-路由钩子分为几类" class="headerlink" title="二,路由钩子分为几类?"></a>二,路由钩子分为几类?</h3></li>
-<li>全局路由钩子<ul>
-<li>每一次跳转都会执行</li>
-</ul>
-</li>
-<li>单个路由钩子<ul>
-<li>在跳转前执行</li>
-</ul>
-</li>
-<li>组件内路由钩子<h3 id="三-代码实现"><a href="#三-代码实现" class="headerlink" title="三,代码实现"></a>三,代码实现</h3></li>
-<li>全局路由钩子</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局路由钩子</span></span><br><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//会在任意路由跳转前执行，next一定要记着执行，不然路由不能跳转了</span></span><br><span class="line">  <span class="built_in">console</span>.log(to)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">from</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(next)</span><br><span class="line">  <span class="comment">// 首先来说全局路由的三个参数</span></span><br><span class="line">  <span class="comment">// to:   就是跳转路由参数</span></span><br><span class="line">  <span class="comment">// from: 就是离开路由参数</span></span><br><span class="line">  <span class="comment">// next: 是否允许跳转</span></span><br><span class="line">  next();</span><br><span class="line">  <span class="comment">// 这个next()必须有,没有就无法跳转了</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>单个路由钩子<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单个路由钩子</span></span><br><span class="line">routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">&#x27;/index&#x27;</span>,</span><br><span class="line">      component: Index,</span><br><span class="line">      beforeEnter: <span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure></li>
-</ul>
-<ul>
-<li>组件内路由钩子<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 进入页面前调用</span></span><br><span class="line"><span class="function"><span class="title">beforeRouteEnter</span>(<span class="params">to, <span class="keyword">from</span>, next</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;进入路由前调用的方法&#x27;</span>)</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    next()</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 离开页面调用</span></span><br><span class="line"><span class="function"><span class="title">beforeRouteLeave</span>(<span class="params">to,<span class="keyword">from</span>, next</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;离开页面后调用的方法&#x27;</span>)</span><br><span class="line">    next()</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 页面路由改变时调用</span></span><br><span class="line"><span class="function"><span class="title">beforeRouteUpdate</span>(<span class="params">to, <span class="keyword">from</span>, next</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;路由发生改变的时候调用的方法&#x27;</span>)</span><br><span class="line">    next()</span><br><span class="line">&#125;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-</div>
-        
-          <div class="post-copyright">
-                  <div class="copyright-item">
-                      <span> Author: 阿正</span>
-                  </div>
-                  <div class="copyright-item">
-                      <span> Link: <a href="https://zhaozheng.link/Vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/">https://zhaozheng.link/Vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/</a></span>
-                  </div>
-                  <div class="copyright-item">
-                      <span> License: 本博客所有文章除特别声明外，均采用许可协议 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> 转载请注明出处！</span>
-                  </div>
-          </div>
-        
-  </div>
-
-  <div class="share-reward">
-    <div class="share">
-        
-<div class="social-share" data-sites="facebook,twitter,wechat,weibo,qq"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css">
-<script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script>
-
-
-      </div>
-        <div class="reward">
-          
-  <div style="padding: 10px 0; margin-left: 20px; width: 90%; text-align: center;">
-    <div class="reward-content">
-        <ul id="donateBox" class="list pos-a">
-          
-           <li id="PayPal"><a href="https://paypal.me" target="_blank" title="PayPal">PayPal</a></li>
+        <li class="archive-item">
+            <a class="archive-item-link" href="/nginx%E9%83%A8%E7%BD%B2vue%E9%A1%B9%E7%9B%AE/">nginx部署vue项目</a>
+            <span class="archive-item-date">2021-04-20</span>
+        </li>
+    
+    <div class="arc_pag">
+       <nav class="paginator">
+      
             
-          
-            <li id="AliPay" title="Alipay"><img data-img="/img/alipay.jpg" onerror=this.onerror=null,this.src="/img/hhj.png"></img></li>
-               
-                 
-            <li id="WeChat" title="Wechatpay"><img date-img="/img/wechat.jpg" onerror=this.onerror=null,this.src="/img/hhj.png"></img></li>
-                      
-          </ul>
-        <div id="QRBox" class="pos-f left-100">
-          <div id="MainBox"></div>
-        </div>
-    </div>
-  </div>
-  
-        </div>
-    </div>
-    
-    <div class="post_tags">
-      
-    </div>
-    <div class="post-nav">
-      
-        <div class="post-nav-prev post-nav-item">
-            <a href="/Vue%E8%AF%B7%E6%B1%82%E6%8B%A6%E6%88%AA%E5%99%A8%E5%8F%8A%E5%93%8D%E5%BA%94%E6%8B%A6%E6%88%AA%E5%99%A8/" >Vue请求拦截器<i class="fa fa-chevron-left"></i></a>
-        </div>
-      
-      
-        <div class="post-nav-next post-nav-item">
-            <a href="/redis%E5%8F%91%E5%B8%83%E8%80%85%E8%AE%A2%E9%98%85%E8%80%85/" >redis发布者订阅者<i class="fa fa-chevron-right"></i></a>
-        </div>
-      
-    </div>
-      
+</nav>
 
-    <script src='//unpkg.com/@waline/client/dist/Waline.min.js'></script>
-    <div id="waline"></div>
-    <script>
-    new Waline({
-        el: '#waline',
-        path: location.pathname,
-        serverURL: "",
-        avatar: "monsterid",
-        placeholder: "Just go go"
-    });
-    </script>
+     </div>
+</div>
 
 
 
-  <div id="valine"></div>
-  <script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script>
-  <script>
-        new Valine({
-          el: '#valine',
-          appId: "",
-          appKey: "",
-          avatar: "mm",
-          lang: "",
-          meta: 'nick,mail,link'.split(','),
-          requiredFields: 'nick,mail'.split(','),
-          placeholder: "评论记得带上邮箱,你的留言我会马上收到邮箱提醒哒",
-          pageSize:'10',
-          recordIP: 'false',
-          serverURLs: "",
-          emojiCDN: "",
-          enableQQ: "true",
-        });
-  </script>
-  
 
-</article>
+
 
     
 <a id="gotop" href="javascript:" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
@@ -496,45 +381,6 @@ if (document.getElementsByClassName('mermaid').length) {
   
 
 
-  <script>
-    jQuery(document).ready(function () {
-      var QRBox = $('#QRBox');
-      var MainBox = $('#MainBox');
-      var AliPayQR = '/img/alipay.jpg';
-      var WeChanQR = '/img/wechat.jpg';
-
-      function showQR(QR) {
-        if (QR) {
-          MainBox.css('background-image', 'url(' + QR + ')');
-        }
-        $('#donateBox').addClass('blur');
-        QRBox.fadeIn(300, function (argument) {
-          MainBox.addClass('showQR');
-        });
-      }
-
-      $('#donateBox>li').click(function (event) {
-        var thisID = $(this).attr('id');
-        if (thisID === 'AliPay') {
-          showQR(AliPayQR);
-        } else if (thisID === 'WeChat') {
-          showQR(WeChanQR);
-        }
-      });
-
-      MainBox.click(function (event) {
-        MainBox.removeClass('showQR').addClass('hideQR');
-        setTimeout(function (a) {
-          QRBox.fadeOut(300, function (argument) {
-            MainBox.removeClass('hideQR');
-          });
-          $('#DonateText,#donateBox,#github').removeClass('blur');
-        }, 600);
-
-      });
-    });
-  </script>
-  
 
 
   

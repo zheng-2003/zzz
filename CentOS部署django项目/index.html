@@ -22,7 +22,7 @@
 
   
 
-  <title>Vue路由钩子 | 欢迎来到阿正的博客</title>
+  <title>nginx部署django项目 | 欢迎来到阿正的博客</title>
 
   
 
@@ -216,26 +216,26 @@
 
     
 <article id="post">
-  <div class="post-title">Vue路由钩子</div>
+  <div class="post-title">nginx部署django项目</div>
   
 <div class="post-meta">
     
     
       <div class="post-meta-item date">
-        <span title="Created 2020.08.30"><i class="far fa-calendar-alt"></i> 2020.08.30</span>
+        <span title="Created 2021.04.22"><i class="far fa-calendar-alt"></i> 2021.04.22</span>
       </div>
       <div class="post-meta-item updated">
-        <span title="Updated 2021.04.02"><i class="far fa-calendar-check"></i> 2021.04.02</span>
+        <span title="Updated 2021.04.28"><i class="far fa-calendar-check"></i> 2021.04.28</span>
       </div>
      
      
     
      <div class="post-meta-item wordcount">
         
-          <i class="fas fa-pencil-alt"></i> <span class="post-count">343 words</span>
+          <i class="fas fa-pencil-alt"></i> <span class="post-count">1k words</span>
            
         
-          <i class="far fa-clock"></i> <span class="post-count">1 min</span>
+          <i class="far fa-clock"></i> <span class="post-count">4 min</span>
                                
       </div>
      
@@ -244,26 +244,62 @@
 
   
   <div class="content">
-        <div><h1 id="Vue路由钩子"><a href="#Vue路由钩子" class="headerlink" title="Vue路由钩子"></a>Vue路由钩子</h1><h3 id="一-什么是路由钩子"><a href="#一-什么是路由钩子" class="headerlink" title="一,什么是路由钩子?"></a>一,什么是路由钩子?</h3><ul>
-<li>简单来讲,就是当路由跳转前或者跳转后，需要做一些操作，就可以使用Vue中的路由钩子来监听路由的变化。<h3 id="二-路由钩子分为几类"><a href="#二-路由钩子分为几类" class="headerlink" title="二,路由钩子分为几类?"></a>二,路由钩子分为几类?</h3></li>
-<li>全局路由钩子<ul>
-<li>每一次跳转都会执行</li>
-</ul>
-</li>
-<li>单个路由钩子<ul>
-<li>在跳转前执行</li>
-</ul>
-</li>
-<li>组件内路由钩子<h3 id="三-代码实现"><a href="#三-代码实现" class="headerlink" title="三,代码实现"></a>三,代码实现</h3></li>
-<li>全局路由钩子</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局路由钩子</span></span><br><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//会在任意路由跳转前执行，next一定要记着执行，不然路由不能跳转了</span></span><br><span class="line">  <span class="built_in">console</span>.log(to)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">from</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(next)</span><br><span class="line">  <span class="comment">// 首先来说全局路由的三个参数</span></span><br><span class="line">  <span class="comment">// to:   就是跳转路由参数</span></span><br><span class="line">  <span class="comment">// from: 就是离开路由参数</span></span><br><span class="line">  <span class="comment">// next: 是否允许跳转</span></span><br><span class="line">  next();</span><br><span class="line">  <span class="comment">// 这个next()必须有,没有就无法跳转了</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>单个路由钩子<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单个路由钩子</span></span><br><span class="line">routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">&#x27;/index&#x27;</span>,</span><br><span class="line">      component: Index,</span><br><span class="line">      beforeEnter: <span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure></li>
-</ul>
-<ul>
-<li>组件内路由钩子<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 进入页面前调用</span></span><br><span class="line"><span class="function"><span class="title">beforeRouteEnter</span>(<span class="params">to, <span class="keyword">from</span>, next</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;进入路由前调用的方法&#x27;</span>)</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    next()</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 离开页面调用</span></span><br><span class="line"><span class="function"><span class="title">beforeRouteLeave</span>(<span class="params">to,<span class="keyword">from</span>, next</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;离开页面后调用的方法&#x27;</span>)</span><br><span class="line">    next()</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 页面路由改变时调用</span></span><br><span class="line"><span class="function"><span class="title">beforeRouteUpdate</span>(<span class="params">to, <span class="keyword">from</span>, next</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;路由发生改变的时候调用的方法&#x27;</span>)</span><br><span class="line">    next()</span><br><span class="line">&#125;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
+        <div><h2 id="整体流程共分为nginx部署django和nginx部署vue"><a href="#整体流程共分为nginx部署django和nginx部署vue" class="headerlink" title="整体流程共分为nginx部署django和nginx部署vue"></a>整体流程共分为nginx部署django和nginx部署vue</h2><p><img src= "/img/hhj.png" data-src="https://i.loli.net/2021/04/28/jOLc8UglmKSrQMD.png" alt="部署项目流程.png"></p>
+<h3 id="django项目配置"><a href="#django项目配置" class="headerlink" title="django项目配置"></a>django项目配置</h3><p>在settings.py文件中配置</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DEBUG = <span class="literal">True</span> <span class="comment"># 暂时开着</span></span><br><span class="line"></span><br><span class="line">ALLOWED_HOSTS = [<span class="string">&#x27;*&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置静态资源目录，后面部署会用到 </span></span><br><span class="line">STATIC_ROOT = os.path.join(BASE_DIR, <span class="string">&quot;static&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="将django项目中所需要的环境进行打包"><a href="#将django项目中所需要的环境进行打包" class="headerlink" title="将django项目中所需要的环境进行打包"></a>将django项目中所需要的环境进行打包</h3><p>需要进入项目下进行环境的打包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip freeze &gt; requirement.txt</span><br></pre></td></tr></table></figure>
+<p>效果图<br><img src= "/img/hhj.png" data-src="https://i.loli.net/2021/04/22/g9kImitHxG6yalp.png" alt="打包requirement.png"></p>
+<p>可以使用filezilla上传到CentOS云主机上,p8_workorder为我的项目<br><img src= "/img/hhj.png" data-src="https://i.loli.net/2021/04/22/VRDHB1WQgzOxL3U.png" alt="上传项目到云主机.png"></p>
+<p>cd进入到我的项目目录中</p>
+<h3 id="安装所需要的环境与配置uwsgi"><a href="#安装所需要的环境与配置uwsgi" class="headerlink" title="安装所需要的环境与配置uwsgi"></a>安装所需要的环境与配置uwsgi</h3><p>安装所需要的环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 如果你的安装是pip请使用pip安装，我的是pip3</span></span><br><span class="line">pip3 install -r requirement.txt</span><br></pre></td></tr></table></figure>
+
+<p>我们还需要uwsgi协议进行后续的部署，但是直接安装uwsgi会报异常</p>
+<p>我们需要yum安装相应的配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install -y gcc* pcre-devel openssl-devel</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 根据你安装python的名称来决定安装，比如我启动python是用python3来启动，所以我的安装是这样的</span></span><br><span class="line">yum install python3-devel -y</span><br></pre></td></tr></table></figure>
+
+<p>现在我们就可以安装uwsgi协议了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install uwsgi</span><br></pre></td></tr></table></figure>
+
+<p>接下来我们需要执行命令来覆盖我们配置的静态资源</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 manage.py collectstatic</span><br></pre></td></tr></table></figure>
+<p>接下来创建一个conf目录来存放我们的django部署配置文件</p>
+<p><img src= "/img/hhj.png" data-src="https://i.loli.net/2021/04/23/tJn4gIufy19DKEC.png" alt="静态资源和配置.png"></p>
+<p>后续会把static静态目录的资源部署到nginx上，先不急，先写配置文件</p>
+<p>cd进入conf开始编写配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi uwsgi.ini</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[uwsgi]</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> http = 192.168.12.214:8000</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 我是使用socket进行端口映射，映射到django的配置文件上(ip是我内网的IP，用来做端口映射)</span></span><br><span class="line">socket = 172.24.10.233:8800</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 我的项目根目录位置，如果不知道具体位置可以在项目根目录进行<span class="built_in">pwd</span>查看</span></span><br><span class="line">chdir = /home/django_nginx/p8_workorder/</span><br><span class="line"></span><br><span class="line">wsgi-file = p8_workorder/wsgi.py</span><br><span class="line"><span class="meta">#</span><span class="bash"> 主线程开启</span></span><br><span class="line">master = true</span><br><span class="line"><span class="meta">#</span><span class="bash"> 开启进程的个数</span></span><br><span class="line">processes = 2</span><br><span class="line"><span class="meta">#</span><span class="bash"> 线程个数</span></span><br><span class="line">threads = 2</span><br><span class="line"><span class="meta">#</span><span class="bash"> 日志文件所在位置</span></span><br><span class="line">logto = /home/django_nginx/p8_workorder/conf/worker.log</span><br><span class="line"><span class="meta">#</span><span class="bash"> 文件位置同上</span></span><br><span class="line">pidfile = /home/django_nginx/p8_workorder/conf/worker.pid</span><br><span class="line"></span><br><span class="line">buffer-size = 65536</span><br></pre></td></tr></table></figure>
+
+<p>完成之后启动uwsgi查看</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uwsgi --ini uwsgi.ini</span><br></pre></td></tr></table></figure>
+<p>浏览器访问ip和端口进行查看</p>
+<h3 id="nginx部署静态资源及django配置"><a href="#nginx部署静态资源及django配置" class="headerlink" title="nginx部署静态资源及django配置"></a>nginx部署静态资源及django配置</h3><p>我们需要把刚才的static静态目录部署到nginx.conf中,首先进入我nginx.conf所在目录下<br>由于我的nginx是使用源码wget安装的，yum安装则需要到/etc目录下去找<br><img src= "/img/hhj.png" data-src="https://i.loli.net/2021/04/23/AXz3fZLlv4TiatS.png" alt="进入nginx.png"></p>
+<p>我是在conf目录下又创建了一个conf目录，用来存放django.conf配置的，所以我在nginx.conf<br>中写了这条语句,如果使用yum安装的nginx请忽略此步骤</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include /usr/local/nginx/conf/conf/*.conf;</span><br></pre></td></tr></table></figure>
+
+<p>cd 进入新建的conf中配置django.conf</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd conf</span><br><span class="line"></span><br><span class="line">vi django.conf</span><br></pre></td></tr></table></figure>
+
+<p>在django.conf中做以下配置</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">upstream fanxiang&#123;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置负载均衡，此处为django配置uwsgi映射的端口，与uwsgi中映射端口要一致</span></span><br><span class="line">   server 172.24.10.233:8800;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    # 监听端口</span><br><span class="line">    listen     8000;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line"></span><br><span class="line">      include uwsgi_params; # 使用 uwsgi协议</span><br><span class="line">      uwsgi_pass fanxiang; # 反向代理，配置连接django应用服务器</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    # 此处配置静态目录</span><br><span class="line">    location /static/ &#123;</span><br><span class="line">            # 一种是根路径配置，一种是别名配置，任何一种都可以(不要在语句后注释，可能会导致在同一行注释到后面的配置，从而访问不到静态资源)</span><br><span class="line">            # root /home/django_nginx/p8_workorder;                  </span><br><span class="line">           alias /home/django_nginx/p8_workorder/static/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>完成后进入项目的uwsgi.ini配置的目录，重启</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uwsgi --ini uwsgi.ini &amp;</span><br></pre></td></tr></table></figure>
+<p>重启nginx服务</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
+
+<h3 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h3><h3 id="负载均衡的几种方式"><a href="#负载均衡的几种方式" class="headerlink" title="负载均衡的几种方式"></a>负载均衡的几种方式</h3><h4 id="1、轮询（默认）"><a href="#1、轮询（默认）" class="headerlink" title="1、轮询（默认）"></a>1、轮询（默认）</h4><p>每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。</p>
+<h4 id="2、weight-（权重）"><a href="#2、weight-（权重）" class="headerlink" title="2、weight （权重）"></a>2、weight （权重）</h4><p>按照不同比重进行资源的处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">upstream jiyun &#123;</span><br><span class="line"></span><br><span class="line">   server  127.0.0.1:8800 weight&#x3D;1;</span><br><span class="line">   server  127.0.0.1:8801 weight&#x3D;2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>经过测试，8801接收到的请求个数 比 8800多一倍</p>
+<h4 id="3、ipHash进行分配"><a href="#3、ipHash进行分配" class="headerlink" title="3、ipHash进行分配"></a>3、ipHash进行分配</h4><p>通过hash算法来计算处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream jiyun &#123;</span><br><span class="line">   ip_hash;</span><br><span class="line">   server 127.0.0.1:8800;</span><br><span class="line">   server 127.0.0.1:8801;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="正向代理与反向代理"><a href="#正向代理与反向代理" class="headerlink" title="正向代理与反向代理"></a>正向代理与反向代理</h3><p><img src= "/img/hhj.png" data-src="https://img-blog.csdn.net/20170702105958247?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzU1NjgwOTk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="正向代理与反向代理"></p>
 </div>
         
           <div class="post-copyright">
@@ -271,7 +307,7 @@
                       <span> Author: 阿正</span>
                   </div>
                   <div class="copyright-item">
-                      <span> Link: <a href="https://zhaozheng.link/Vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/">https://zhaozheng.link/Vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/</a></span>
+                      <span> Link: <a href="https://zhaozheng.link/CentOS%E9%83%A8%E7%BD%B2django%E9%A1%B9%E7%9B%AE/">https://zhaozheng.link/CentOS%E9%83%A8%E7%BD%B2django%E9%A1%B9%E7%9B%AE/</a></span>
                   </div>
                   <div class="copyright-item">
                       <span> License: 本博客所有文章除特别声明外，均采用许可协议 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> 转载请注明出处！</span>
@@ -315,16 +351,14 @@
     
     <div class="post_tags">
       
+        <i class="fas fa-tag"></i> <a href="/tags/CentOS/" class="tag">CentOS</a>
+      
     </div>
     <div class="post-nav">
       
-        <div class="post-nav-prev post-nav-item">
-            <a href="/Vue%E8%AF%B7%E6%B1%82%E6%8B%A6%E6%88%AA%E5%99%A8%E5%8F%8A%E5%93%8D%E5%BA%94%E6%8B%A6%E6%88%AA%E5%99%A8/" >Vue请求拦截器<i class="fa fa-chevron-left"></i></a>
-        </div>
-      
       
         <div class="post-nav-next post-nav-item">
-            <a href="/redis%E5%8F%91%E5%B8%83%E8%80%85%E8%AE%A2%E9%98%85%E8%80%85/" >redis发布者订阅者<i class="fa fa-chevron-right"></i></a>
+            <a href="/nginx%E9%83%A8%E7%BD%B2vue%E9%A1%B9%E7%9B%AE/" >nginx部署vue项目<i class="fa fa-chevron-right"></i></a>
         </div>
       
     </div>
