@@ -220,6 +220,55 @@
     
       <div class="recent-post-item">
           <div class="post-title ">
+            <a href="/redis%E9%94%AE%E7%A9%BA%E9%97%B4/">redis键空间</a>
+          </div>
+          <div class="post-meta">
+            
+            
+              <div class="post-meta-item date">
+                <span title="Created 2020.08.30"><i class="far fa-calendar-alt"></i> 2020.08.30</span>
+              </div>
+              <div class="post-meta-item updated">
+                <span title="Updated 2021.04.02"><i class="far fa-calendar-check"></i> 2021.04.02</span>
+              </div>
+             
+             
+            
+             <div class="post-meta-item wordcount">
+                
+                  <i class="fas fa-pencil-alt"></i> <span class="post-count">471 words</span>
+                   
+                
+                  <i class="far fa-clock"></i> <span class="post-count">1 min</span>
+                                       
+              </div>
+             
+        </div>
+          <div class="content">
+            
+                  <h1 id="Redis键空间"><a href="#Redis键空间" class="headerlink" title="Redis键空间"></a>Redis键空间</h1><h2 id="一，什么是Redis键空间"><a href="#一，什么是Redis键空间" class="headerlink" title="一，什么是Redis键空间"></a>一，什么是Redis键空间</h2><ul>
+<li>客户端可以通过订阅频道或模式， 来接收那些以某种方式改动了 Redis 数据集的事件<h2 id="二，应用场景"><a href="#二，应用场景" class="headerlink" title="二，应用场景"></a>二，应用场景</h2></li>
+<li>比如打车类软件或者淘宝，对某个用户或者商品进行评价，在规定的时间里用户没有给予评价那么系统就会自动进行评价，可以理解为这个key过期了。<h2 id="三，代码实现"><a href="#三，代码实现" class="headerlink" title="三，代码实现"></a>三，代码实现</h2><h3 id="想要开启键空间通知必须得进行对notify-keyspace-events进行配置"><a href="#想要开启键空间通知必须得进行对notify-keyspace-events进行配置" class="headerlink" title="想要开启键空间通知必须得进行对notify-keyspace-events进行配置"></a>想要开启键空间通知必须得进行对notify-keyspace-events进行配置</h3></li>
+<li>notify-keyspace-events 为空字符串时，键空间通知关闭</li>
+<li>当给notify-keyspace-events 设值时，表示键空间通知开启</li>
+</ul>
+<p>这是对notify-keyspace-events的相关啊配置</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">K &amp; 键空间通知，所有通知以 `__keyspace@<span class="tag">&lt;<span class="name">db</span>&gt;</span>__` 为前缀</span><br><span class="line"></span><br><span class="line">E &amp; 键事件通知，所有通知以 `__keyevent@<span class="tag">&lt;<span class="name">db</span>&gt;</span>__` 为前缀</span><br><span class="line"></span><br><span class="line">g &amp; DEL 、 EXPIRE 、 RENAME 等类型无关的通用命令的通知</span><br><span class="line"></span><br><span class="line">$ &amp; 字符串命令的通知</span><br><span class="line"></span><br><span class="line">l &amp; 列表命令的通知</span><br><span class="line"></span><br><span class="line">s &amp; 集合命令的通知</span><br><span class="line"></span><br><span class="line">h &amp; 哈希命令的通知</span><br><span class="line"></span><br><span class="line">z &amp; 有序集合命令的通知</span><br><span class="line"></span><br><span class="line">x &amp; 过期事件：每当有过期键被删除时发送</span><br><span class="line"></span><br><span class="line">e &amp; 驱逐(evict)事件：每当有键因为 maxmemory 政策而被删除时发送</span><br><span class="line"></span><br><span class="line">A &amp; 参数 g$lshzxe 的别名，即all</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：输入的参数中至少要有一个 K 或者 E ， 否则的话， 不管其余的参数是什么， 都不会有任何通知被分发</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ redis-cli config set notify-keyspace-events KEA</span><br><span class="line">$ redis-cli --csv psubscribe &#39;__key*__:*&#39;</span><br><span class="line">Reading messages... (press Ctrl-C to quit)</span><br><span class="line">&quot;psubscribe&quot;,&quot;__key*__:*&quot;,1</span><br></pre></td></tr></table></figure>
+<p>然后在其他终端向redis终端发送命令就可以看到通知了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;pmessage&quot;,&quot;__key*__:*&quot;,&quot;__keyspace@0__:foo&quot;,&quot;set&quot;</span><br><span class="line">&quot;pmessage&quot;,&quot;__key*__:*&quot;,&quot;__keyevent@0__:set&quot;,&quot;foo&quot;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+             
+          </div>
+        </div>
+      <div class="post-footer">
+        
+    </div>
+    
+      <div class="recent-post-item">
+          <div class="post-title ">
             <a href="/websell/">Webshell在浏览器中实现终端</a>
           </div>
           <div class="post-meta">
@@ -909,54 +958,6 @@
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
 <li>安装依赖完以后,去自己的app下创建一个新的文件,在文件中定义一个函数,这个函数里面将是你给他的任务,然后通过 celery -A 自己app名.tasks worker –loglevel=INFO 这条命令来启动这个服务,最后在你的view视图里导包调用这个函数即可</li>
 </ul>
-
-             
-          </div>
-        </div>
-      <div class="post-footer">
-        
-    </div>
-    
-      <div class="recent-post-item">
-          <div class="post-title ">
-            <a href="/axios%E7%9A%84%E5%B0%81%E8%A3%85/">axios的封装</a>
-          </div>
-          <div class="post-meta">
-            
-            
-              <div class="post-meta-item date">
-                <span title="Created 2020.03.30"><i class="far fa-calendar-alt"></i> 2020.03.30</span>
-              </div>
-              <div class="post-meta-item updated">
-                <span title="Updated 2021.04.02"><i class="far fa-calendar-check"></i> 2021.04.02</span>
-              </div>
-             
-             
-            
-             <div class="post-meta-item wordcount">
-                
-                  <i class="fas fa-pencil-alt"></i> <span class="post-count">591 words</span>
-                   
-                
-                  <i class="far fa-clock"></i> <span class="post-count">2 min</span>
-                                       
-              </div>
-             
-        </div>
-          <div class="content">
-            
-                  <h1 id="axios封装"><a href="#axios封装" class="headerlink" title="axios封装"></a>axios封装</h1><p>一，为什么封装axios?</p>
-<ul>
-<li>在一个项目中,在网页多的时候我们每个页面都导axios包会比较麻烦,我们用封装方法将它封装起来,每次在页面中调用即可,会提高代码的复用更加方便快捷。</li>
-<li>一般我会在项目的src目录中，新建一个request文件夹，然后在里面新建一个http.js和一个api.js文件。http.js文件用来封装我们的axios，api.js用来统一管理我们的接口。</li>
-</ul>
-<p>二，功能实现</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载axios包</span></span><br><span class="line">pip install axios --save</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个新文件</span></span><br><span class="line"><span class="comment">// 配置axios基本的属性</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> axios = <span class="built_in">require</span>(<span class="string">&#x27;axios&#x27;</span>)</span><br><span class="line"></span><br><span class="line">axios.defaults.baseURL = <span class="string">&#x27;http://127.0.0.1:8000&#x27;</span> <span class="comment">// 请求的接口主域名</span></span><br><span class="line">axios.defaults.timeout = <span class="number">10000</span> <span class="comment">// 请求超时的设置 10s</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 请求拦截器(在请求前会自动去做的操作)，如果登陆了，那么自动带token发送</span></span><br><span class="line">axios.interceptors.request.use(<span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> token = sessionStorage.getItem(<span class="string">&#x27;token&#x27;</span>);</span><br><span class="line">  <span class="keyword">if</span> (token) &#123;</span><br><span class="line">    <span class="comment">//axios.defaults.headers[&#x27;Authorization&#x27;] = token // 头部设置</span></span><br><span class="line">    config.headers.common[<span class="string">&#x27;Authorization&#x27;</span>] = <span class="string">&quot;JWT &quot;</span> + token <span class="comment">// 头部设置</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> config;</span><br><span class="line">&#125;, <span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(error)</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 响应拦截器(在响应时自动会做的操作)，比如状态码返回为401时，要进入login界面</span></span><br><span class="line">axios.interceptors.response.use(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 200</span></span><br><span class="line">  <span class="keyword">return</span> response;</span><br><span class="line">&#125;, <span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (error.request.status == <span class="number">401</span>) &#123;</span><br><span class="line">    <span class="built_in">window</span>.location.href = <span class="string">&quot;/&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> error</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * post方法，对应post请求(四个请求方法)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;String&#125;</span> </span>url [请求的url地址]</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Object&#125;</span> </span>params [请求时携带的参数]</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Object&#125;</span> </span>headers [请求时的头部]</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params">url, params, headers</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    axios.get(url, &#123;params, headers&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">      reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">post</span>(<span class="params">url, params, headers</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    axios.post(url, params, headers).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// debugger</span></span><br><span class="line">      reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">put</span>(<span class="params">url, params, headers</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    axios.put(url, params, headers).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// debugger</span></span><br><span class="line">      reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">del</span>(<span class="params">url, params, headers</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    axios.delete(url, &#123;<span class="attr">data</span>: params, headers&#125;).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// debugger</span></span><br><span class="line">      reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> axios;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;get, post, put, del&#125; <span class="keyword">from</span> <span class="string">&#x27;./index&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 注册接口</span></span><br><span class="line"> <span class="comment">// @parameter: &#123;username:username, phone:phone&#125; [object]</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> signUp = <span class="function"><span class="params">parameter</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> post( <span class="comment">// 请求方法</span></span><br><span class="line">    <span class="string">&#x27;signup/&#x27;</span>, <span class="comment">//请求地址</span></span><br><span class="line">    parameter,</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
              
           </div>
