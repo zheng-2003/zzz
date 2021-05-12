@@ -1,0 +1,215 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="阿正"><meta name="renderer" content="webkit"><meta name="copyright" content="阿正"><meta name="keywords" content="欢迎来到阿正的博客"><meta name="description" content=""><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>黄伍盈</title><link rel="stylesheet" href="/blong/css/style.css"><link rel="stylesheet" href="/blong/css/animation.css"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/blong/js/main.js" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="欢迎来到阿正的博客" type="application/atom+xml">
+</head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="/img/assets/hhj.png"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">小盈盈</div><div class="profile-signature">半山腰总是挤得,你得去山顶看看</div><div class="friends"><div>FRIENDS</div><span><a href="//github.com/Longlongyu" target="_black">friendA</a></span><span><a href="//github.com/" target="_black">friendB</a></span><span><a href="//github.com/" target="_black">friendC</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 70vh;background-image: url(/blong/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/blong">欢迎来到阿正的博客</a></div><div class="intro-nav-label-box"><a href="/blong">Home</a><a href="/blong/about/">About</a><a href="/blong/archives/">Archives</a><a href="/blong/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/blong">Home</a><a href="/blong/about/">About</a><a href="/blong/archives/">Archives</a><a href="/blong/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>欢迎来到阿正的博客</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="//github.com/" target="_blank" title="github"></a><a class="fa fa-weibo" href="//www.weibo.com" target="_blank" title="weibo"></a><a class="fa fa-facebook" href="//www.facebook.com" target="_blank" title="facebook"></a><a class="fa fa-twitter" href="//twitter.com" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/%E4%BA%91%E4%B8%BB%E6%9C%BACentOS7%E5%AE%89%E8%A3%85Mysql%E6%95%B0%E6%8D%AE%E5%BA%93/">云主机安装数据库</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-08-30T12:08:31.000Z">2020-08-30 20:08:31</time><i class="fa fa-edit"></i><time datetime="2020-08-30T12:08:31.000Z">2021-04-21 15:23:06</time></div><div class="recent-post-content">安装MySQL在CentOS中默认安装有MariaDB，这个是MySQL的分支，但为了需要，还是要在系统中安装MySQL，而且安装完成之后可以直接覆盖掉MariaDB。
+1.下载并安装MySQL官方的 Yum Repository
+123456wget -i -c http:&#x2F;&#x2F;dev.mysql.com&#x2F;get&#x2F;mysql57-community-release-el7-10.noarch.rpm2.yum安装yum -y install mysql57-community-release-el7-10.noarch.rpm3.安装MySQL服务器,  ...</div><div class="read-more"><a class="more" href="/%E4%BA%91%E4%B8%BB%E6%9C%BACentOS7%E5%AE%89%E8%A3%85Mysql%E6%95%B0%E6%8D%AE%E5%BA%93/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/%E4%BA%91%E4%B8%BB%E6%9C%BACentOS7%E5%AE%89%E8%A3%85python3.6%E5%92%8CDjango/">云主机安装Python</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-08-30T12:08:31.000Z">2020-08-30 20:08:31</time><i class="fa fa-edit"></i><time datetime="2020-08-30T12:08:31.000Z">2021-04-20 20:27:59</time></div><div class="recent-post-content">进入官网
+拿取下载地址：https://www.python.org/
+
+  https://www.python.org/ftp/python/3.7.5/Python-3.7.5.tar.xz
+
+
+到云主机下载
+
+  wget：下载某个链接上的资源
+
+
+  进入home目录
+
+
+123cd home&#x2F;     # 进入目录mkdir tools  # 创建目录wget https:&#x2F;&#x2F;www.python.org&#x2F;ftp&#x2F;python&#x2F;3.7.5&#x2F;Python-3.7.5.tar.xz  # 在该目录下下载python3 ...</div><div class="read-more"><a class="more" href="/%E4%BA%91%E4%B8%BB%E6%9C%BACentOS7%E5%AE%89%E8%A3%85python3.6%E5%92%8CDjango/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/websell/">Webshell在浏览器中实现终端</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-08-30T12:08:31.000Z">2020-08-30 20:08:31</time><i class="fa fa-edit"></i><time datetime="2020-08-30T12:08:31.000Z">2021-04-02 11:48:55</time></div><div class="recent-post-content">websell一，概念：
+
+什么是websell：
+webshell就是以asp、php、jsp或者cgi等网页文件形式存在的一种代码执行环境，也可以将其称做为一种网页后门。黑客在入侵了一个网站后，通常会将asp或php后门文件与网站服务器WEB目录下正常的网页文件混在一起，然后就可以使用浏览器来访问asp或者php后门，得到一个命令执行环境，以达到控制网站服务器的目的。
+他是一个集成了一堆Linux命令的控制台界面
+
+
+sell的分类： 
+SH：编程方面相当优秀，输入命令优秀
+BASH：Linux系统中的一个默认shell，命令多
+
+
+
+二，应用场景：
+
+比如实验楼，他就是在浏览器中实现的黑 ...</div><div class="read-more"><a class="more" href="/websell/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/redis%E9%94%AE%E7%A9%BA%E9%97%B4/">redis键空间</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-08-30T12:08:31.000Z">2020-08-30 20:08:31</time><i class="fa fa-edit"></i><time datetime="2020-08-30T12:08:31.000Z">2021-04-02 11:47:57</time></div><div class="recent-post-content">Redis键空间一，什么是Redis键空间
+客户端可以通过订阅频道或模式， 来接收那些以某种方式改动了 Redis 数据集的事件二，应用场景
+比如打车类软件或者淘宝，对某个用户或者商品进行评价，在规定的时间里用户没有给予评价那么系统就会自动进行评价，可以理解为这个key过期了。三，代码实现想要开启键空间通知必须得进行对notify-keyspace-events进行配置
+notify-keyspace-events 为空字符串时，键空间通知关闭
+当给notify-keyspace-events 设值时，表示键空间通知开启
+
+这是对notify-keyspace-events的相关啊配置
+123 ...</div><div class="read-more"><a class="more" href="/redis%E9%94%AE%E7%A9%BA%E9%97%B4/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/celery%E5%BC%82%E6%AD%A5/">celery异步案例</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-04-30T12:08:31.000Z">2020-04-30 20:08:31</time><i class="fa fa-edit"></i><time datetime="2020-04-30T12:08:31.000Z">2021-04-02 11:47:08</time></div><div class="recent-post-content">celery异步框架一，celery是什么？
+
+celery是一个简单、灵活，可靠的，处理大量消息的分布式系统。它专注于实时处理的异步任务队列，同时也支持任务调度,celery是Python实现的分布式队列
+http://docs.jinkan.org/docs/celery/ 中文版官方文档
+
+二，celery的特点及应用场景：
+
+开源，速度快，高可用，灵活
+应用场景就是我们对于代码中耗时长的功能，可以异步操作，不影响我们对客户端的响应
+
+三，代码实现
+1234# 安装三个包 pip install -U Celery pip install redis pip install eventl ...</div><div class="read-more"><a class="more" href="/celery%E5%BC%82%E6%AD%A5/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/%E7%9B%B4%E6%92%ADflv/">浏览器中实现直播</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-08-30T12:08:31.000Z">2020-08-30 20:08:31</time><i class="fa fa-edit"></i><time datetime="2020-08-30T12:08:31.000Z">2021-04-02 11:46:31</time></div><div class="recent-post-content">视频直播一，概念部分视频直播分为几部分
+推流：
+
+就是将你现在直播的内容分成好几段一段一段的打包好，格式是.flv这个flv格式的比较简单轻量，加载速度快，播放也快这里我使用的软件是OBS，下载地址是：https://obsproject.com/zh-cn   
+
+
+拉流：
+
+就是拉取打包好的视频将它拼接起来播放给用户，这里我用的是Vlc，下载地址是 https://www.videolan.org/vlc/这里呢，我是用的HTTP-FLV直播协议HTTP-FLV的优缺点
+
+
+优点: 
+
+可以直接通过http协议进行传输，http属于公共协议，公共端口：80html播放视频就很简单， vid ...</div><div class="read-more"><a class="more" href="/%E7%9B%B4%E6%92%ADflv/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/%E6%94%AF%E4%BB%98%E5%AE%9D%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98%E6%B5%81%E7%A8%8B/">支付宝三方支付流程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-07-02T12:08:31.000Z">2020-07-02 20:08:31</time><i class="fa fa-edit"></i><time datetime="2020-07-02T12:08:31.000Z">2021-04-02 11:46:08</time></div><div class="recent-post-content">支付宝三方支付一,下载一个支付宝开放平台开发助手生成秘钥进入 https://www.alipay.com/ 并登陆,然后注册一个沙箱下载 pip install python-alipay-sdk –upgrade 模块流程图:
+12345678910111213141516171819202122232425262728293031323334353637383940414243# 将刚下载的模块中导出需要用的包from alipay import AliPayfrom alipay.utils import AliPayConfig# 开发一个支付接口class AlipayView(A ...</div><div class="read-more"><a class="more" href="/%E6%94%AF%E4%BB%98%E5%AE%9D%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98%E6%B5%81%E7%A8%8B/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85redis%E6%95%B0%E6%8D%AE%E5%BA%93/">云主机安装redis数据库</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-08-30T12:08:31.000Z">2020-08-30 20:08:31</time><i class="fa fa-edit"></i><time datetime="2020-08-30T12:08:31.000Z">2021-04-02 11:45:40</time></div><div class="recent-post-content">1.安装redis数据库
+1yum install redis
+
+
+
+2.下载fedora的epel仓库
+1yum install epel-release
+
+
+
+
+
+3.启动redis服务
+1systemctl start redis
+4.查看redis状态
+1systemctl status redis
+
+
+停止服务
+1systemctl stop redis 
+
+
+重启服务
+1systemctl restart redis
+
+5.查看redis进程
+1ps -ef |grep redis
+
+
+
+6.设置开机自启动
+1systemctl enable redis
+
+
+
+7.开放端口号 (若 ...</div><div class="read-more"><a class="more" href="/%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85redis%E6%95%B0%E6%8D%AE%E5%BA%93/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB/">测试分类</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-08-25T04:50:00.000Z">2020-08-25 12:50:00</time><i class="fa fa-edit"></i><time datetime="2020-08-25T04:50:00.000Z">2021-03-17 21:07:04</time></div><div class="recent-post-content">1这是一个测试
+</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Hexo"> Hexo</a></div><div class="read-more"><a class="more" href="/%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E2%80%94%E2%80%94Silence%E4%B8%BB%E9%A2%98%E7%9A%AE%E8%82%A4/">博客美化——Silence主题皮肤</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-08-30T12:08:31.000Z">2020-08-30 20:08:31</time><i class="fa fa-edit"></i><time datetime="2020-08-30T12:08:31.000Z">2021-03-17 21:07:04</time></div><div class="recent-post-content">介绍&emsp;&emsp;一款专注阅读的博客园主题，主要面向于经常混迹 博客园 的朋友。其追求大道至简的终极真理，界面追求简洁、运行追求高效、部署追求简单。
+
+博客皮肤源码地址
+预览地址
+如何部署、使用皮肤
+Silence作者的友链
+
+特点
+简洁优雅、精致漂亮的 UI 设计
+提供多种风格主题以便适应各类用户的偏好
+响应式设计，兼容手机端浏览器
+提供事无巨细的部署文档
+源码结构清晰并且注释完整，方便扩展
+
+开发&emsp;&emsp;请先确保您正在使用的机器已经安装 Node.js 和 Git 客户端。
+ git clone https://github.com/esofar/cnblogs- ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="博客园"> 博客园</a><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="博客美化"> 博客美化</a></div><div class="read-more"><a class="more" href="/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E2%80%94%E2%80%94Silence%E4%B8%BB%E9%A2%98%E7%9A%AE%E8%82%A4/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&amp;#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">NEXT &amp;#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
