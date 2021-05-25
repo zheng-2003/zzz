@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="阿正"><meta name="renderer" content="webkit"><meta name="copyright" content="阿正"><meta name="keywords" content="欢迎来到阿正的博客"><meta name="description" content=""><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>赵子正</title><link rel="stylesheet" href="/blong/css/style.css"><link rel="stylesheet" href="/blong/css/animation.css"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/blong/js/main.js" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="欢迎来到阿正的博客" type="application/atom+xml">
+</head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="/img/assets/zzz.jpg"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">阿正</div><div class="profile-signature">半山腰总是挤得,你得去山顶看看</div><div class="friends"><div>FRIENDS</div><span><a href="//github.com/Longlongyu" target="_black">friendA</a></span><span><a href="//github.com/" target="_black">friendB</a></span><span><a href="//github.com/" target="_black">friendC</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 70vh;background-image: url(/blong/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/blong">欢迎来到阿正的博客</a></div><div class="intro-nav-label-box"><a href="/blong">Home</a><a href="/blong/about/">About</a><a href="/blong/archives/">Archives</a><a href="/blong/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/blong">Home</a><a href="/blong/about/">About</a><a href="/blong/archives/">Archives</a><a href="/blong/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>欢迎来到阿正的博客</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="//github.com/" target="_blank" title="github"></a><a class="fa fa-weibo" href="//www.weibo.com" target="_blank" title="weibo"></a><a class="fa fa-facebook" href="//www.facebook.com" target="_blank" title="facebook"></a><a class="fa fa-twitter" href="//twitter.com" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/python%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/">Python常见面试题总结</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T12:08:31.000Z">2019-08-30 20:08:31</time><i class="fa fa-edit"></i><time datetime="2019-08-30T12:08:31.000Z">2021-04-14 07:48:21</time></div><div class="recent-post-content">Python基础部分1.python2 和 python3的区别?
+python2默认字节是ascii,而python3中是utf-8
+
+ASCII是每一个数字都有一个数值,UTF-8是不定长编码
+
+
+python2中print是语句,而python3中print是方法
+
+语句就是不用括号括起来的,方法是用括号括起来耳朵
+
+
+python2中map返回的是一个列表,而python3中返回的是一个可迭代对象
+
+python2中默认字节数是4,python3中是2,
+
+python2中除法是整形,python3中是一个浮点型
+
+
+2.您能列举几个PEP8规范吗?
+RFC(Request For C ...</div><div class="read-more"><a class="more" href="/python%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/docker%E7%9A%84%E4%BD%BF%E7%94%A8/">docker的基本命令及使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-03-30T12:08:31.000Z">2020-03-30 20:08:31</time><i class="fa fa-edit"></i><time datetime="2020-03-30T12:08:31.000Z">2021-04-02 11:47:28</time></div><div class="recent-post-content">docker一，概念部分：
+
+docker是什么？
+其实Docker是基于 linux 内核实现，Docker 最早采用 LXC 技术 ，LXC 是 Linux 原生支持的容器技术，可以提供轻量级的虚拟化 ，最初是 dotCloud 公司（后由于 Docker 开源后大受欢迎就将公司改名为 Docker Inc ，总部位于美国加州的旧金山）内部的一个开源的 PAAS 服务 (Platform as a ServiceService )的业余项目。
+
+
+docker的优点：
+  快速部署：短时间内可以部署成百上千个应用，更快速交付到线上
+  高效虚拟化：不需要额外hypervisor支持，基于l ...</div><div class="read-more"><a class="more" href="/docker%E7%9A%84%E4%BD%BF%E7%94%A8/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/celery%E5%BC%82%E6%AD%A5/">celery异步案例</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-04-30T12:08:31.000Z">2020-04-30 20:08:31</time><i class="fa fa-edit"></i><time datetime="2020-04-30T12:08:31.000Z">2021-04-02 11:47:08</time></div><div class="recent-post-content">celery异步框架一，celery是什么？
+
+celery是一个简单、灵活，可靠的，处理大量消息的分布式系统。它专注于实时处理的异步任务队列，同时也支持任务调度,celery是Python实现的分布式队列
+http://docs.jinkan.org/docs/celery/ 中文版官方文档
+
+二，celery的特点及应用场景：
+
+开源，速度快，高可用，灵活
+应用场景就是我们对于代码中耗时长的功能，可以异步操作，不影响我们对客户端的响应
+
+三，代码实现
+1234# 安装三个包 pip install -U Celery pip install redis pip install eventl ...</div><div class="read-more"><a class="more" href="/celery%E5%BC%82%E6%AD%A5/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/axios%E7%9A%84%E5%B0%81%E8%A3%85/">axios的封装</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-03-30T12:08:31.000Z">2020-03-30 20:08:31</time><i class="fa fa-edit"></i><time datetime="2020-03-30T12:08:31.000Z">2021-04-02 11:46:46</time></div><div class="recent-post-content">axios封装一，为什么封装axios?
+
+在一个项目中,在网页多的时候我们每个页面都导axios包会比较麻烦,我们用封装方法将它封装起来,每次在页面中调用即可,会提高代码的复用更加方便快捷。
+一般我会在项目的src目录中，新建一个request文件夹，然后在里面新建一个http.js和一个api.js文件。http.js文件用来封装我们的axios，api.js用来统一管理我们的接口。
+
+二，功能实现
+12# 下载axios包pip install axios --save
+
+1234567891011121314151617181920212223242526272829303132333 ...</div><div class="read-more"><a class="more" href="/axios%E7%9A%84%E5%B0%81%E8%A3%85/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/%E5%BE%AE%E5%8D%9A%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95/">微博三方登录</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T12:08:31.000Z">2019-08-30 20:08:31</time><i class="fa fa-edit"></i><time datetime="2019-08-30T12:08:31.000Z">2021-04-02 11:45:16</time></div><div class="recent-post-content">微博三方登录一,微博三方登录特点:
+  微博登录包括身份认证、用户关系以及内容传播。允许用户使用微博帐号登录访问第三方网站，分享内容，同步信息。它有如下特点：
+直接用微博账号登录你的应用或网站；
+获得高质量微博活跃用户；
+更便捷的分享到微博，提高网站信息传播力；二,应用场景:
+可以避免复杂繁琐的注册流程,让用户用自己已有的三方账号去登陆三,.功能实现
+首先进入微博开放平台 https://open.weibo.com/ 注册一个应用(个人,企业),填写应用信息及回调地址
+使用新浪微博的开放API，就需要跟新浪申请一个appkey和App Secret，这两个秘钥需要你的应用审核通过,官方才会给 ...</div><div class="read-more"><a class="more" href="/%E5%BE%AE%E5%8D%9A%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/page/2/">&amp;#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
