@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zhaozheng.link/%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85redis%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    
+    <lastmod>2021-06-01</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zhaozheng.link/%E4%BA%91%E4%B8%BB%E6%9C%BACentOS7%E5%AE%89%E8%A3%85Mysql%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    
+    <lastmod>2021-06-01</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zhaozheng.link/%E4%BA%91%E4%B8%BB%E6%9C%BACentOS7%E5%AE%89%E8%A3%85python3.6%E5%92%8CDjango/</loc>
+    
+    <lastmod>2021-06-01</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://zhaozheng.link/Vue%E8%AF%B7%E6%B1%82%E6%8B%A6%E6%88%AA%E5%99%A8%E5%8F%8A%E5%93%8D%E5%BA%94%E6%8B%A6%E6%88%AA%E5%99%A8/</loc>
     
     <lastmod>2021-06-01</lastmod>
@@ -72,20 +93,6 @@
   </url>
   
   <url>
-    <loc>https://zhaozheng.link/%E4%BA%91%E4%B8%BB%E6%9C%BACentOS7%E5%AE%89%E8%A3%85Mysql%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-    
-    <lastmod>2021-04-21</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zhaozheng.link/%E4%BA%91%E4%B8%BB%E6%9C%BACentOS7%E5%AE%89%E8%A3%85python3.6%E5%92%8CDjango/</loc>
-    
-    <lastmod>2021-04-20</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://zhaozheng.link/python%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/</loc>
     
     <lastmod>2021-04-13</lastmod>
@@ -143,13 +150,6 @@
   
   <url>
     <loc>https://zhaozheng.link/%E6%94%AF%E4%BB%98%E5%AE%9D%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98%E6%B5%81%E7%A8%8B/</loc>
-    
-    <lastmod>2021-04-02</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zhaozheng.link/%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85redis%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     
     <lastmod>2021-04-02</lastmod>
     

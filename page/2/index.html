@@ -98,7 +98,56 @@
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/blong/js/main.js" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="欢迎来到阿正的博客" type="application/atom+xml">
 </head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="/img/assets/zzz.jpg"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">阿正</div><div class="profile-signature">半山腰总是挤得,你得去山顶看看</div><div class="friends"><div>FRIENDS</div><span><a href="//github.com/Longlongyu" target="_black">friendA</a></span><span><a href="//github.com/" target="_black">friendB</a></span><span><a href="//github.com/" target="_black">friendC</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 70vh;background-image: url(/blong/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/blong">欢迎来到阿正的博客</a></div><div class="intro-nav-label-box"><a href="/blong">Home</a><a href="/blong/about/">About</a><a href="/blong/archives/">Archives</a><a href="/blong/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/blong">Home</a><a href="/blong/about/">About</a><a href="/blong/archives/">Archives</a><a href="/blong/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>欢迎来到阿正的博客</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="//github.com/" target="_blank" title="github"></a><a class="fa fa-weibo" href="//www.weibo.com" target="_blank" title="weibo"></a><a class="fa fa-facebook" href="//www.facebook.com" target="_blank" title="facebook"></a><a class="fa fa-twitter" href="//twitter.com" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/redis%E5%8F%91%E5%B8%83%E8%80%85%E8%AE%A2%E9%98%85%E8%80%85/">redis发布者订阅者</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T12:08:31.000Z">2019-08-30 20:08:31</time><i class="fa fa-edit"></i><time datetime="2019-08-30T12:08:31.000Z">2021-06-01 15:27:51</time></div><div class="recent-post-content">redis发布者订阅者一，概念知识
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">阿正</div><div class="profile-signature">半山腰总是挤得,你得去山顶看看</div><div class="friends"><div>FRIENDS</div><span><a href="//github.com/Longlongyu" target="_black">friendA</a></span><span><a href="//github.com/" target="_black">friendB</a></span><span><a href="//github.com/" target="_black">friendC</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 70vh;background-image: url(/blong/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/blong">欢迎来到阿正的博客</a></div><div class="intro-nav-label-box"><a href="/blong">Home</a><a href="/blong/about/">About</a><a href="/blong/archives/">Archives</a><a href="/blong/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/blong">Home</a><a href="/blong/about/">About</a><a href="/blong/archives/">Archives</a><a href="/blong/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>欢迎来到阿正的博客</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="//github.com/" target="_blank" title="github"></a><a class="fa fa-weibo" href="//www.weibo.com" target="_blank" title="weibo"></a><a class="fa fa-facebook" href="//www.facebook.com" target="_blank" title="facebook"></a><a class="fa fa-twitter" href="//twitter.com" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85redis%E6%95%B0%E6%8D%AE%E5%BA%93/">云主机安装redis数据库</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-01-01T13:04:42.000Z">2020-01-01 21:04:42</time><i class="fa fa-edit"></i><time datetime="2020-01-01T13:04:42.000Z">2021-06-01 19:52:51</time></div><div class="recent-post-content">1.安装redis数据库
+1yum install redis
+
+
+
+2.下载fedora的epel仓库
+1yum install epel-release
+
+
+
+
+
+3.启动redis服务
+1systemctl start redis
+4.查看redis状态
+1systemctl status redis
+
+
+停止服务
+1systemctl stop redis 
+
+
+重启服务
+1systemctl restart redis
+
+5.查看redis进程
+1ps -ef |grep redis
+
+
+
+6.设置开机自启动
+1systemctl enable redis
+
+
+
+7.开放端口号 (若 ...</div><div class="read-more"><a class="more" href="/%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85redis%E6%95%B0%E6%8D%AE%E5%BA%93/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/%E4%BA%91%E4%B8%BB%E6%9C%BACentOS7%E5%AE%89%E8%A3%85python3.6%E5%92%8CDjango/">云主机安装Python</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-01-01T12:12:31.000Z">2020-01-01 20:12:31</time><i class="fa fa-edit"></i><time datetime="2020-01-01T12:12:31.000Z">2021-06-01 19:52:51</time></div><div class="recent-post-content">进入官网
+拿取下载地址：https://www.python.org/
+
+  https://www.python.org/ftp/python/3.7.5/Python-3.7.5.tar.xz
+
+
+到云主机下载
+
+  wget：下载某个链接上的资源
+
+
+  进入home目录
+
+
+123cd home&#x2F;     # 进入目录mkdir tools  # 创建目录wget https:&#x2F;&#x2F;www.python.org&#x2F;ftp&#x2F;python&#x2F;3.7.5&#x2F;Python-3.7.5.tar.xz  # 在该目录下下载python3 ...</div><div class="read-more"><a class="more" href="/%E4%BA%91%E4%B8%BB%E6%9C%BACentOS7%E5%AE%89%E8%A3%85python3.6%E5%92%8CDjango/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/redis%E5%8F%91%E5%B8%83%E8%80%85%E8%AE%A2%E9%98%85%E8%80%85/">redis发布者订阅者</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T12:08:31.000Z">2019-08-30 20:08:31</time><i class="fa fa-edit"></i><time datetime="2019-08-30T12:08:31.000Z">2021-06-01 15:27:51</time></div><div class="recent-post-content">redis发布者订阅者一，概念知识
 
 什么是发布者？
 redis提供 一组命令实现订阅者发布者模式，publisher subscriber。实现进程间通信，而发布者顾名思义就是发送数据包的
@@ -114,21 +163,7 @@ redis提供 一组命令实现订阅者发布者模式，publisher subscriber。
 比如打车类软件，当你发送你要打车时，这个消息就会同时发送到司机师傅那，然后他们选择离你最近的，他们就属于订阅者，而你是发布者
 
 三，代码实现
-12345#发布者pubimport redisconn = redis.Redis(host=&#x27;127.0.0.1&#x27;, dec ...</div><div class="read-more"><a class="more" href="/redis%E5%8F%91%E5%B8%83%E8%80%85%E8%AE%A2%E9%98%85%E8%80%85/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/%E4%BA%91%E4%B8%BB%E6%9C%BACentOS7%E5%AE%89%E8%A3%85python3.6%E5%92%8CDjango/">云主机安装Python</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-08-30T12:08:31.000Z">2020-08-30 20:08:31</time><i class="fa fa-edit"></i><time datetime="2020-08-30T12:08:31.000Z">2021-04-20 20:27:59</time></div><div class="recent-post-content">进入官网
-拿取下载地址：https://www.python.org/
-
-  https://www.python.org/ftp/python/3.7.5/Python-3.7.5.tar.xz
-
-
-到云主机下载
-
-  wget：下载某个链接上的资源
-
-
-  进入home目录
-
-
-123cd home&#x2F;     # 进入目录mkdir tools  # 创建目录wget https:&#x2F;&#x2F;www.python.org&#x2F;ftp&#x2F;python&#x2F;3.7.5&#x2F;Python-3.7.5.tar.xz  # 在该目录下下载python3 ...</div><div class="read-more"><a class="more" href="/%E4%BA%91%E4%B8%BB%E6%9C%BACentOS7%E5%AE%89%E8%A3%85python3.6%E5%92%8CDjango/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/python%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/">Python常见面试题总结</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T12:08:31.000Z">2019-08-30 20:08:31</time><i class="fa fa-edit"></i><time datetime="2019-08-30T12:08:31.000Z">2021-04-14 07:48:21</time></div><div class="recent-post-content">Python基础部分1.python2 和 python3的区别?
+12345#发布者pubimport redisconn = redis.Redis(host=&#x27;127.0.0.1&#x27;, dec ...</div><div class="read-more"><a class="more" href="/redis%E5%8F%91%E5%B8%83%E8%80%85%E8%AE%A2%E9%98%85%E8%80%85/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/python%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/">Python常见面试题总结</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2019-08-30T12:08:31.000Z">2019-08-30 20:08:31</time><i class="fa fa-edit"></i><time datetime="2019-08-30T12:08:31.000Z">2021-04-14 07:48:21</time></div><div class="recent-post-content">Python基础部分1.python2 和 python3的区别?
 python2默认字节是ascii,而python3中是utf-8
 
 ASCII是每一个数字都有一个数值,UTF-8是不定长编码
@@ -188,40 +223,5 @@ http://docs.jinkan.org/docs/celery/ 中文版官方文档
 优点: 
 
 可以直接通过http协议进行传输，http属于公共协议，公共端口：80html播放视频就很简单， vid ...</div><div class="read-more"><a class="more" href="/%E7%9B%B4%E6%92%ADflv/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/%E6%94%AF%E4%BB%98%E5%AE%9D%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98%E6%B5%81%E7%A8%8B/">支付宝三方支付流程</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-07-02T12:08:31.000Z">2020-07-02 20:08:31</time><i class="fa fa-edit"></i><time datetime="2020-07-02T12:08:31.000Z">2021-04-02 11:46:08</time></div><div class="recent-post-content">支付宝三方支付一,下载一个支付宝开放平台开发助手生成秘钥进入 https://www.alipay.com/ 并登陆,然后注册一个沙箱下载 pip install python-alipay-sdk –upgrade 模块流程图:
-12345678910111213141516171819202122232425262728293031323334353637383940414243# 将刚下载的模块中导出需要用的包from alipay import AliPayfrom alipay.utils import AliPayConfig# 开发一个支付接口class AlipayView(A ...</div><div class="read-more"><a class="more" href="/%E6%94%AF%E4%BB%98%E5%AE%9D%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98%E6%B5%81%E7%A8%8B/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85redis%E6%95%B0%E6%8D%AE%E5%BA%93/">云主机安装redis数据库</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-08-30T12:08:31.000Z">2020-08-30 20:08:31</time><i class="fa fa-edit"></i><time datetime="2020-08-30T12:08:31.000Z">2021-04-02 11:45:40</time></div><div class="recent-post-content">1.安装redis数据库
-1yum install redis
-
-
-
-2.下载fedora的epel仓库
-1yum install epel-release
-
-
-
-
-
-3.启动redis服务
-1systemctl start redis
-4.查看redis状态
-1systemctl status redis
-
-
-停止服务
-1systemctl stop redis 
-
-
-重启服务
-1systemctl restart redis
-
-5.查看redis进程
-1ps -ef |grep redis
-
-
-
-6.设置开机自启动
-1systemctl enable redis
-
-
-
-7.开放端口号 (若 ...</div><div class="read-more"><a class="more" href="/%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85redis%E6%95%B0%E6%8D%AE%E5%BA%93/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB/">测试分类</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-08-25T04:50:00.000Z">2020-08-25 12:50:00</time><i class="fa fa-edit"></i><time datetime="2020-08-25T04:50:00.000Z">2021-03-17 21:07:04</time></div><div class="recent-post-content">1这是一个测试
+12345678910111213141516171819202122232425262728293031323334353637383940414243# 将刚下载的模块中导出需要用的包from alipay import AliPayfrom alipay.utils import AliPayConfig# 开发一个支付接口class AlipayView(A ...</div><div class="read-more"><a class="more" href="/%E6%94%AF%E4%BB%98%E5%AE%9D%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98%E6%B5%81%E7%A8%8B/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB/">测试分类</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2020-08-25T04:50:00.000Z">2020-08-25 12:50:00</time><i class="fa fa-edit"></i><time datetime="2020-08-25T04:50:00.000Z">2021-03-17 21:07:04</time></div><div class="recent-post-content">1这是一个测试
 </div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="Hexo"> Hexo</a></div><div class="read-more"><a class="more" href="/%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><a class="extend prev" rel="prev" href="/">&amp;#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">NEXT &amp;#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
