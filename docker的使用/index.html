@@ -1,0 +1,692 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <meta name="author" content="阿正">
+  
+  
+  
+  
+  
+    <link rel="alternate" href="/atom.xml " title="欢迎来到阿正的博客" type="application/atom+xml">
+  
+
+  
+
+  <title>docker的基本命令及使用 | 欢迎来到阿正的博客</title>
+
+  
+
+  
+
+  
+
+  <link rel="stylesheet" href="/css/style.css" >
+  <link rel="stylesheet" href="/css/partial/dark.css" >
+
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&amp;display=swap"  media="print" onload="this.media='all'">
+  
+  
+  
+
+  
+    
+      <link rel="stylesheet" href="/css/partial/highlight/atom-one-light.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/a2396837/CDN@latest/css/iconfont.css">
+    
+  
+
+  
+    <script src="/js/todark.js"></script>
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+</html>
+    
+<div class="nav index" style="height: 60px;">
+    <div class="title animated fadeInDown">
+        <div class="layui-container">
+                <div class="nav-title"><a href="/" title="欢迎来到阿正的博客">欢迎来到阿正的博客</a></div>
+            <div class="nav-list">
+                <button> <span class=""></span><span style="display: block;"></span><span class=""></span> </button>
+                <ul class="layui-nav" lay-filter="">
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/blong/data/links.yml/">
+                            <i class="" style="color:;"></i>
+                            <span class="layui-nav-item-name">Search</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/ ">
+                            <i class=" fab fa-fort-awesome " style="color: rgb(255 107 107);"></i>
+                            <span class="layui-nav-item-name">Home</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/blong/archives/">
+                            <i class="" style="color:;"></i>
+                            <span class="layui-nav-item-name">Archives</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/blong/tags/">
+                            <i class="" style="color:;"></i>
+                            <span class="layui-nav-item-name">Tags</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/blong/categories/">
+                            <i class="" style="color:;"></i>
+                            <span class="layui-nav-item-name">Categories</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/blong/about/">
+                            <i class="" style="color:;"></i>
+                            <span class="layui-nav-item-name">About</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/guestbook/ ">
+                            <i class=" fab fa-telegram " style="color: hsl(205deg 100% 50%);"></i>
+                            <span class="layui-nav-item-name">Guestbook</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/blong/link/">
+                            <i class="" style="color:;"></i>
+                            <span class="layui-nav-item-name">Friends</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/shuoshuo/ ">
+                            <i class=" fas fa-coffee " style="color:#31c7c1;"></i>
+                            <span class="layui-nav-item-name">说说</span>
+                        </a>
+                    </li>
+                    
+                    
+                        <li class="layui-nav-item" id="btn-toggle-dark">🌙</li>
+                    
+                    <span class="layui-nav-bar" style="left: 342px; top: 78px; width: 0px; opacity: 0;"></span>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<header class="header">
+        
+            <div class="logo">
+                    <a href="/"><img src="/img/hhj.png/" onerror=this.onerror=null,this.src="/img/hhj.png"></a>
+            </div>
+         
+    </div>
+     
+    
+            <div class="social">
+                
+                        <a class="social-icon" href="https://github.com/a2396837" target="_blank" title="Github">
+                            <i class="iconfont icon-GitHub" aria-hidden="true"></i>
+                          </a>
+                 
+                        <a class="social-icon" href="mailto:894049579@qq.com" target="_blank" title="Email">
+                            <i class="iconfont icon-email" aria-hidden="true"></i>
+                          </a>
+                 
+                        <a class="social-icon" href="https://steamcommunity.com/id/a2396837" target="_blank" title="Steam">
+                            <i class="iconfont icon-steam" aria-hidden="true"></i>
+                          </a>
+                 
+                        <a class="social-icon" href="https://space.bilibili.com/8823569" target="_blank" title="Bilibili">
+                            <i class="iconfont icon-bilibili" aria-hidden="true"></i>
+                          </a>
+                 
+                        <a class="social-icon" href="https://music.163.com/#/user/home?id=262078590" target="_blank" title="Netmusic">
+                            <i class="iconfont icon-wangyiyunyinle1" aria-hidden="true"></i>
+                          </a>
+                 
+                        <a class="social-icon" href="/atom.xml" target="_blank" title="rss">
+                            <i class="iconfont icon-rss" aria-hidden="true"></i>
+                          </a>
+                 
+            </div>
+     
+</header>
+
+    
+<article id="post">
+  <div class="post-title">docker的基本命令及使用</div>
+  
+<div class="post-meta">
+    
+    
+      <div class="post-meta-item date">
+        <span title="Created 2020.03.30"><i class="far fa-calendar-alt"></i> 2020.03.30</span>
+      </div>
+      <div class="post-meta-item updated">
+        <span title="Updated 2021.04.02"><i class="far fa-calendar-check"></i> 2021.04.02</span>
+      </div>
+     
+     
+    
+     <div class="post-meta-item wordcount">
+        
+          <i class="fas fa-pencil-alt"></i> <span class="post-count">1.2k words</span>
+           
+        
+          <i class="far fa-clock"></i> <span class="post-count">4 min</span>
+                               
+      </div>
+     
+</div>
+
+
+  
+  <div class="content">
+        <div><h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><p>一，概念部分：</p>
+<ul>
+<li>docker是什么？<ul>
+<li>其实Docker是基于 linux 内核实现，Docker 最早采用 LXC 技术 ，LXC 是 Linux 原生支持的容器技术，可以提供轻量级的虚拟化 ，最初是 dotCloud 公司（后由于 Docker 开源后大受欢迎就将公司改名为 Docker Inc ，总部位于美国加州的旧金山）内部的一个开源的 PAAS 服务 (Platform as a ServiceService )的业余项目。</li>
+</ul>
+</li>
+<li>docker的优点：<ul>
+<li>  快速部署：短时间内可以部署成百上千个应用，更快速交付到线上</li>
+<li>  高效虚拟化：不需要额外hypervisor支持，基于linux内核实现应用虚拟化，相比虚拟机大幅提高性能和效率</li>
+<li>  节省开支：提高服务器利用率，降低IT支出</li>
+<li>  简化配置：将运行环境打包保存至容器，使用时直接启动即可</li>
+<li>  环境统一：将开发，测试，生产的应用运行环境进行标准化和统一，减少环境不一样带来的各种问题</li>
+<li>  快速迁移和扩展：可实现跨平台运行在物理机、虚拟机、公有云等环境，良好的兼容性可以方便将应用从A宿主机迁移到B宿主机，甚至是A平台迁移到B平台</li>
+</ul>
+</li>
+</ul>
+<p>二，应用场景：</p>
+<ul>
+<li>  节省项目部署时间</li>
+<li>  整体打包</li>
+<li>  配置linux环境等等</li>
+</ul>
+<p>三，功能实现</p>
+<h3 id="首先来说一下docker的镜像的一些常用命令"><a href="#首先来说一下docker的镜像的一些常用命令" class="headerlink" title="首先来说一下docker的镜像的一些常用命令"></a>首先来说一下docker的镜像的一些常用命令</h3><ul>
+<li>安装docker  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install docker</span><br></pre></td></tr></table></figure></li>
+<li>拉取镜像  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull 镜像名</span><br></pre></td></tr></table></figure></li>
+<li>查看所有镜像  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure></li>
+<li>删除镜像  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi 镜像<span class="built_in">id</span></span><br></pre></td></tr></table></figure></li>
+<li>启动服务  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service docker start</span><br></pre></td></tr></table></figure></li>
+<li>测试镜像  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run 镜像id</span><br></pre></td></tr></table></figure>
+<h3 id="然后就是docker容器"><a href="#然后就是docker容器" class="headerlink" title="然后就是docker容器"></a>然后就是docker容器</h3></li>
+<li>拉取镜像  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker pull ubuntu</span></span><br></pre></td></tr></table></figure></li>
+<li>启动容器  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -it ubuntu /<span class="built_in">bin</span>/bash</span><br></pre></td></tr></table></figure>
+<ul>
+<li>-i: 交互式操作。</li>
+<li>-t: 终端。</li>
+<li>ubuntu: ubuntu 镜像。</li>
+<li>/bin/bash：放在镜像名后的是命令，这里我们希望有个交互式 Shell，因此用的是 /bin/bas</li>
+</ul>
+</li>
+<li>查看所有容器  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps -a</span><br></pre></td></tr></table></figure></li>
+<li>停止容器  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker stop 容器<span class="built_in">id</span></span><br></pre></td></tr></table></figure></li>
+<li>启动容器  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker start 容器<span class="built_in">id</span></span><br></pre></td></tr></table></figure></li>
+<li>进入容器  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach 容器<span class="built_in">id</span></span><br></pre></td></tr></table></figure></li>
+<li>这里推荐用exec的因为这个容器退出不会导致容器停止  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it 容器<span class="built_in">id</span> /<span class="built_in">bin</span>/bash</span><br></pre></td></tr></table></figure>
+<h2 id="dockerfile"><a href="#dockerfile" class="headerlink" title="dockerfile"></a>dockerfile</h2></li>
+</ul>
+<ul>
+<li>  每一行以Dockerfile的指令开头，指令不区分大小写，但是惯例使用大写</li>
+<li>  使用 # 开始作为注释</li>
+<li>  每一行只支持一条指令，每条指令可以携带多个参数</li>
+<li>  指令按文件的顺序从上+</li>
+<li>  至下进行执行</li>
+<li>  每个指令的执行会生成一个新的镜像层，为了减少分层和镜像大小，尽可能将多条指令合并成一条指令</li>
+<li>  制作镜像一般可能需要反复多次，每次执行dockfile都按顺序执行，从头开始，已经执行过的指令已经缓存，不需要再执行，后续有一行指令没执行过，再往后的指令将会重新执行，所以为加速镜像制作，将最常变化的内容放下dockerfile的文件的后面</li>
+</ul>
+<h3 id="dockerfile的常用命令"><a href="#dockerfile的常用命令" class="headerlink" title="dockerfile的常用命令"></a>dockerfile的常用命令</h3><ul>
+<li><p>定制镜像</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FROM nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>exec启动镜像</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUN [<span class="string">&quot;可执行文件&quot;</span>, <span class="string">&quot;参数1&quot;</span>, <span class="string">&quot;参数2&quot;</span>]</span><br></pre></td></tr></table></figure></li>
+<li><p>拷贝本机文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COPY 原路径 目标路径</span><br></pre></td></tr></table></figure></li>
+<li><p>ADD</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ADD 与 copy 用法类似，可以说他比copy更加高级</span><br><span class="line"></span><br><span class="line"><span class="comment"># ADD 的优点：在执行 &lt;源文件&gt; 为 tar 压缩文件的话，压缩格式为 gzip, bzip2 以及 xz 的情况下，会自动复制并解压到 &lt;目标路径&gt;。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ADD 的缺点：在不解压的前提下，无法复制 tar 压缩文件。会令镜像构建缓存失效，从而可能会令镜像构建变得比较缓慢。具体是否使用，可以根据是否需要自动解压来决定。</span></span><br></pre></td></tr></table></figure></li>
+<li><p>CMD 每个 Dockerfile 只能有一条 CMD 命令。如指定了多条，只有最后一条被执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CMD [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]</span><br><span class="line">CMD &lt;shell&gt;</span><br><span class="line">CMD [&quot;shell&quot;,&quot;args&quot;...]</span><br></pre></td></tr></table></figure></li>
+<li><p>ENTRYPOINT</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 他跟CMD类似 每个 Dockerfile 中只能有一个 ENTRYPOINT，当指定多个时，只有最后一个生效</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXTRYPOINT [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]</span><br></pre></td></tr></table></figure></li>
+<li><p>ENV</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定一个环境变量，会被后续 RUN 指令使用，并在容器运行时保持</span></span><br><span class="line">ENV &lt;key&gt; &lt;value&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>EXPOSE</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 声明端口帮助镜像使用者理解这个镜像服务的守护端口，以方便配置映射</span></span><br><span class="line">EXPOSE &lt;端口<span class="number">1</span>&gt; [&lt;端口<span class="number">2</span>&gt;...]</span><br></pre></td></tr></table></figure></li>
+<li><p>WORKDIR</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 为后续的 RUN、CMD、ENTRYPOINT 指令配置工作目录，当容器运行后，进入容器内的默认目录</span></span><br><span class="line">WORKDIR /path</span><br></pre></td></tr></table></figure></li>
+</ul>
+</div>
+        
+          <div class="post-copyright">
+                  <div class="copyright-item">
+                      <span> Author: 阿正</span>
+                  </div>
+                  <div class="copyright-item">
+                      <span> Link: <a href="https://zhaozheng.link/docker%E7%9A%84%E4%BD%BF%E7%94%A8/">https://zhaozheng.link/docker%E7%9A%84%E4%BD%BF%E7%94%A8/</a></span>
+                  </div>
+                  <div class="copyright-item">
+                      <span> License: 本博客所有文章除特别声明外，均采用许可协议 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> 转载请注明出处！</span>
+                  </div>
+          </div>
+        
+  </div>
+
+  <div class="share-reward">
+    <div class="share">
+        
+<div class="social-share" data-sites="facebook,twitter,wechat,weibo,qq"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script>
+
+
+      </div>
+        <div class="reward">
+          
+  <div style="padding: 10px 0; margin-left: 20px; width: 90%; text-align: center;">
+    <div class="reward-content">
+        <ul id="donateBox" class="list pos-a">
+          
+           <li id="PayPal"><a href="https://paypal.me" target="_blank" title="PayPal">PayPal</a></li>
+            
+          
+            <li id="AliPay" title="Alipay"><img data-img="/img/alipay.jpg" onerror=this.onerror=null,this.src="/img/hhj.png"></img></li>
+               
+                 
+            <li id="WeChat" title="Wechatpay"><img date-img="/img/wechat.jpg" onerror=this.onerror=null,this.src="/img/hhj.png"></img></li>
+                      
+          </ul>
+        <div id="QRBox" class="pos-f left-100">
+          <div id="MainBox"></div>
+        </div>
+    </div>
+  </div>
+  
+        </div>
+    </div>
+    
+    <div class="post_tags">
+      
+    </div>
+    <div class="post-nav">
+      
+        <div class="post-nav-prev post-nav-item">
+            <a href="/axios%E7%9A%84%E5%B0%81%E8%A3%85/" >axios的封装<i class="fa fa-chevron-left"></i></a>
+        </div>
+      
+      
+        <div class="post-nav-next post-nav-item">
+            <a href="/%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85redis%E6%95%B0%E6%8D%AE%E5%BA%93/" >云主机安装redis数据库<i class="fa fa-chevron-right"></i></a>
+        </div>
+      
+    </div>
+      
+
+    <script src='//unpkg.com/@waline/client/dist/Waline.min.js'></script>
+    <div id="waline"></div>
+    <script>
+    new Waline({
+        el: '#waline',
+        path: location.pathname,
+        serverURL: "",
+        avatar: "monsterid",
+        placeholder: "Just go go"
+    });
+    </script>
+
+
+
+  <div id="valine"></div>
+  <script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script>
+  <script>
+        new Valine({
+          el: '#valine',
+          appId: "",
+          appKey: "",
+          avatar: "mm",
+          lang: "",
+          meta: 'nick,mail,link'.split(','),
+          requiredFields: 'nick,mail'.split(','),
+          placeholder: "评论记得带上邮箱,你的留言我会马上收到邮箱提醒哒",
+          pageSize:'10',
+          recordIP: 'false',
+          serverURLs: "",
+          emojiCDN: "",
+          enableQQ: "true",
+        });
+  </script>
+  
+
+</article>
+
+    
+<a id="gotop" href="javascript:" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    
+
+
+
+
+
+
+    
+<div id="bottom-outer">
+    <div id="bottom-inner">
+        © 2020 <i class="fa fa-heart" id="heart"></i> 阿正 
+        <br>
+        Powered by 
+        <a target="_blank" rel="noopener" href="http://hexo.io">hexo</a> | Theme is <a target="_blank" rel="noopener" href="https://github.com/a2396837/hexo-theme-blank/">blank</a>
+        
+          <div class="icp-info">
+            
+          <a href="" target="_blank"> </a>
+        </div>
+        
+    </div>  
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/layui-src@2.5.5/dist/layui.min.js"></script>
+
+
+
+  
+    <script src="/js/script.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+  
+
+ 
+
+
+
+  <script>
+    window.lazyLoadOptions = {
+      elements_selector: 'img',
+      threshold: 0
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script>   
+  
+
+
+  <script>
+    var images = $('img').not('.nav-logo img').not('.card img').not($('a>img')).not('.reward-content img')
+    images.each(function (i, o) {
+      var lazyloadSrc = $(o).attr('data-src') ? $(o).attr('data-src') : $(o).attr('src')
+      $(o).wrap(`<a href="${lazyloadSrc}" data-fancybox="group" data-caption="${$(o).attr('alt')}" class="fancybox"></a>`)
+    })
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script>
+  <script>
+        $().fancybox({
+      selector: '[data-fancybox]',
+      loop: true,
+      transitionEffect: 'slide',
+      protect: true,
+      buttons: ['slideShow', 'fullScreen', 'thumbs', 'close']
+    })
+  </script>   
+  
+
+
+  <script>
+  if (!window.MathJax) {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]],
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/)
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+              const text = document.createTextNode('')
+              node.parentNode.replaceChild(text, node)
+              math.start = {node: text, delim: '', n: 0}
+              math.end = {node: text, delim: '', n: 0}
+              doc.math.push(math)
+            }
+          }, '']
+        }
+      }
+    }
+    
+    var script = document.createElement('script')
+    script.src = "https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"
+    script.id = 'MathJax-script'
+    script.async = true
+    document.head.appendChild(script)
+  } else {
+    MathJax.startup.document.state(0)
+    MathJax.texReset()
+    MathJax.typeset()
+  }
+  </script>
+  
+
+
+  
+<script>
+if (document.getElementsByClassName('mermaid').length) {
+    if (window.mermaidJsLoad) mermaid.init()
+    else {
+      $.getScript("https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js", function () {
+        window.mermaidJsLoad = true
+        mermaid.initialize({
+          theme: "default",
+        })
+      })
+    }
+  }
+  </script>
+  
+
+
+  <script>
+    jQuery(document).ready(function () {
+      var QRBox = $('#QRBox');
+      var MainBox = $('#MainBox');
+      var AliPayQR = '/img/alipay.jpg';
+      var WeChanQR = '/img/wechat.jpg';
+
+      function showQR(QR) {
+        if (QR) {
+          MainBox.css('background-image', 'url(' + QR + ')');
+        }
+        $('#donateBox').addClass('blur');
+        QRBox.fadeIn(300, function (argument) {
+          MainBox.addClass('showQR');
+        });
+      }
+
+      $('#donateBox>li').click(function (event) {
+        var thisID = $(this).attr('id');
+        if (thisID === 'AliPay') {
+          showQR(AliPayQR);
+        } else if (thisID === 'WeChat') {
+          showQR(WeChanQR);
+        }
+      });
+
+      MainBox.click(function (event) {
+        MainBox.removeClass('showQR').addClass('hideQR');
+        setTimeout(function (a) {
+          QRBox.fadeOut(300, function (argument) {
+            MainBox.removeClass('hideQR');
+          });
+          $('#DonateText,#donateBox,#github').removeClass('blur');
+        }, 600);
+
+      });
+    });
+  </script>
+  
+
+
+  
+<div id="QPlayer">
+	<div id="pContent">
+		<div id="player">
+			<span class="cover"></span>
+			<div class="ctrl">
+				<div class="musicTag marquee">
+					<strong>Title</strong>
+					 <span> - </span>
+					<span class="artist">Artist</span>
+				</div>
+				<div class="progress">
+					<div class="timer left">0:00</div>
+					<div class="contr">
+						<div class="rewind icon"></div>
+						<div class="playback icon"></div>
+						<div class="fastforward icon"></div>
+					</div>
+					<div class="right">
+						<div class="liebiao icon"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ssBtn">
+				<div class="adf"><i class="fas fa-music" style="color: #Fff;"></i></div>
+		</div>
+	</div>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/a2396837/CDN@latest/css/audio.css">
+	<ol id="playlist"></ol>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js"></script>
+<script>
+	var playlist = [];
+	
+	var isRotate = true;
+	var autoplay = false;
+  </script>
+<script src="https://cdn.jsdelivr.net/gh/a2396837/CDN@latest/js/player.js"></script>
+<script>
+  function bgChange(){
+	var lis= $('.lib');
+	for(var i=0; i<lis.length; i+=2)
+	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+  }
+  window.onload = bgChange;
+</script>
+
+  
+
+
+  <script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script>
+  
+
+
+  <script src="https://cdn.jsdelivr.net/gh/a2396837/CDN@latest/js/firework.js"></script>
+  
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js"></script>
+<script>
+!function (e, t, a) {
+  var initCopyCode = function(){
+    var copyHtml = '';
+    copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+    copyHtml += '  <i class="fa fa-clipboard"></i><span>复制</span>';
+    copyHtml += '</button>';
+    $(".highlight .code pre").before(copyHtml);
+    new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+  }
+  initCopyCode();
+}(window, document);
+</script>  
+  
+
+<script>
+  var btntop = $('#gotop');
+  btntop.on('click', function (e) {
+    e.preventDefault();
+    $('html, body').animate({ scrollTop: 0 }, '300');
+  });
+
+  var $table = $('.content table').not($('figure.highlight > table'))
+$table.each(function () {
+  $(this).wrap('<div class="table-wrap"></div>')
+})
+</script>
+
+
+
+</html>
