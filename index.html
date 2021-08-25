@@ -426,14 +426,14 @@
         </div>
           <div class="content">
             
-                  <h2 id="整体流程共分为nginx部署django和nginx部署vue"><a href="#整体流程共分为nginx部署django和nginx部署vue" class="headerlink" title="整体流程共分为nginx部署django和nginx部署vue"></a>整体流程共分为nginx部署django和nginx部署vue</h2><p><img src="https://i.loli.net/2021/04/28/jOLc8UglmKSrQMD.png" alt="部署项目流程.png"></p>
+                  <h2 id="整体流程共分为nginx部署django和nginx部署vue"><a href="#整体流程共分为nginx部署django和nginx部署vue" class="headerlink" title="整体流程共分为nginx部署django和nginx部署vue"></a>整体流程共分为nginx部署django和nginx部署vue</h2><p><img src= "/img/hhj.png" data-src="https://i.loli.net/2021/04/28/jOLc8UglmKSrQMD.png" alt="部署项目流程.png"></p>
 <h3 id="django项目配置"><a href="#django项目配置" class="headerlink" title="django项目配置"></a>django项目配置</h3><p>在settings.py文件中配置</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DEBUG = <span class="literal">True</span> <span class="comment"># 暂时开着</span></span><br><span class="line"></span><br><span class="line">ALLOWED_HOSTS = [<span class="string">&#x27;*&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置静态资源目录，后面部署会用到 </span></span><br><span class="line">STATIC_ROOT = os.path.join(BASE_DIR, <span class="string">&quot;static&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 <h3 id="将django项目中所需要的环境进行打包"><a href="#将django项目中所需要的环境进行打包" class="headerlink" title="将django项目中所需要的环境进行打包"></a>将django项目中所需要的环境进行打包</h3><p>需要进入项目下进行环境的打包</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip freeze &gt; requirement.txt</span><br></pre></td></tr></table></figure>
-<p>效果图<br><img src="https://i.loli.net/2021/04/22/g9kImitHxG6yalp.png" alt="打包requirement.png"></p>
-<p>可以使用filezilla上传到CentOS云主机上,p8_workorder为我的项目<br><img src="https://i.loli.net/2021/04/22/VRDHB1WQgzOxL3U.png" alt="上传项目到云主机.png"></p>
+<p>效果图<br><img src= "/img/hhj.png" data-src="https://i.loli.net/2021/04/22/g9kImitHxG6yalp.png" alt="打包requirement.png"></p>
+<p>可以使用filezilla上传到CentOS云主机上,p8_workorder为我的项目<br><img src= "/img/hhj.png" data-src="https://i.loli.net/2021/04/22/VRDHB1WQgzOxL3U.png" alt="上传项目到云主机.png"></p>
 <p>cd进入到我的项目目录中</p>
 <h3 id="安装所需要的环境与配置uwsgi"><a href="#安装所需要的环境与配置uwsgi" class="headerlink" title="安装所需要的环境与配置uwsgi"></a>安装所需要的环境与配置uwsgi</h3><p>安装所需要的环境</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 如果你的安装是pip请使用pip安装，我的是pip3</span></span><br><span class="line">pip3 install -r requirement.txt</span><br></pre></td></tr></table></figure>
@@ -448,7 +448,7 @@
 <p>接下来我们需要执行命令来覆盖我们配置的静态资源</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 manage.py collectstatic</span><br></pre></td></tr></table></figure>
 <p>接下来创建一个conf目录来存放我们的django部署配置文件</p>
-<p><img src="https://i.loli.net/2021/04/23/tJn4gIufy19DKEC.png" alt="静态资源和配置.png"></p>
+<p><img src= "/img/hhj.png" data-src="https://i.loli.net/2021/04/23/tJn4gIufy19DKEC.png" alt="静态资源和配置.png"></p>
 <p>后续会把static静态目录的资源部署到nginx上，先不急，先写配置文件</p>
 <p>cd进入conf开始编写配置文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi uwsgi.ini</span><br></pre></td></tr></table></figure>
@@ -458,7 +458,7 @@
 <p>完成之后启动uwsgi查看</p>
 <figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uwsgi --ini uwsgi.ini</span><br></pre></td></tr></table></figure>
 <p>浏览器访问ip和端口进行查看</p>
-<h3 id="nginx部署静态资源及django配置"><a href="#nginx部署静态资源及django配置" class="headerlink" title="nginx部署静态资源及django配置"></a>nginx部署静态资源及django配置</h3><p>我们需要把刚才的static静态目录部署到nginx.conf中,首先进入我nginx.conf所在目录下<br>由于我的nginx是使用源码wget安装的，yum安装则需要到/etc目录下去找<br><img src="https://i.loli.net/2021/04/23/AXz3fZLlv4TiatS.png" alt="进入nginx.png"></p>
+<h3 id="nginx部署静态资源及django配置"><a href="#nginx部署静态资源及django配置" class="headerlink" title="nginx部署静态资源及django配置"></a>nginx部署静态资源及django配置</h3><p>我们需要把刚才的static静态目录部署到nginx.conf中,首先进入我nginx.conf所在目录下<br>由于我的nginx是使用源码wget安装的，yum安装则需要到/etc目录下去找<br><img src= "/img/hhj.png" data-src="https://i.loli.net/2021/04/23/AXz3fZLlv4TiatS.png" alt="进入nginx.png"></p>
 <p>我是在conf目录下又创建了一个conf目录，用来存放django.conf配置的，所以我在nginx.conf<br>中写了这条语句,如果使用yum安装的nginx请忽略此步骤</p>
 <figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include /usr/local/nginx/conf/conf/*.conf;</span><br></pre></td></tr></table></figure>
 
@@ -481,7 +481,7 @@
 <h4 id="3、ipHash进行分配"><a href="#3、ipHash进行分配" class="headerlink" title="3、ipHash进行分配"></a>3、ipHash进行分配</h4><p>通过hash算法来计算处理</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream jiyun &#123;</span><br><span class="line">   ip_hash;</span><br><span class="line">   server 127.0.0.1:8800;</span><br><span class="line">   server 127.0.0.1:8801;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="正向代理与反向代理"><a href="#正向代理与反向代理" class="headerlink" title="正向代理与反向代理"></a>正向代理与反向代理</h3><p><img src="https://img-blog.csdn.net/20170702105958247?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzU1NjgwOTk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="正向代理与反向代理"></p>
+<h3 id="正向代理与反向代理"><a href="#正向代理与反向代理" class="headerlink" title="正向代理与反向代理"></a>正向代理与反向代理</h3><p><img src= "/img/hhj.png" data-src="https://img-blog.csdn.net/20170702105958247?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzU1NjgwOTk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="正向代理与反向代理"></p>
 
              
           </div>
@@ -826,9 +826,9 @@
   &#125;
 &#125;
 </code></pre>
-<h2 id="什么是上边界通配符"><a href="#什么是上边界通配符" class="headerlink" title="什么是上边界通配符"></a>什么是上边界通配符</h2><p>&emsp;&emsp;当泛型T给定形如<T extends A> 的A类型到A类型任何子类的限制域，可以匹配任何在此限制域中的类型，此种表示叫上边界通配符。<br>###上边界通配符理解<br><img src="https://images2015.cnblogs.com/blog/820480/201611/820480-20161125004120143-1731938777.png" alt="png"></p>
+<h2 id="什么是上边界通配符"><a href="#什么是上边界通配符" class="headerlink" title="什么是上边界通配符"></a>什么是上边界通配符</h2><p>&emsp;&emsp;当泛型T给定形如<T extends A> 的A类型到A类型任何子类的限制域，可以匹配任何在此限制域中的类型，此种表示叫上边界通配符。<br>###上边界通配符理解<br><img src= "/img/hhj.png" data-src="https://images2015.cnblogs.com/blog/820480/201611/820480-20161125004120143-1731938777.png" alt="png"></p>
 <h2 id="什么是下边界通配符"><a href="#什么是下边界通配符" class="headerlink" title="什么是下边界通配符"></a>什么是下边界通配符</h2><p>&emsp;&emsp;当泛型T给定形如<T super A> 的A类型到A类型任何父类的限制域，可以匹配任何在此限制域中的类型，此种表示叫下边界通配符。</p>
-<h3 id="下边界通配符理解"><a href="#下边界通配符理解" class="headerlink" title="下边界通配符理解"></a>下边界通配符理解</h3><p><img src="https://images2015.cnblogs.com/blog/820480/201611/820480-20161125004216471-1377946016.png" alt="png"></p>
+<h3 id="下边界通配符理解"><a href="#下边界通配符理解" class="headerlink" title="下边界通配符理解"></a>下边界通配符理解</h3><p><img src= "/img/hhj.png" data-src="https://images2015.cnblogs.com/blog/820480/201611/820480-20161125004216471-1377946016.png" alt="png"></p>
 <h2 id="上下边界通配符的缺点"><a href="#上下边界通配符的缺点" class="headerlink" title="上下边界通配符的缺点"></a>上下边界通配符的缺点</h2><p>&emsp;&emsp;上界&lt;? extends T&gt;不能往里存，只能往外取。<br>###解释<br>&emsp;&emsp;因为编译器只知道传入的是T的子类，但具体是哪一个编译器不知道，他只标注了一个占位符，当？传过来时，他不知道这能不能和占位符匹配，所以set不了。<br>&emsp;&emsp;下界&lt;? super T&gt;不影响往里存，但往外取只能放在Object对象里。</p>
 <h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>&emsp;&emsp;因为下边界已经限制了？的粒度，他只可能是T本身或者是T的父类。我们想想，我想要一个T，你却返回给我一个比T小的Object，这样我们就因为精度损失而拿不到想要的数据了。</p>
 <blockquote>
@@ -909,7 +909,7 @@ where age &gt;
         where name = &#39;孙权&#39;
     )
 </code></pre>
-<p><strong>输出结果为：</strong><br><img src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/4.jpg" alt="1"></p>
+<p><strong>输出结果为：</strong><br><img src= "/img/hhj.png" data-src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/4.jpg" alt="1"></p>
 <h2>in嵌套查询</h2>
  　　in关键字用于where子句中用来判断查询的表达式是否在多个值的列表中。返回满足in列表中的满足条件的记录。
 
@@ -922,7 +922,7 @@ where countryname = &#39;魏国&#39;
 )
 </code></pre>
 <p><strong>输出结果为：</strong></p>
-<img src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/3.jpg" alt="2">
+<img src= "/img/hhj.png" data-src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/3.jpg" alt="2">
 <h2>some嵌套查询</h2>
 <h3>语法</h3>
  　　some在sql中的逻辑运算符号，如果在一系列比较中，有些值为True，那么结果就为True。some的语法是：
@@ -937,7 +937,7 @@ select countryid from country
 where countryname = &#39;魏国&#39;
 )
 </code></pre>
-<p><strong>输出结果为：</strong><br><img src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/2.jpg" alt="3"></p>
+<p><strong>输出结果为：</strong><br><img src= "/img/hhj.png" data-src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/2.jpg" alt="3"></p>
 <h2>all嵌套查询</h2>
  　　all是sql中的逻辑运算符好，如果一系列的比较都为true，那么结果才能为true。
 <h3>语法</h3>
@@ -952,7 +952,7 @@ select countryid from country
 where countryname = &#39;魏国&#39;
 )
 </code></pre>
-<p><strong>输出结果为：</strong><br><img src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/1.jpg" alt="4"></p>
+<p><strong>输出结果为：</strong><br><img src= "/img/hhj.png" data-src="https://cdn.jsdelivr.net/gh/glassy-sky-lisong/StaticFile1@master/post/1.jpg" alt="4"></p>
 <h2>exists嵌套查询</h2>
 <h3>语法</h3>
  　　exists是sql中的逻辑运算符号。如果子查询有结果集返回，那么就为True。exists代表“存在”的意义，它只查找满足条件的那些记录。<span style="color:red">一旦找到第一个匹配的记录后，就马上停止查找。</span>
