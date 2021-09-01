@@ -1,0 +1,631 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <meta name="author" content="阿正">
+  
+  
+  
+  
+  
+    <link rel="alternate" href="/atom.xml " title="欢迎来到阿正的博客" type="application/atom+xml">
+  
+
+  
+
+  <title>微博三方登录 | 欢迎来到阿正的博客</title>
+
+  
+
+  
+
+  
+
+  <link rel="stylesheet" href="/css/style.css" >
+  <link rel="stylesheet" href="/css/partial/dark.css" >
+
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&amp;display=swap"  media="print" onload="this.media='all'">
+  
+  
+  
+
+  
+    
+      <link rel="stylesheet" href="/css/partial/highlight/atom-one-light.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/a2396837/CDN@latest/css/iconfont.css">
+    
+  
+
+  
+    <script src="/js/todark.js"></script>
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+</html>
+    
+<div class="nav index" style="height: 60px;">
+    <div class="title animated fadeInDown">
+        <div class="layui-container">
+                <div class="nav-title"><a href="/" title="欢迎来到阿正的博客">欢迎来到阿正的博客</a></div>
+            <div class="nav-list">
+                <button> <span class=""></span><span style="display: block;"></span><span class=""></span> </button>
+                <ul class="layui-nav" lay-filter="">
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/blong/data/links.yml/">
+                            <i class="" style="color:;"></i>
+                            <span class="layui-nav-item-name">Search</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/ ">
+                            <i class=" fab fa-fort-awesome " style="color: rgb(255 107 107);"></i>
+                            <span class="layui-nav-item-name">Home</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/blong/archives/">
+                            <i class="" style="color:;"></i>
+                            <span class="layui-nav-item-name">Archives</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/blong/tags/">
+                            <i class="" style="color:;"></i>
+                            <span class="layui-nav-item-name">Tags</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/blong/categories/">
+                            <i class="" style="color:;"></i>
+                            <span class="layui-nav-item-name">Categories</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/blong/about/">
+                            <i class="" style="color:;"></i>
+                            <span class="layui-nav-item-name">About</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/guestbook/ ">
+                            <i class=" fab fa-telegram " style="color: hsl(205deg 100% 50%);"></i>
+                            <span class="layui-nav-item-name">Guestbook</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/blong/link/">
+                            <i class="" style="color:;"></i>
+                            <span class="layui-nav-item-name">Friends</span>
+                        </a>
+                    </li>
+                    
+                        
+                        
+                        
+                        
+                    <li class="layui-nav-item">
+                        <a href="/shuoshuo/ ">
+                            <i class=" fas fa-coffee " style="color:#31c7c1;"></i>
+                            <span class="layui-nav-item-name">说说</span>
+                        </a>
+                    </li>
+                    
+                    
+                        <li class="layui-nav-item" id="btn-toggle-dark">🌙</li>
+                    
+                    <span class="layui-nav-bar" style="left: 342px; top: 78px; width: 0px; opacity: 0;"></span>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<header class="header">
+        
+            <div class="logo">
+                    <a href="/"><img src="/img/hhj.png/" onerror=this.onerror=null,this.src="/img/hhj.png"></a>
+            </div>
+         
+    </div>
+     
+    
+            <div class="social">
+                
+                        <a class="social-icon" href="https://github.com/a2396837" target="_blank" title="Github">
+                            <i class="iconfont icon-GitHub" aria-hidden="true"></i>
+                          </a>
+                 
+                        <a class="social-icon" href="mailto:894049579@qq.com" target="_blank" title="Email">
+                            <i class="iconfont icon-email" aria-hidden="true"></i>
+                          </a>
+                 
+                        <a class="social-icon" href="https://steamcommunity.com/id/a2396837" target="_blank" title="Steam">
+                            <i class="iconfont icon-steam" aria-hidden="true"></i>
+                          </a>
+                 
+                        <a class="social-icon" href="https://space.bilibili.com/8823569" target="_blank" title="Bilibili">
+                            <i class="iconfont icon-bilibili" aria-hidden="true"></i>
+                          </a>
+                 
+                        <a class="social-icon" href="https://music.163.com/#/user/home?id=262078590" target="_blank" title="Netmusic">
+                            <i class="iconfont icon-wangyiyunyinle1" aria-hidden="true"></i>
+                          </a>
+                 
+                        <a class="social-icon" href="/atom.xml" target="_blank" title="rss">
+                            <i class="iconfont icon-rss" aria-hidden="true"></i>
+                          </a>
+                 
+            </div>
+     
+</header>
+
+    
+<article id="post">
+  <div class="post-title">微博三方登录</div>
+  
+<div class="post-meta">
+    
+    
+      <div class="post-meta-item date">
+        <span title="Created 2019.08.30"><i class="far fa-calendar-alt"></i> 2019.08.30</span>
+      </div>
+      <div class="post-meta-item updated">
+        <span title="Updated 2021.04.02"><i class="far fa-calendar-check"></i> 2021.04.02</span>
+      </div>
+     
+     
+    
+     <div class="post-meta-item wordcount">
+        
+          <i class="fas fa-pencil-alt"></i> <span class="post-count">1.1k words</span>
+           
+        
+          <i class="far fa-clock"></i> <span class="post-count">4 min</span>
+                               
+      </div>
+     
+</div>
+
+
+  
+  <div class="content">
+        <div><h1 id="微博三方登录"><a href="#微博三方登录" class="headerlink" title="微博三方登录"></a>微博三方登录</h1><h3 id="一-微博三方登录特点"><a href="#一-微博三方登录特点" class="headerlink" title="一,微博三方登录特点:"></a>一,微博三方登录特点:</h3><ul>
+<li>  微博登录包括身份认证、用户关系以及内容传播。允许用户使用微博帐号登录访问第三方网站，分享内容，同步信息。它有如下特点：</li>
+<li>直接用微博账号登录你的应用或网站；</li>
+<li>获得高质量微博活跃用户；</li>
+<li>更便捷的分享到微博，提高网站信息传播力；<h3 id="二-应用场景"><a href="#二-应用场景" class="headerlink" title="二,应用场景:"></a>二,应用场景:</h3></li>
+<li>可以避免复杂繁琐的注册流程,让用户用自己已有的三方账号去登陆<h3 id="三-功能实现"><a href="#三-功能实现" class="headerlink" title="三,.功能实现"></a>三,.功能实现</h3></li>
+<li>首先进入微博开放平台 <a target="_blank" rel="noopener" href="https://open.weibo.com/">https://open.weibo.com/</a> 注册一个应用(个人,企业),填写应用信息及回调地址</li>
+<li>使用新浪微博的开放API，就需要跟新浪申请一个appkey和App Secret，这两个秘钥需要你的应用审核通过,官方才会给出</li>
+<li>参数传递</li>
+</ul>
+<p>| | 必选 | 类型及范围 | 说明 |<br>|:—–|:—–|:—–|:—–|:—–|:—–|<br>| client_id | true | string | 申请应用时分配的AppKey |<br>| redirect_uri | true | string |授权回调地址，站外应用需与设置的回调地址一致，站内应用需填写canvas page的地址 |<br>scope | false|string |申请scope权限所需参数，可一次申请多个scope权限，用逗号分隔。使用文档<br>| state |false | string | 用于保持请求和回调的状态，在回调时，会在Query Parameter中回传该参数。开发者可以用这个参数验证请求有效性，也可以记录用户请求授权页前的位置。这个参数可用于防止跨站请求伪造（CSRF）攻击|<br>| display | false | string | 授权页面的终端类型，取值见下面的说明 |<br>forcelogin    false    boolean    是否强制用户重新登录，true：是，false：否。默认false|<br>| language | false | string | 授权页语言，缺省为中文简体版，en为英文版。英文版测试中，开发者任何意见可反馈至 @微博API|</p>
+<p>display说明：<br>| 参数取值 | 类型说明 |<br>|:—–|:—–|:—–|:—–|:—–|:—–|<br>| default | 默认的授权页面，适用于web浏览器 |<br>| mobile | 移动终端的授权页面，适用于支持html5的手机。注：使用此版授权页请用<a target="_blank" rel="noopener" href="https://open.weibo.cn/oauth2/authorize">https://open.weibo.cn/oauth2/authorize</a> 授权接口|<br>| wap    | wap版授权页面，适用于非智能手机 |<br>| client | 客户端版本授权页面，适用于PC桌面应用 |<br>| apponweibo | 默认的站内应用授权页，授权后不返回access_token，只刷新站内应用父框架。|</p>
+<p>| 返回值字段 | 字段类型 |字段说明|<br>|:—–|:—–|:—–|:—–|:—–|:—–|<br>| code | string | 用于第二步调用oauth2/access_token接口，获取授权后的access token。|<br>| state | string | 如果传递参数，会回传该参数| </p>
+<ul>
+<li>去后端settings里配置秘钥及信息<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置 微博 三方登录的 应用信息</span></span><br><span class="line">WEIBO_App_Key = <span class="string">&quot;&quot;</span></span><br><span class="line">WEIBO_App_Secret = <span class="string">&quot;&quot;</span></span><br><span class="line">WEIBO_URL = <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开发一个 获取微博 认证页接口</span></span><br><span class="line"><span class="comment"># 导入你在settings里配置的信息</span></span><br><span class="line"><span class="keyword">from</span> <span class="number">2004</span>(这个地方是你自己的项目名称).settings <span class="keyword">import</span> WEIBO_App_Key, WEIBO_URL, WEIBO_App_Secret</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlencode</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WeiboUrlView</span>(<span class="params">APIView</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self, request</span>):</span></span><br><span class="line">        weibo_url_base = <span class="string">&quot;https://api.weibo.com/oauth2/authorize?&quot;</span></span><br><span class="line"></span><br><span class="line">        params = &#123;</span><br><span class="line">            <span class="string">&quot;client_id&quot;</span>: WEIBO_App_Key,</span><br><span class="line">            <span class="string">&quot;redirect_uri&quot;</span>: WEIBO_URL,</span><br><span class="line">        &#125;</span><br><span class="line">        weibo_url = weibo_url_base + urlencode(params)</span><br><span class="line">        <span class="keyword">return</span> Response(&#123;<span class="string">&quot;url&quot;</span>: weibo_url&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span>(<span class="params">self, request</span>):</span></span><br><span class="line">        <span class="comment">#  获取到code，然后 去 访问token</span></span><br><span class="line">        code = request.data.get(<span class="string">&quot;code&quot;</span>)</span><br><span class="line"></span><br><span class="line">        r = requests.post(<span class="string">&quot;https://api.weibo.com/oauth2/access_token&quot;</span>, &#123;</span><br><span class="line">            <span class="string">&quot;client_id&quot;</span>: WEIBO_App_Key,</span><br><span class="line">            <span class="string">&quot;client_secret&quot;</span>: WEIBO_App_Secret,</span><br><span class="line">            <span class="string">&quot;grant_type&quot;</span>: <span class="string">&quot;authorization_code&quot;</span>,</span><br><span class="line">            <span class="string">&quot;code&quot;</span>: code,</span><br><span class="line">            <span class="string">&quot;redirect_uri&quot;</span>: WEIBO_URL</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 获取 返回的对象</span></span><br><span class="line">        <span class="built_in">print</span>(r.json())</span><br><span class="line">        access_token = r.json()[<span class="string">&quot;access_token&quot;</span>]</span><br><span class="line">        uid = r.json()[<span class="string">&quot;uid&quot;</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 进行 三方用户的 注册操作，</span></span><br><span class="line">        <span class="comment"># 首先判断 用户有没有 之前 登录过，如果登录过呢 则 不注册，如果没有登录过 则注册</span></span><br><span class="line">        openUser = OpenUser.objects.<span class="built_in">filter</span>(uid=<span class="string">&quot;wb&quot;</span> + uid).first()</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> openUser <span class="keyword">or</span> <span class="keyword">not</span> openUser.user:</span><br><span class="line">            <span class="comment"># 不存在，则注册</span></span><br><span class="line">            openUser = OpenUser.objects.create(uid=<span class="string">&quot;wb&quot;</span> + uid, <span class="built_in">type</span>=<span class="string">&quot;微博&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> Response(&#123;<span class="string">&quot;msg&quot;</span>: <span class="string">&quot;还没有绑定本地账号&quot;</span>, <span class="string">&quot;uid&quot;</span>: openUser.uid, <span class="string">&quot;code&quot;</span>: <span class="number">400</span>&#125;)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 有这个月的三方账号，且已经绑定成功, 需要返回令牌</span></span><br><span class="line">            <span class="comment"># 判断</span></span><br><span class="line">            user = openUser.user</span><br><span class="line">            <span class="keyword">if</span> user:</span><br><span class="line">                payload = &#123;</span><br><span class="line">                    <span class="string">&quot;uid&quot;</span>: user.<span class="built_in">id</span>,</span><br><span class="line">                    <span class="string">&#x27;exp&#x27;</span>: datetime.datetime.utcnow() + datetime.timedelta(hours=<span class="number">2</span>),</span><br><span class="line">                &#125;</span><br><span class="line">                token = jwt.encode(payload, SECRET_KEY)</span><br><span class="line">                <span class="keyword">return</span> Response(&#123;<span class="string">&quot;msg&quot;</span>: <span class="string">&quot;登录成功&quot;</span>, <span class="string">&quot;token&quot;</span>: token, <span class="string">&quot;code&quot;</span>: <span class="number">200</span>, <span class="string">&quot;username&quot;</span>: user.username&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 回调地址</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">weibo_callback</span>(<span class="params">request</span>):</span></span><br><span class="line">    code = request.GET.get(<span class="string">&quot;code&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> redirect(<span class="string">&quot;http://127.0.0.1:8080/#/oauth?code=&quot;</span> + code)</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+        
+          <div class="post-copyright">
+                  <div class="copyright-item">
+                      <span> Author: 阿正</span>
+                  </div>
+                  <div class="copyright-item">
+                      <span> Link: <a href="https://zhaozheng.link/%E5%BE%AE%E5%8D%9A%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95/">https://zhaozheng.link/%E5%BE%AE%E5%8D%9A%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95/</a></span>
+                  </div>
+                  <div class="copyright-item">
+                      <span> License: 本博客所有文章除特别声明外，均采用许可协议 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> 转载请注明出处！</span>
+                  </div>
+          </div>
+        
+  </div>
+
+  <div class="share-reward">
+    <div class="share">
+        
+<div class="social-share" data-sites="facebook,twitter,wechat,weibo,qq"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script>
+
+
+      </div>
+        <div class="reward">
+          
+  <div style="padding: 10px 0; margin-left: 20px; width: 90%; text-align: center;">
+    <div class="reward-content">
+        <ul id="donateBox" class="list pos-a">
+          
+           <li id="PayPal"><a href="https://paypal.me" target="_blank" title="PayPal">PayPal</a></li>
+            
+          
+            <li id="AliPay" title="Alipay"><img data-img="/img/alipay.jpg" onerror=this.onerror=null,this.src="/img/hhj.png"></img></li>
+               
+                 
+            <li id="WeChat" title="Wechatpay"><img date-img="/img/wechat.jpg" onerror=this.onerror=null,this.src="/img/hhj.png"></img></li>
+                      
+          </ul>
+        <div id="QRBox" class="pos-f left-100">
+          <div id="MainBox"></div>
+        </div>
+    </div>
+  </div>
+  
+        </div>
+    </div>
+    
+    <div class="post_tags">
+      
+    </div>
+    <div class="post-nav">
+      
+        <div class="post-nav-prev post-nav-item">
+            <a href="/python%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/" >Python常见面试题总结<i class="fa fa-chevron-left"></i></a>
+        </div>
+      
+      
+        <div class="post-nav-next post-nav-item">
+            <a href="/redis%E9%94%AE%E7%A9%BA%E9%97%B4/" >redis键空间<i class="fa fa-chevron-right"></i></a>
+        </div>
+      
+    </div>
+      
+
+    <script src='//unpkg.com/@waline/client/dist/Waline.min.js'></script>
+    <div id="waline"></div>
+    <script>
+    new Waline({
+        el: '#waline',
+        path: location.pathname,
+        serverURL: "",
+        avatar: "monsterid",
+        placeholder: "Just go go"
+    });
+    </script>
+
+
+
+  <div id="valine"></div>
+  <script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script>
+  <script>
+        new Valine({
+          el: '#valine',
+          appId: "",
+          appKey: "",
+          avatar: "mm",
+          lang: "",
+          meta: 'nick,mail,link'.split(','),
+          requiredFields: 'nick,mail'.split(','),
+          placeholder: "评论记得带上邮箱,你的留言我会马上收到邮箱提醒哒",
+          pageSize:'10',
+          recordIP: 'false',
+          serverURLs: "",
+          emojiCDN: "",
+          enableQQ: "true",
+        });
+  </script>
+  
+
+</article>
+
+    
+<a id="gotop" href="javascript:" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    
+
+
+
+
+
+
+    
+<div id="bottom-outer">
+    <div id="bottom-inner">
+        © 2020 <i class="fa fa-heart" id="heart"></i> 阿正 
+        <br>
+        Powered by 
+        <a target="_blank" rel="noopener" href="http://hexo.io">hexo</a> | Theme is <a target="_blank" rel="noopener" href="https://github.com/a2396837/hexo-theme-blank/">blank</a>
+        
+          <div class="icp-info">
+            
+          <a href="" target="_blank"> </a>
+        </div>
+        
+    </div>  
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/layui-src@2.5.5/dist/layui.min.js"></script>
+
+
+
+  
+    <script src="/js/script.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+  
+
+ 
+
+
+
+  <script>
+    window.lazyLoadOptions = {
+      elements_selector: 'img',
+      threshold: 0
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script>   
+  
+
+
+  <script>
+    var images = $('img').not('.nav-logo img').not('.card img').not($('a>img')).not('.reward-content img')
+    images.each(function (i, o) {
+      var lazyloadSrc = $(o).attr('data-src') ? $(o).attr('data-src') : $(o).attr('src')
+      $(o).wrap(`<a href="${lazyloadSrc}" data-fancybox="group" data-caption="${$(o).attr('alt')}" class="fancybox"></a>`)
+    })
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script>
+  <script>
+        $().fancybox({
+      selector: '[data-fancybox]',
+      loop: true,
+      transitionEffect: 'slide',
+      protect: true,
+      buttons: ['slideShow', 'fullScreen', 'thumbs', 'close']
+    })
+  </script>   
+  
+
+
+  <script>
+  if (!window.MathJax) {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]],
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/)
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+              const text = document.createTextNode('')
+              node.parentNode.replaceChild(text, node)
+              math.start = {node: text, delim: '', n: 0}
+              math.end = {node: text, delim: '', n: 0}
+              doc.math.push(math)
+            }
+          }, '']
+        }
+      }
+    }
+    
+    var script = document.createElement('script')
+    script.src = "https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"
+    script.id = 'MathJax-script'
+    script.async = true
+    document.head.appendChild(script)
+  } else {
+    MathJax.startup.document.state(0)
+    MathJax.texReset()
+    MathJax.typeset()
+  }
+  </script>
+  
+
+
+  
+<script>
+if (document.getElementsByClassName('mermaid').length) {
+    if (window.mermaidJsLoad) mermaid.init()
+    else {
+      $.getScript("https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js", function () {
+        window.mermaidJsLoad = true
+        mermaid.initialize({
+          theme: "default",
+        })
+      })
+    }
+  }
+  </script>
+  
+
+
+  <script>
+    jQuery(document).ready(function () {
+      var QRBox = $('#QRBox');
+      var MainBox = $('#MainBox');
+      var AliPayQR = '/img/alipay.jpg';
+      var WeChanQR = '/img/wechat.jpg';
+
+      function showQR(QR) {
+        if (QR) {
+          MainBox.css('background-image', 'url(' + QR + ')');
+        }
+        $('#donateBox').addClass('blur');
+        QRBox.fadeIn(300, function (argument) {
+          MainBox.addClass('showQR');
+        });
+      }
+
+      $('#donateBox>li').click(function (event) {
+        var thisID = $(this).attr('id');
+        if (thisID === 'AliPay') {
+          showQR(AliPayQR);
+        } else if (thisID === 'WeChat') {
+          showQR(WeChanQR);
+        }
+      });
+
+      MainBox.click(function (event) {
+        MainBox.removeClass('showQR').addClass('hideQR');
+        setTimeout(function (a) {
+          QRBox.fadeOut(300, function (argument) {
+            MainBox.removeClass('hideQR');
+          });
+          $('#DonateText,#donateBox,#github').removeClass('blur');
+        }, 600);
+
+      });
+    });
+  </script>
+  
+
+
+  
+<div id="QPlayer">
+	<div id="pContent">
+		<div id="player">
+			<span class="cover"></span>
+			<div class="ctrl">
+				<div class="musicTag marquee">
+					<strong>Title</strong>
+					 <span> - </span>
+					<span class="artist">Artist</span>
+				</div>
+				<div class="progress">
+					<div class="timer left">0:00</div>
+					<div class="contr">
+						<div class="rewind icon"></div>
+						<div class="playback icon"></div>
+						<div class="fastforward icon"></div>
+					</div>
+					<div class="right">
+						<div class="liebiao icon"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ssBtn">
+				<div class="adf"><i class="fas fa-music" style="color: #Fff;"></i></div>
+		</div>
+	</div>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/a2396837/CDN@latest/css/audio.css">
+	<ol id="playlist"></ol>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js"></script>
+<script>
+	var playlist = [];
+	
+	var isRotate = true;
+	var autoplay = false;
+  </script>
+<script src="https://cdn.jsdelivr.net/gh/a2396837/CDN@latest/js/player.js"></script>
+<script>
+  function bgChange(){
+	var lis= $('.lib');
+	for(var i=0; i<lis.length; i+=2)
+	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+  }
+  window.onload = bgChange;
+</script>
+
+  
+
+
+  <script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script>
+  
+
+
+  <script src="https://cdn.jsdelivr.net/gh/a2396837/CDN@latest/js/firework.js"></script>
+  
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js"></script>
+<script>
+!function (e, t, a) {
+  var initCopyCode = function(){
+    var copyHtml = '';
+    copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+    copyHtml += '  <i class="fa fa-clipboard"></i><span>复制</span>';
+    copyHtml += '</button>';
+    $(".highlight .code pre").before(copyHtml);
+    new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+  }
+  initCopyCode();
+}(window, document);
+</script>  
+  
+
+<script>
+  var btntop = $('#gotop');
+  btntop.on('click', function (e) {
+    e.preventDefault();
+    $('html, body').animate({ scrollTop: 0 }, '300');
+  });
+
+  var $table = $('.content table').not($('figure.highlight > table'))
+$table.each(function () {
+  $(this).wrap('<div class="table-wrap"></div>')
+})
+</script>
+
+
+
+</html>
