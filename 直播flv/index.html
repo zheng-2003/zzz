@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>浏览器中实现直播 | 欢迎来到阿正的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="视频直播一，概念部分视频直播分为几部分 推流：  就是将你现在直播的内容分成好几段一段一段的打包好，格式是.flv这个flv格式的比较简单轻量，加载速度快，播放也快这里我使用的软件是OBS，下载地址是：https:&#x2F;&#x2F;obsproject.com&#x2F;zh-cn      拉流：  就是拉取打包好的视频将它拼接起来播放给用户，这里我用的是Vlc，下载地址是 https:&#x2F;&#x2F;www.videolan.o">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器中实现直播">
+<meta property="og:url" content="https://zhaozheng.link/%E7%9B%B4%E6%92%ADflv/index.html">
+<meta property="og:site_name" content="欢迎来到阿正的博客">
+<meta property="og:description" content="视频直播一，概念部分视频直播分为几部分 推流：  就是将你现在直播的内容分成好几段一段一段的打包好，格式是.flv这个flv格式的比较简单轻量，加载速度快，播放也快这里我使用的软件是OBS，下载地址是：https:&#x2F;&#x2F;obsproject.com&#x2F;zh-cn      拉流：  就是拉取打包好的视频将它拼接起来播放给用户，这里我用的是Vlc，下载地址是 https:&#x2F;&#x2F;www.videolan.o">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-30T12:08:31.000Z">
+<meta property="article:modified_time" content="2021-04-02T03:46:31.026Z">
+<meta property="article:author" content="阿正">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="欢迎来到阿正的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">欢迎来到阿正的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://zhaozheng.link"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-直播flv" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%E7%9B%B4%E6%92%ADflv/" class="article-date">
+  <time datetime="2020-08-30T12:08:31.000Z" itemprop="datePublished">2020-08-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      浏览器中实现直播
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="视频直播"><a href="#视频直播" class="headerlink" title="视频直播"></a>视频直播</h1><h3 id="一，概念部分"><a href="#一，概念部分" class="headerlink" title="一，概念部分"></a>一，概念部分</h3><h3 id="视频直播分为几部分"><a href="#视频直播分为几部分" class="headerlink" title="视频直播分为几部分"></a>视频直播分为几部分</h3><ul>
+<li><p>推流：</p>
+<ul>
+<li>就是将你现在直播的内容分成好几段一段一段的打包好，格式是.flv<br>这个flv格式的比较简单轻量，加载速度快，播放也快<br>这里我使用的软件是OBS，下载地址是：<a target="_blank" rel="noopener" href="https://obsproject.com/zh-cn">https://obsproject.com/zh-cn</a>   </li>
+</ul>
+</li>
+<li><p>拉流：</p>
+<ul>
+<li>就是拉取打包好的视频将它拼接起来播放给用户，这里我用的是Vlc，下载地址是 <a target="_blank" rel="noopener" href="https://www.videolan.org/vlc/">https://www.videolan.org/vlc/</a><br>这里呢，我是用的HTTP-FLV直播协议<h3 id="HTTP-FLV的优缺点"><a href="#HTTP-FLV的优缺点" class="headerlink" title="HTTP-FLV的优缺点"></a>HTTP-FLV的优缺点</h3></li>
+</ul>
+</li>
+<li><p>优点: </p>
+<ul>
+<li>可以直接通过http协议进行传输，http属于公共协议，公共端口：80<br>html播放视频就很简单， video<br>支持加密，使用https<br>兼容移动端设备，比如：安卓、ios</li>
+</ul>
+</li>
+<li><p>缺点: </p>
+<ul>
+<li>会缓存直播数据，保存直播传输过来的一段段flv文件，隐私保密不好<br>不能在大并发情况下使用<br>二，应用场景<br>其实这个视频直播在很多大平台虎牙，斗鱼，抖音，快手等等，都是有这个功能的。比如你的项目需要用到直播，真人讲解就可以应用这个。</li>
+</ul>
+</li>
+</ul>
+<p>三，代码实现</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /usr/local/nginx-flv</span><br><span class="line"># 创建了一个安装目录</span><br><span class="line">mkdir /home/flv-tools</span><br><span class="line"># 存储所需软件</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载这个文件</span></span><br><span class="line">wget https://nginx.org/download/nginx-<span class="number">1.18</span><span class="number">.0</span>.tar.gz</span><br><span class="line">git clone https://github.com/winshining/nginx-http-flv-module</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解压这两个文件</span></span><br><span class="line">tar -zxvf nginx-<span class="number">1.18</span><span class="number">.0</span>.tar.gz nginx-<span class="number">1.18</span><span class="number">.0</span></span><br><span class="line">unzip nginx-http-flv-module.<span class="built_in">zip</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置文件</span></span><br><span class="line">cd nginx-<span class="number">1.18</span><span class="number">.0</span></span><br><span class="line">./configure --prefix=/usr/local/nginx-flv --add-module=/home/flv-tools/nginx-http-flv-module-master</span><br><span class="line"><span class="comment"># --prefix: 配置安装路径</span></span><br><span class="line"><span class="comment">#--add-module: 添加安装插件</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编译及安装</span></span><br><span class="line">make </span><br><span class="line">make install </span><br><span class="line">make &amp;&amp; make install </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对配置文件进行修改</span></span><br><span class="line">worker_processes  <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">rtmp_auto_push on;</span><br><span class="line">rtmp_auto_push_reconnect 1s;</span><br><span class="line">rtmp_socket_dir /tmp;</span><br><span class="line"></span><br><span class="line">rtmp&#123;</span><br><span class="line">	out_queue <span class="number">4096</span>;</span><br><span class="line">	out_cork <span class="number">8</span>;</span><br><span class="line">	max_streams <span class="number">128</span>;</span><br><span class="line">	timeout 15s;</span><br><span class="line">	drop_idle_publisher 15s;</span><br><span class="line">	log_interval 5s;</span><br><span class="line">	log_size 1m;</span><br><span class="line">	server &#123;</span><br><span class="line">		listen <span class="number">1935</span>; <span class="comment"># 推流端口</span></span><br><span class="line">		server_name zege;</span><br><span class="line">		</span><br><span class="line">		application live &#123;	<span class="comment"># 配置推流地址</span></span><br><span class="line">			live on; <span class="comment"># 打开推流</span></span><br><span class="line">			<span class="comment"># gop_cache on;</span></span><br><span class="line">			<span class="comment"># rtmp://123.123.123.123:1935/live/test</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置文件http拉流部分</span></span><br><span class="line">http &#123;</span><br><span class="line">	include       mime.types;</span><br><span class="line">	default_type  application/octet-stream;</span><br><span class="line">	sendfile        on;</span><br><span class="line">	keepalive_timeout  <span class="number">65</span>;</span><br><span class="line">	server &#123;</span><br><span class="line">		listen       <span class="number">8080</span>; <span class="comment"># 拉流通过8080去拉流</span></span><br><span class="line">		<span class="comment"># http://123.123.123.123:8080/live/?port=1935&amp;stream=test</span></span><br><span class="line">		server_name  localhost;</span><br><span class="line">		location /live &#123;</span><br><span class="line">			flv_live on;</span><br><span class="line">			chunked_transfer_encoding  on;</span><br><span class="line">			add_header <span class="string">&#x27;Access-Control-Allow-Origin&#x27;</span> <span class="string">&#x27;*&#x27;</span>;</span><br><span class="line">			add_header <span class="string">&#x27;Access-Control-Allow-Credentials&#x27;</span> <span class="string">&#x27;true&#x27;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="必须确保服务开启，还有阿里云的防火墙，这个很重要"><a href="#必须确保服务开启，还有阿里云的防火墙，这个很重要" class="headerlink" title="必须确保服务开启，还有阿里云的防火墙，这个很重要"></a>必须确保服务开启，还有阿里云的防火墙，这个很重要</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 关闭服务</span></span><br><span class="line">/usr/local/nginx-rtmp/sbin/nginx -s stop</span><br><span class="line"><span class="comment"># 重启服务</span></span><br><span class="line">/usr/local/nginx-rtmp/sbin/nginx -s reload</span><br><span class="line"><span class="comment"># 打开服务</span></span><br><span class="line">/usr/local/nginx-flv/sbin/nginx -c /usr/local/nginx-flv/conf/nginx.conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在软件中设置推流地址和拉流地址</span></span><br><span class="line">rtmp://（自己的云主机端口）:<span class="number">1935</span>/live/test</span><br><span class="line"></span><br><span class="line">http://(自己云主机端口):8080/live?port=1935&amp;app=live&amp;stream=test</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 最后在vue中实现拉流</span></span><br><span class="line"><span class="comment">// 下载依赖</span></span><br><span class="line">cnpm install flv.js --save</span><br><span class="line"><span class="comment">// 在需要的页面导包</span></span><br><span class="line"><span class="keyword">import</span> flv <span class="keyword">from</span> <span class="string">&#x27;flv.js&#x27;</span>;</span><br><span class="line"><span class="comment">// 构建播放标签</span></span><br><span class="line">&lt;video id=<span class="string">&quot;videoElement&quot;</span> controls muted&gt;</span><br><span class="line">  	</span><br><span class="line">&lt;/video&gt;</span><br><span class="line"><span class="comment">// 进行初始化</span></span><br><span class="line">  <span class="function"><span class="title">mounted</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> videoElement = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;videoElement&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> flvPlayer = flv.createPlayer(&#123;</span><br><span class="line">      type: <span class="string">&#x27;flv&#x27;</span>,</span><br><span class="line">      enableWorker: <span class="literal">true</span>,     <span class="comment">//浏览器端开启flv.js的worker,多进程运行flv.js</span></span><br><span class="line">      isLive: <span class="literal">true</span>,           <span class="comment">//直播模式</span></span><br><span class="line">      hasAudio: <span class="literal">false</span>,        <span class="comment">//关闭音频</span></span><br><span class="line">      hasVideo: <span class="literal">true</span>,</span><br><span class="line">      <span class="comment">// cors: true,</span></span><br><span class="line">      stashInitialSize: <span class="number">128</span>,</span><br><span class="line">      enableStashBuffer: <span class="literal">false</span>, <span class="comment">//播放flv时，设置是否启用播放缓存，只在直播起作用。</span></span><br><span class="line">      url: <span class="string">&#x27;http://（自己云主机端口）/live?port=1935&amp;app=live&amp;stream=test&#x27;</span></span><br><span class="line">    &#125;)</span><br><span class="line">    flvPlayer.attachMediaElement(videoElement);</span><br><span class="line">    flvPlayer.load();</span><br><span class="line">    flvPlayer.play();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhaozheng.link/%E7%9B%B4%E6%92%ADflv/" data-id="ckt17ax4p000tncv46w1z38qi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/websell/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Webshell在浏览器中实现终端
+        
+      </div>
+    </a>
+  
+  
+    <a href="/%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">测试分类</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/">博客园博文</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/mybatis/">mybatis</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS/" rel="tag">CentOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/" rel="tag">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E6%8A%80%E5%B7%A7/" rel="tag">SQL技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitee/" rel="tag">gitee</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CentOS/" style="font-size: 20px;">CentOS</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/SQL%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">SQL技巧</a> <a href="/tags/gitee/" style="font-size: 10px;">gitee</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/MongoDB/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/CentOS%E9%83%A8%E7%BD%B2django%E9%A1%B9%E7%9B%AE/">nginx部署django项目</a>
+          </li>
+        
+          <li>
+            <a href="/nginx%E9%83%A8%E7%BD%B2vue%E9%A1%B9%E7%9B%AE/">nginx部署vue项目</a>
+          </li>
+        
+          <li>
+            <a href="/gitee%E6%8F%90%E4%BA%A4%E5%88%B0%E4%BB%96%E4%BA%BA%E4%BB%93%E5%BA%93/">gitee提交到他人仓库</a>
+          </li>
+        
+          <li>
+            <a href="/Django%E4%B8%AD%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/">Django中自动生成接口文档</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 阿正<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>欢迎来到阿正的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="欢迎来到阿正的博客">
+<meta property="og:url" content="https://zhaozheng.link/page/2/index.html">
+<meta property="og:site_name" content="欢迎来到阿正的博客">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="阿正">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="欢迎来到阿正的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">欢迎来到阿正的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://zhaozheng.link"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-直播flv" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%E7%9B%B4%E6%92%ADflv/" class="article-date">
+  <time datetime="2020-08-30T12:08:31.000Z" itemprop="datePublished">2020-08-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E7%9B%B4%E6%92%ADflv/">浏览器中实现直播</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="视频直播"><a href="#视频直播" class="headerlink" title="视频直播"></a>视频直播</h1><h3 id="一，概念部分"><a href="#一，概念部分" class="headerlink" title="一，概念部分"></a>一，概念部分</h3><h3 id="视频直播分为几部分"><a href="#视频直播分为几部分" class="headerlink" title="视频直播分为几部分"></a>视频直播分为几部分</h3><ul>
+<li><p>推流：</p>
+<ul>
+<li>就是将你现在直播的内容分成好几段一段一段的打包好，格式是.flv<br>这个flv格式的比较简单轻量，加载速度快，播放也快<br>这里我使用的软件是OBS，下载地址是：<a target="_blank" rel="noopener" href="https://obsproject.com/zh-cn">https://obsproject.com/zh-cn</a>   </li>
+</ul>
+</li>
+<li><p>拉流：</p>
+<ul>
+<li>就是拉取打包好的视频将它拼接起来播放给用户，这里我用的是Vlc，下载地址是 <a target="_blank" rel="noopener" href="https://www.videolan.org/vlc/">https://www.videolan.org/vlc/</a><br>这里呢，我是用的HTTP-FLV直播协议<h3 id="HTTP-FLV的优缺点"><a href="#HTTP-FLV的优缺点" class="headerlink" title="HTTP-FLV的优缺点"></a>HTTP-FLV的优缺点</h3></li>
+</ul>
+</li>
+<li><p>优点: </p>
+<ul>
+<li>可以直接通过http协议进行传输，http属于公共协议，公共端口：80<br>html播放视频就很简单， video<br>支持加密，使用https<br>兼容移动端设备，比如：安卓、ios</li>
+</ul>
+</li>
+<li><p>缺点: </p>
+<ul>
+<li>会缓存直播数据，保存直播传输过来的一段段flv文件，隐私保密不好<br>不能在大并发情况下使用<br>二，应用场景<br>其实这个视频直播在很多大平台虎牙，斗鱼，抖音，快手等等，都是有这个功能的。比如你的项目需要用到直播，真人讲解就可以应用这个。</li>
+</ul>
+</li>
+</ul>
+<p>三，代码实现</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /usr/local/nginx-flv</span><br><span class="line"># 创建了一个安装目录</span><br><span class="line">mkdir /home/flv-tools</span><br><span class="line"># 存储所需软件</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载这个文件</span></span><br><span class="line">wget https://nginx.org/download/nginx-<span class="number">1.18</span><span class="number">.0</span>.tar.gz</span><br><span class="line">git clone https://github.com/winshining/nginx-http-flv-module</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解压这两个文件</span></span><br><span class="line">tar -zxvf nginx-<span class="number">1.18</span><span class="number">.0</span>.tar.gz nginx-<span class="number">1.18</span><span class="number">.0</span></span><br><span class="line">unzip nginx-http-flv-module.<span class="built_in">zip</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置文件</span></span><br><span class="line">cd nginx-<span class="number">1.18</span><span class="number">.0</span></span><br><span class="line">./configure --prefix=/usr/local/nginx-flv --add-module=/home/flv-tools/nginx-http-flv-module-master</span><br><span class="line"><span class="comment"># --prefix: 配置安装路径</span></span><br><span class="line"><span class="comment">#--add-module: 添加安装插件</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编译及安装</span></span><br><span class="line">make </span><br><span class="line">make install </span><br><span class="line">make &amp;&amp; make install </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对配置文件进行修改</span></span><br><span class="line">worker_processes  <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">rtmp_auto_push on;</span><br><span class="line">rtmp_auto_push_reconnect 1s;</span><br><span class="line">rtmp_socket_dir /tmp;</span><br><span class="line"></span><br><span class="line">rtmp&#123;</span><br><span class="line">	out_queue <span class="number">4096</span>;</span><br><span class="line">	out_cork <span class="number">8</span>;</span><br><span class="line">	max_streams <span class="number">128</span>;</span><br><span class="line">	timeout 15s;</span><br><span class="line">	drop_idle_publisher 15s;</span><br><span class="line">	log_interval 5s;</span><br><span class="line">	log_size 1m;</span><br><span class="line">	server &#123;</span><br><span class="line">		listen <span class="number">1935</span>; <span class="comment"># 推流端口</span></span><br><span class="line">		server_name zege;</span><br><span class="line">		</span><br><span class="line">		application live &#123;	<span class="comment"># 配置推流地址</span></span><br><span class="line">			live on; <span class="comment"># 打开推流</span></span><br><span class="line">			<span class="comment"># gop_cache on;</span></span><br><span class="line">			<span class="comment"># rtmp://123.123.123.123:1935/live/test</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置文件http拉流部分</span></span><br><span class="line">http &#123;</span><br><span class="line">	include       mime.types;</span><br><span class="line">	default_type  application/octet-stream;</span><br><span class="line">	sendfile        on;</span><br><span class="line">	keepalive_timeout  <span class="number">65</span>;</span><br><span class="line">	server &#123;</span><br><span class="line">		listen       <span class="number">8080</span>; <span class="comment"># 拉流通过8080去拉流</span></span><br><span class="line">		<span class="comment"># http://123.123.123.123:8080/live/?port=1935&amp;stream=test</span></span><br><span class="line">		server_name  localhost;</span><br><span class="line">		location /live &#123;</span><br><span class="line">			flv_live on;</span><br><span class="line">			chunked_transfer_encoding  on;</span><br><span class="line">			add_header <span class="string">&#x27;Access-Control-Allow-Origin&#x27;</span> <span class="string">&#x27;*&#x27;</span>;</span><br><span class="line">			add_header <span class="string">&#x27;Access-Control-Allow-Credentials&#x27;</span> <span class="string">&#x27;true&#x27;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="必须确保服务开启，还有阿里云的防火墙，这个很重要"><a href="#必须确保服务开启，还有阿里云的防火墙，这个很重要" class="headerlink" title="必须确保服务开启，还有阿里云的防火墙，这个很重要"></a>必须确保服务开启，还有阿里云的防火墙，这个很重要</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 关闭服务</span></span><br><span class="line">/usr/local/nginx-rtmp/sbin/nginx -s stop</span><br><span class="line"><span class="comment"># 重启服务</span></span><br><span class="line">/usr/local/nginx-rtmp/sbin/nginx -s reload</span><br><span class="line"><span class="comment"># 打开服务</span></span><br><span class="line">/usr/local/nginx-flv/sbin/nginx -c /usr/local/nginx-flv/conf/nginx.conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在软件中设置推流地址和拉流地址</span></span><br><span class="line">rtmp://（自己的云主机端口）:<span class="number">1935</span>/live/test</span><br><span class="line"></span><br><span class="line">http://(自己云主机端口):8080/live?port=1935&amp;app=live&amp;stream=test</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 最后在vue中实现拉流</span></span><br><span class="line"><span class="comment">// 下载依赖</span></span><br><span class="line">cnpm install flv.js --save</span><br><span class="line"><span class="comment">// 在需要的页面导包</span></span><br><span class="line"><span class="keyword">import</span> flv <span class="keyword">from</span> <span class="string">&#x27;flv.js&#x27;</span>;</span><br><span class="line"><span class="comment">// 构建播放标签</span></span><br><span class="line">&lt;video id=<span class="string">&quot;videoElement&quot;</span> controls muted&gt;</span><br><span class="line">  	</span><br><span class="line">&lt;/video&gt;</span><br><span class="line"><span class="comment">// 进行初始化</span></span><br><span class="line">  <span class="function"><span class="title">mounted</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> videoElement = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;videoElement&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> flvPlayer = flv.createPlayer(&#123;</span><br><span class="line">      type: <span class="string">&#x27;flv&#x27;</span>,</span><br><span class="line">      enableWorker: <span class="literal">true</span>,     <span class="comment">//浏览器端开启flv.js的worker,多进程运行flv.js</span></span><br><span class="line">      isLive: <span class="literal">true</span>,           <span class="comment">//直播模式</span></span><br><span class="line">      hasAudio: <span class="literal">false</span>,        <span class="comment">//关闭音频</span></span><br><span class="line">      hasVideo: <span class="literal">true</span>,</span><br><span class="line">      <span class="comment">// cors: true,</span></span><br><span class="line">      stashInitialSize: <span class="number">128</span>,</span><br><span class="line">      enableStashBuffer: <span class="literal">false</span>, <span class="comment">//播放flv时，设置是否启用播放缓存，只在直播起作用。</span></span><br><span class="line">      url: <span class="string">&#x27;http://（自己云主机端口）/live?port=1935&amp;app=live&amp;stream=test&#x27;</span></span><br><span class="line">    &#125;)</span><br><span class="line">    flvPlayer.attachMediaElement(videoElement);</span><br><span class="line">    flvPlayer.load();</span><br><span class="line">    flvPlayer.play();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhaozheng.link/%E7%9B%B4%E6%92%ADflv/" data-id="ckt17ax4p000tncv46w1z38qi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-测试分类" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB/" class="article-date">
+  <time datetime="2020-08-25T04:50:00.000Z" itemprop="datePublished">2020-08-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB/">测试分类</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这是一个测试</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhaozheng.link/%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB/" data-id="ckt17ax4p000sncv414si5si5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-支付宝三方支付流程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%E6%94%AF%E4%BB%98%E5%AE%9D%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98%E6%B5%81%E7%A8%8B/" class="article-date">
+  <time datetime="2020-07-02T12:08:31.000Z" itemprop="datePublished">2020-07-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E6%94%AF%E4%BB%98%E5%AE%9D%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98%E6%B5%81%E7%A8%8B/">支付宝三方支付流程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="支付宝三方支付"><a href="#支付宝三方支付" class="headerlink" title="支付宝三方支付"></a>支付宝三方支付</h1><h3 id="一-下载一个支付宝开放平台开发助手生成秘钥"><a href="#一-下载一个支付宝开放平台开发助手生成秘钥" class="headerlink" title="一,下载一个支付宝开放平台开发助手生成秘钥"></a>一,下载一个支付宝开放平台开发助手生成秘钥</h3><h3 id="进入-https-www-alipay-com-并登陆-然后注册一个沙箱"><a href="#进入-https-www-alipay-com-并登陆-然后注册一个沙箱" class="headerlink" title="进入 https://www.alipay.com/ 并登陆,然后注册一个沙箱"></a>进入 <a target="_blank" rel="noopener" href="https://www.alipay.com/">https://www.alipay.com/</a> 并登陆,然后注册一个沙箱</h3><h3 id="下载-pip-install-python-alipay-sdk-–upgrade-模块"><a href="#下载-pip-install-python-alipay-sdk-–upgrade-模块" class="headerlink" title="下载 pip install python-alipay-sdk –upgrade 模块"></a>下载 pip install python-alipay-sdk –upgrade 模块</h3><p>流程图:<br><img src="https://i.loli.net/2021/01/30/QElYTGVxfKyX9P5.png" alt="支付宝支付流程图.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 将刚下载的模块中导出需要用的包</span></span><br><span class="line"><span class="keyword">from</span> alipay <span class="keyword">import</span> AliPay</span><br><span class="line"><span class="keyword">from</span> alipay.utils <span class="keyword">import</span> AliPayConfig</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开发一个支付接口</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AlipayView</span>(<span class="params">APIView</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span>(<span class="params">self, request</span>):</span></span><br><span class="line">        sn = request.data.get(<span class="string">&quot;sn&quot;</span>)</span><br><span class="line">        total = request.data.get(<span class="string">&quot;total&quot;</span>)</span><br><span class="line">        <span class="comment"># 获取秘钥信息</span></span><br><span class="line">        app_private_key_string = <span class="built_in">open</span>(<span class="string">&quot;buyapp/alipay/app_private_key.txt&quot;</span>).read()</span><br><span class="line">        alipay_public_key_string = <span class="built_in">open</span>(<span class="string">&quot;buyapp/alipay/alipay_public_key.txt&quot;</span>).read()</span><br><span class="line"></span><br><span class="line">        alipay = AliPay(</span><br><span class="line">            appid=<span class="string">&quot;2016101600696807&quot;</span>,</span><br><span class="line">            app_notify_url=<span class="literal">None</span>,  <span class="comment"># 默认回调url</span></span><br><span class="line">            app_private_key_string=app_private_key_string,</span><br><span class="line">            <span class="comment"># 支付宝的公钥，验证支付宝回传消息使用，不是你自己的公钥,</span></span><br><span class="line">            alipay_public_key_string=alipay_public_key_string,</span><br><span class="line">            sign_type=<span class="string">&quot;RSA2&quot;</span>,  <span class="comment"># RSA 或者 RSA2</span></span><br><span class="line">            debug=<span class="literal">True</span>,  <span class="comment"># 默认False</span></span><br><span class="line">            config=AliPayConfig(timeout=<span class="number">15</span>)  <span class="comment"># 可选, 请求超时时间</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 如果你是 Python 3的用户，使用默认的字符串即可</span></span><br><span class="line">        subject = <span class="string">&quot;阿正商城订单支付&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 电脑网站支付，需要跳转到https://openapi.alipay.com/gateway.do? + order_string</span></span><br><span class="line">        order_string = alipay.api_alipay_trade_page_pay(</span><br><span class="line">            out_trade_no=sn,  <span class="comment"># 订单号</span></span><br><span class="line">            total_amount=total,  <span class="comment"># 总金额</span></span><br><span class="line">            subject=subject,  <span class="comment"># 标题</span></span><br><span class="line">            return_url=<span class="string">&quot;http://localhost:8000/api/v1/buy/pay_callback&quot;</span>,</span><br><span class="line">            <span class="comment"># notify_url=&quot;https://example.com/notify&quot;  # 可选, 不填则使用默认notify url</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 生成一个支付超链接，返回给vue端， 点击就激活这个超链接</span></span><br><span class="line">        url = <span class="string">&quot;https://openapi.alipaydev.com/gateway.do?&quot;</span> + order_string</span><br><span class="line">        <span class="keyword">return</span> Response(&#123;<span class="string">&quot;url&quot;</span>: url&#125;)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置回调地址</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AliPayBackView</span>(<span class="params">View</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self, request</span>):</span></span><br><span class="line">        user = request.user</span><br><span class="line">        <span class="comment"># 获取回调的信息</span></span><br><span class="line">        <span class="comment"># 获取 订单号</span></span><br><span class="line">        sn = request.GET.get(<span class="string">&quot;out_trade_no&quot;</span>)</span><br><span class="line">        <span class="comment">#  获取 支付宝交易号</span></span><br><span class="line">        trade_no = request.GET.get(<span class="string">&quot;trade_no&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;sn:&quot;</span>, sn)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;trade_no:&quot;</span>, trade_no)</span><br><span class="line">        <span class="comment"># 找到这个订单 并更新状态</span></span><br><span class="line">        <span class="comment"># 修改了  订单状态  并添加了 支付宝交易号</span></span><br><span class="line">        Order.objects.<span class="built_in">filter</span>(sn=sn).update(trade_no=trade_no, status=<span class="number">2</span>)</span><br><span class="line">        <span class="comment">#  删除我们购物车中的 已经支付成功的购物信息</span></span><br><span class="line">        <span class="built_in">print</span>(user)</span><br><span class="line">        <span class="comment"># 查询所有的选中 然后删除</span></span><br><span class="line">        gid_set = r.smembers(<span class="string">&quot;select_%d&quot;</span> % user.<span class="built_in">id</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;gid_set:&quot;</span>, gid_set)</span><br><span class="line">        <span class="keyword">for</span> gid <span class="keyword">in</span> gid_set:</span><br><span class="line">            r.hdel(<span class="string">&quot;cart_%d&quot;</span> % user.<span class="built_in">id</span>, gid)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> redirect(<span class="string">&quot;http://127.0.0.1:8080/#/paysuccess?trade_no=&quot;</span> + trade_no)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="最后配置路由即可"><a href="#最后配置路由即可" class="headerlink" title="最后配置路由即可"></a>最后配置路由即可</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhaozheng.link/%E6%94%AF%E4%BB%98%E5%AE%9D%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98%E6%B5%81%E7%A8%8B/" data-id="ckt17ax4o000rncv46pas9i9a" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-celery异步" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/celery%E5%BC%82%E6%AD%A5/" class="article-date">
+  <time datetime="2020-04-30T12:08:31.000Z" itemprop="datePublished">2020-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/celery%E5%BC%82%E6%AD%A5/">celery异步案例</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="celery异步框架"><a href="#celery异步框架" class="headerlink" title="celery异步框架"></a>celery异步框架</h1><p>一，celery是什么？</p>
+<ul>
+<li>celery是一个简单、灵活，可靠的，处理大量消息的分布式系统。它专注于实时处理的异步任务队列，同时也支持任务调度,celery是Python实现的分布式队列</li>
+<li><a target="_blank" rel="noopener" href="http://docs.jinkan.org/docs/celery/">http://docs.jinkan.org/docs/celery/</a> 中文版官方文档</li>
+</ul>
+<p>二，celery的特点及应用场景：</p>
+<ul>
+<li>开源，速度快，高可用，灵活</li>
+<li>应用场景就是我们对于代码中耗时长的功能，可以异步操作，不影响我们对客户端的响应</li>
+</ul>
+<p>三，代码实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装三个包</span></span><br><span class="line"> pip install -U Celery</span><br><span class="line"> pip install redis</span><br><span class="line"> pip install eventlet</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个tasks文件在这里面定义初始化任务</span></span><br><span class="line"><span class="keyword">from</span> celery <span class="keyword">import</span> Celery</span><br><span class="line">app = Celery(<span class="string">&quot;taks&quot;</span>, broker=<span class="string">&quot;redis://localhost/1&quot;</span>)</span><br><span class="line"><span class="meta">@app.task()</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sendSMS</span>(<span class="params">phone, code</span>):</span></span><br><span class="line">    <span class="comment"># 定义你自己的任务</span></span><br><span class="line">     <span class="keyword">return</span> a + b </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 运行celery worker 服务器(看你自己的app)</span></span><br><span class="line"> celery -A userapp.tasks worker --loglevel=INFO</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在view视图里调用异步任务</span></span><br><span class="line"><span class="comment">#(以你自己定义的函数名为准)</span></span><br><span class="line"> sendSMS.delay()</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>安装依赖完以后,去自己的app下创建一个新的文件,在文件中定义一个函数,这个函数里面将是你给他的任务,然后通过 celery -A 自己app名.tasks worker –loglevel=INFO 这条命令来启动这个服务,最后在你的view视图里导包调用这个函数即可</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhaozheng.link/celery%E5%BC%82%E6%AD%A5/" data-id="ckt17ax4b000cncv44nazdty0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-axios的封装" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/axios%E7%9A%84%E5%B0%81%E8%A3%85/" class="article-date">
+  <time datetime="2020-03-30T12:08:31.000Z" itemprop="datePublished">2020-03-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/axios%E7%9A%84%E5%B0%81%E8%A3%85/">axios的封装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="axios封装"><a href="#axios封装" class="headerlink" title="axios封装"></a>axios封装</h1><p>一，为什么封装axios?</p>
+<ul>
+<li>在一个项目中,在网页多的时候我们每个页面都导axios包会比较麻烦,我们用封装方法将它封装起来,每次在页面中调用即可,会提高代码的复用更加方便快捷。</li>
+<li>一般我会在项目的src目录中，新建一个request文件夹，然后在里面新建一个http.js和一个api.js文件。http.js文件用来封装我们的axios，api.js用来统一管理我们的接口。</li>
+</ul>
+<p>二，功能实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载axios包</span></span><br><span class="line">pip install axios --save</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个新文件</span></span><br><span class="line"><span class="comment">// 配置axios基本的属性</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> axios = <span class="built_in">require</span>(<span class="string">&#x27;axios&#x27;</span>)</span><br><span class="line"></span><br><span class="line">axios.defaults.baseURL = <span class="string">&#x27;http://127.0.0.1:8000&#x27;</span> <span class="comment">// 请求的接口主域名</span></span><br><span class="line">axios.defaults.timeout = <span class="number">10000</span> <span class="comment">// 请求超时的设置 10s</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 请求拦截器(在请求前会自动去做的操作)，如果登陆了，那么自动带token发送</span></span><br><span class="line">axios.interceptors.request.use(<span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> token = sessionStorage.getItem(<span class="string">&#x27;token&#x27;</span>);</span><br><span class="line">  <span class="keyword">if</span> (token) &#123;</span><br><span class="line">    <span class="comment">//axios.defaults.headers[&#x27;Authorization&#x27;] = token // 头部设置</span></span><br><span class="line">    config.headers.common[<span class="string">&#x27;Authorization&#x27;</span>] = <span class="string">&quot;JWT &quot;</span> + token <span class="comment">// 头部设置</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> config;</span><br><span class="line">&#125;, <span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(error)</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 响应拦截器(在响应时自动会做的操作)，比如状态码返回为401时，要进入login界面</span></span><br><span class="line">axios.interceptors.response.use(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 200</span></span><br><span class="line">  <span class="keyword">return</span> response;</span><br><span class="line">&#125;, <span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (error.request.status == <span class="number">401</span>) &#123;</span><br><span class="line">    <span class="built_in">window</span>.location.href = <span class="string">&quot;/&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> error</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * post方法，对应post请求(四个请求方法)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;String&#125;</span> </span>url [请求的url地址]</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Object&#125;</span> </span>params [请求时携带的参数]</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Object&#125;</span> </span>headers [请求时的头部]</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params">url, params, headers</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    axios.get(url, &#123;params, headers&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">      reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">post</span>(<span class="params">url, params, headers</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    axios.post(url, params, headers).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// debugger</span></span><br><span class="line">      reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">put</span>(<span class="params">url, params, headers</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    axios.put(url, params, headers).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// debugger</span></span><br><span class="line">      reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">del</span>(<span class="params">url, params, headers</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    axios.delete(url, &#123;<span class="attr">data</span>: params, headers&#125;).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// debugger</span></span><br><span class="line">      reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> axios;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;get, post, put, del&#125; <span class="keyword">from</span> <span class="string">&#x27;./index&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 注册接口</span></span><br><span class="line"> <span class="comment">// @parameter: &#123;username:username, phone:phone&#125; [object]</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> signUp = <span class="function"><span class="params">parameter</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> post( <span class="comment">// 请求方法</span></span><br><span class="line">    <span class="string">&#x27;signup/&#x27;</span>, <span class="comment">//请求地址</span></span><br><span class="line">    parameter,</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhaozheng.link/axios%E7%9A%84%E5%B0%81%E8%A3%85/" data-id="ckt17ax49000bncv498j2f3jb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-docker的使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/docker%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
+  <time datetime="2020-03-30T12:08:31.000Z" itemprop="datePublished">2020-03-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/docker%E7%9A%84%E4%BD%BF%E7%94%A8/">docker的基本命令及使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><p>一，概念部分：</p>
+<ul>
+<li>docker是什么？<ul>
+<li>其实Docker是基于 linux 内核实现，Docker 最早采用 LXC 技术 ，LXC 是 Linux 原生支持的容器技术，可以提供轻量级的虚拟化 ，最初是 dotCloud 公司（后由于 Docker 开源后大受欢迎就将公司改名为 Docker Inc ，总部位于美国加州的旧金山）内部的一个开源的 PAAS 服务 (Platform as a ServiceService )的业余项目。</li>
+</ul>
+</li>
+<li>docker的优点：<ul>
+<li>  快速部署：短时间内可以部署成百上千个应用，更快速交付到线上</li>
+<li>  高效虚拟化：不需要额外hypervisor支持，基于linux内核实现应用虚拟化，相比虚拟机大幅提高性能和效率</li>
+<li>  节省开支：提高服务器利用率，降低IT支出</li>
+<li>  简化配置：将运行环境打包保存至容器，使用时直接启动即可</li>
+<li>  环境统一：将开发，测试，生产的应用运行环境进行标准化和统一，减少环境不一样带来的各种问题</li>
+<li>  快速迁移和扩展：可实现跨平台运行在物理机、虚拟机、公有云等环境，良好的兼容性可以方便将应用从A宿主机迁移到B宿主机，甚至是A平台迁移到B平台</li>
+</ul>
+</li>
+</ul>
+<p>二，应用场景：</p>
+<ul>
+<li>  节省项目部署时间</li>
+<li>  整体打包</li>
+<li>  配置linux环境等等</li>
+</ul>
+<p>三，功能实现</p>
+<h3 id="首先来说一下docker的镜像的一些常用命令"><a href="#首先来说一下docker的镜像的一些常用命令" class="headerlink" title="首先来说一下docker的镜像的一些常用命令"></a>首先来说一下docker的镜像的一些常用命令</h3><ul>
+<li>安装docker  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install docker</span><br></pre></td></tr></table></figure></li>
+<li>拉取镜像  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull 镜像名</span><br></pre></td></tr></table></figure></li>
+<li>查看所有镜像  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure></li>
+<li>删除镜像  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi 镜像<span class="built_in">id</span></span><br></pre></td></tr></table></figure></li>
+<li>启动服务  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service docker start</span><br></pre></td></tr></table></figure></li>
+<li>测试镜像  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run 镜像id</span><br></pre></td></tr></table></figure>
+<h3 id="然后就是docker容器"><a href="#然后就是docker容器" class="headerlink" title="然后就是docker容器"></a>然后就是docker容器</h3></li>
+<li>拉取镜像  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker pull ubuntu</span></span><br></pre></td></tr></table></figure></li>
+<li>启动容器  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -it ubuntu /<span class="built_in">bin</span>/bash</span><br></pre></td></tr></table></figure>
+<ul>
+<li>-i: 交互式操作。</li>
+<li>-t: 终端。</li>
+<li>ubuntu: ubuntu 镜像。</li>
+<li>/bin/bash：放在镜像名后的是命令，这里我们希望有个交互式 Shell，因此用的是 /bin/bas</li>
+</ul>
+</li>
+<li>查看所有容器  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps -a</span><br></pre></td></tr></table></figure></li>
+<li>停止容器  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker stop 容器<span class="built_in">id</span></span><br></pre></td></tr></table></figure></li>
+<li>启动容器  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker start 容器<span class="built_in">id</span></span><br></pre></td></tr></table></figure></li>
+<li>进入容器  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach 容器<span class="built_in">id</span></span><br></pre></td></tr></table></figure></li>
+<li>这里推荐用exec的因为这个容器退出不会导致容器停止  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it 容器<span class="built_in">id</span> /<span class="built_in">bin</span>/bash</span><br></pre></td></tr></table></figure>
+<h2 id="dockerfile"><a href="#dockerfile" class="headerlink" title="dockerfile"></a>dockerfile</h2></li>
+</ul>
+<ul>
+<li>  每一行以Dockerfile的指令开头，指令不区分大小写，但是惯例使用大写</li>
+<li>  使用 # 开始作为注释</li>
+<li>  每一行只支持一条指令，每条指令可以携带多个参数</li>
+<li>  指令按文件的顺序从上+</li>
+<li>  至下进行执行</li>
+<li>  每个指令的执行会生成一个新的镜像层，为了减少分层和镜像大小，尽可能将多条指令合并成一条指令</li>
+<li>  制作镜像一般可能需要反复多次，每次执行dockfile都按顺序执行，从头开始，已经执行过的指令已经缓存，不需要再执行，后续有一行指令没执行过，再往后的指令将会重新执行，所以为加速镜像制作，将最常变化的内容放下dockerfile的文件的后面</li>
+</ul>
+<h3 id="dockerfile的常用命令"><a href="#dockerfile的常用命令" class="headerlink" title="dockerfile的常用命令"></a>dockerfile的常用命令</h3><ul>
+<li><p>定制镜像</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FROM nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>exec启动镜像</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUN [<span class="string">&quot;可执行文件&quot;</span>, <span class="string">&quot;参数1&quot;</span>, <span class="string">&quot;参数2&quot;</span>]</span><br></pre></td></tr></table></figure></li>
+<li><p>拷贝本机文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COPY 原路径 目标路径</span><br></pre></td></tr></table></figure></li>
+<li><p>ADD</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ADD 与 copy 用法类似，可以说他比copy更加高级</span><br><span class="line"></span><br><span class="line"><span class="comment"># ADD 的优点：在执行 &lt;源文件&gt; 为 tar 压缩文件的话，压缩格式为 gzip, bzip2 以及 xz 的情况下，会自动复制并解压到 &lt;目标路径&gt;。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ADD 的缺点：在不解压的前提下，无法复制 tar 压缩文件。会令镜像构建缓存失效，从而可能会令镜像构建变得比较缓慢。具体是否使用，可以根据是否需要自动解压来决定。</span></span><br></pre></td></tr></table></figure></li>
+<li><p>CMD 每个 Dockerfile 只能有一条 CMD 命令。如指定了多条，只有最后一条被执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CMD [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]</span><br><span class="line">CMD &lt;shell&gt;</span><br><span class="line">CMD [&quot;shell&quot;,&quot;args&quot;...]</span><br></pre></td></tr></table></figure></li>
+<li><p>ENTRYPOINT</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 他跟CMD类似 每个 Dockerfile 中只能有一个 ENTRYPOINT，当指定多个时，只有最后一个生效</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXTRYPOINT [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]</span><br></pre></td></tr></table></figure></li>
+<li><p>ENV</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定一个环境变量，会被后续 RUN 指令使用，并在容器运行时保持</span></span><br><span class="line">ENV &lt;key&gt; &lt;value&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>EXPOSE</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 声明端口帮助镜像使用者理解这个镜像服务的守护端口，以方便配置映射</span></span><br><span class="line">EXPOSE &lt;端口<span class="number">1</span>&gt; [&lt;端口<span class="number">2</span>&gt;...]</span><br></pre></td></tr></table></figure></li>
+<li><p>WORKDIR</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 为后续的 RUN、CMD、ENTRYPOINT 指令配置工作目录，当容器运行后，进入容器内的默认目录</span></span><br><span class="line">WORKDIR /path</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhaozheng.link/docker%E7%9A%84%E4%BD%BF%E7%94%A8/" data-id="ckt17ax4b000dncv4gke8hp2d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-云主机安装redis数据库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85redis%E6%95%B0%E6%8D%AE%E5%BA%93/" class="article-date">
+  <time datetime="2020-01-01T13:04:42.000Z" itemprop="datePublished">2020-01-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85redis%E6%95%B0%E6%8D%AE%E5%BA%93/">云主机安装redis数据库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.安装redis数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install redis</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2.下载fedora的epel仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>3.启动redis服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start redis</span><br></pre></td></tr></table></figure>
+<p>4.查看redis状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status redis</span><br></pre></td></tr></table></figure>
+
+
+<p>停止服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop redis </span><br></pre></td></tr></table></figure>
+
+
+<p>重启服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart redis</span><br></pre></td></tr></table></figure>
+
+<p>5.查看redis进程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef |grep redis</span><br></pre></td></tr></table></figure>
+
+
+
+<p>6.设置开机自启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable redis</span><br></pre></td></tr></table></figure>
+
+
+
+<p>7.开放端口号 (若端口已开放此步可省略，可先8后7)</p>
+<p> </p>
+<p>linux 操作防火墙: linux开放防火墙端口</p>
+<p> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;80&#x2F;tcp --permanent</span><br><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;6379&#x2F;tcp --permanent</span><br></pre></td></tr></table></figure>
+<p>注意：80端口是必须要开放的</p>
+<p>重启防火墙：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart firewalld</span><br></pre></td></tr></table></figure>
+<p>8.查看端口 （若此命令无效可百度自行安装）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -lnp|grep 6379</span><br></pre></td></tr></table></figure>
+<p>9.设置redis 远程连接和密码</p>
+<p>输入命令进入编辑模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi &#x2F;etc&#x2F;redis.conf</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>将这部注释掉，否则只有本机才能访问  bind 127.0.0.1 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">##################################NETWORK#####################################</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        # IF YOU ARE SURE YOU WANT YOUR INSTANCE TO LISTEN TO ALL THE INTERFACES</span><br><span class="line">        # JUST COMMENT THE FOLLOWING LINE.</span><br><span class="line">        # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span><br><span class="line">        #bind 127.0.0.1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        # Protected mode is a layer of security protection, in order to avoid that</span><br><span class="line">        # Redis instances left open on the internet are accessed and exploited.</span><br><span class="line">      </span><br><span class="line">    9.2     保护模式修改为no</span><br><span class="line">        #bind 127.0.0.1</span><br><span class="line">        # Protected mode is a layer of security protection, in order to avoid that</span><br><span class="line">        # Redis instances left open on the internet are accessed and exploited.</span><br><span class="line">        #</span><br><span class="line">        # When protected mode is on and if:</span><br><span class="line">        #</span><br><span class="line">        # 1) The server is not binding explicitly to a set of addresses using the</span><br><span class="line">        #    &quot;bind&quot; directive.</span><br><span class="line">        # 2) No password is configured.</span><br><span class="line">        #</span><br><span class="line">        # The server only accepts connections from clients connecting from the</span><br><span class="line">        # IPv4 and IPv6 loopback addresses 127.0.0.1 and ::1, and from Unix domain</span><br><span class="line">        # sockets.</span><br><span class="line">        #</span><br><span class="line">        # By default protected mode is enabled. You should disable it only if</span><br><span class="line">        # you are sure you want clients from other hosts to connect to Redis</span><br><span class="line">        # even if no authentication is configured, nor a specific set of interfaces</span><br><span class="line">        # are explicitly listed using the &quot;bind&quot; directive.</span><br><span class="line">        protected-mode no</span><br></pre></td></tr></table></figure>
+
+
+
+<p>    9.3        如果修改端口号，修改这里就可以了，本文默认6379端口<br> <figure class="highlight plain"><figcaption><span>no</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">        # Accept connections on the specified port, default is 6379 (IANA #815344).</span><br><span class="line">        # If port 0 is specified Redis will not listen on a TCP socket.</span><br><span class="line">        port 6379</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>    9.4        修改密码为 111111</p>
+<p>           这个密码为登陆redis所需要的密码，请记好</p>
+<p>        ################################## SECURITY ###################################<br>        # Warning: since Redis is pretty fast an outside user can try up to<br>        # 150k passwords per second against a good box. This means that you should<br>        # use a very strong password otherwise it will be very easy to break.<br>        #<br>        requirepass 111111
+        </p>
+<p>10.保存并退出编辑重启redis</p>
+<p>systemctl restart redis</p>
+<p>11.进入redis</p>
+<p>    11.1：命令：</p>
+<p>redis-cli -h 127.0.0.1 -p 6379</p>
+<p>    11.2：输入用户名和密码 auth 111111</p>
+<p>    返回OK<br>    11.3：然后再输入    info</p>
+<p>12.获取当前的db数 </p>
+<p>config get databases</p>
+<p>或者</p>
+<p>empty list or set  代表的是当前数据为空，不影响</p>
+<p>  13.切换指定db  select 1  (可为0-15)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhaozheng.link/%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85redis%E6%95%B0%E6%8D%AE%E5%BA%93/" data-id="ckt17ax4m000pncv4452z3eqe" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-云主机CentOS7安装python3.6和Django" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%E4%BA%91%E4%B8%BB%E6%9C%BACentOS7%E5%AE%89%E8%A3%85python3.6%E5%92%8CDjango/" class="article-date">
+  <time datetime="2020-01-01T12:12:31.000Z" itemprop="datePublished">2020-01-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E4%BA%91%E4%B8%BB%E6%9C%BACentOS7%E5%AE%89%E8%A3%85python3.6%E5%92%8CDjango/">云主机安装Python</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="进入官网"><a href="#进入官网" class="headerlink" title="进入官网"></a>进入官网</h3><ul>
+<li><p>拿取下载地址：<a target="_blank" rel="noopener" href="https://www.python.org/">https://www.python.org/</a></p>
+<ul>
+<li>  <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python/3.7.5/Python-3.7.5.tar.xz">https://www.python.org/ftp/python/3.7.5/Python-3.7.5.tar.xz</a></li>
+</ul>
+</li>
+<li><p>到云主机下载</p>
+<ul>
+<li>  wget：下载某个链接上的资源</li>
+</ul>
+</li>
+<li><p>  进入home目录</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd home&#x2F;     # 进入目录</span><br><span class="line">mkdir tools  # 创建目录</span><br><span class="line">wget https:&#x2F;&#x2F;www.python.org&#x2F;ftp&#x2F;python&#x2F;3.7.5&#x2F;Python-3.7.5.tar.xz  # 在该目录下下载python3的压缩文件</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>  过程中发现下载太慢了，实在受不了了，可以本地先下载，然后上传，推荐使用filezilla工具</p>
+</blockquote>
+<ul>
+<li>  解压xz格式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xz -d Python-3.7.5.tar.xz </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  打开tar归档模式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xvf Python-3.7.5.tar </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  安装依赖</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  进入目录</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd Python-3.7.5</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  创建一个python的安装目录</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir &#x2F;usr&#x2F;local&#x2F;python37</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  配置安装选项，安装python到python37目录下</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --prefix&#x3D;&#x2F;usr&#x2F;local&#x2F;python37</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  执行编译</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  执行安装</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install </span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Successfully installed pip-19.2.3 setuptools-41.2.0</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  构建软连接</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;python37&#x2F;bin&#x2F;python3 &#x2F;usr&#x2F;bin&#x2F;python3</span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;python37&#x2F;bin&#x2F;pip3 &#x2F;usr&#x2F;bin&#x2F;pip3</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li></li>
+<li>  安装django</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install django&#x3D;&#x3D;2.0.4 -i https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>  虽然安装好了django，但是他居然不能用，这是因为他也得需要设置软连接 </p>
+</blockquote>
+<ul>
+<li>  设置django-admin的软连接</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;python37&#x2F;bin&#x2F;django-admin &#x2F;usr&#x2F;bin&#x2F;django-admin</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhaozheng.link/%E4%BA%91%E4%B8%BB%E6%9C%BACentOS7%E5%AE%89%E8%A3%85python3.6%E5%92%8CDjango/" data-id="ckt17ax4m000oncv41h10bduz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python常见面试题总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/python%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/" class="article-date">
+  <time datetime="2019-08-30T12:08:31.000Z" itemprop="datePublished">2019-08-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/python%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/">Python常见面试题总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Python基础部分"><a href="#Python基础部分" class="headerlink" title="Python基础部分"></a>Python基础部分</h1><h3 id="1-python2-和-python3的区别"><a href="#1-python2-和-python3的区别" class="headerlink" title="1.python2 和 python3的区别?"></a>1.python2 和 python3的区别?</h3><ul>
+<li><p>python2默认字节是ascii,而python3中是utf-8</p>
+<blockquote>
+<p>ASCII是每一个数字都有一个数值,UTF-8是不定长编码</p>
+</blockquote>
+</li>
+<li><p>python2中print是语句,而python3中print是方法</p>
+<blockquote>
+<p>语句就是不用括号括起来的,方法是用括号括起来耳朵</p>
+</blockquote>
+</li>
+<li><p>python2中map返回的是一个列表,而python3中返回的是一个可迭代对象</p>
+</li>
+<li><p>python2中默认字节数是4,python3中是2,</p>
+</li>
+<li><p>python2中除法是整形,python3中是一个浮点型</p>
+</li>
+</ul>
+<h3 id="2-您能列举几个PEP8规范吗"><a href="#2-您能列举几个PEP8规范吗" class="headerlink" title="2.您能列举几个PEP8规范吗?"></a>2.您能列举几个PEP8规范吗?</h3><ul>
+<li>RFC(Request For Comments): 专门来定义网络请求的标准文档</li>
+<li>PEP8:空格缩进<blockquote>
+<p>(每一级缩进4个空格)</p>
+</blockquote>
+</li>
+<li>导包的时候要分开导,不建议同行导入多个模块</li>
+<li>变量名不能以数字,字母,下划线开头</li>
+<li>类名定义用首字母大写,函数定义首字母用小写</li>
+</ul>
+<h3 id="3-什么是深浅拷贝"><a href="#3-什么是深浅拷贝" class="headerlink" title="3.什么是深浅拷贝?"></a>3.什么是深浅拷贝?</h3><ul>
+<li>浅拷贝:copy.copy()<blockquote>
+<p>只拷贝第一层,修改深层次两个变量就会互相影响了 </p>
+</blockquote>
+</li>
+<li>深拷贝:copy.deepcopy()<blockquote>
+<p>深拷贝呢,他又叫递归性质的浅拷贝,拷贝完之后修改任意一个变量都不会影响另一个变量</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="4-Python的自省"><a href="#4-Python的自省" class="headerlink" title="4.Python的自省"></a>4.Python的自省</h3><ul>
+<li>dir: 获取当前对象内部的属性</li>
+<li>type: 查看当前对象的类型</li>
+<li>hasattr: 判断当前对象是否包含某个属性</li>
+<li>getattr: 获取当前对象的属性</li>
+<li>isinstance: 判断对象是否是某个类的实例</li>
+</ul>
+<h3 id="5-您知道Python中的可变不可变的数据类型吗"><a href="#5-您知道Python中的可变不可变的数据类型吗" class="headerlink" title="5.您知道Python中的可变不可变的数据类型吗?"></a>5.您知道Python中的可变不可变的数据类型吗?</h3><ul>
+<li>可变的数据类型: 列表(list),字典(dict),集合(set)</li>
+<li>不可变数据类型: 数字(number),字符串(string),元祖(tuple),不可变集合(frozenset)</li>
+</ul>
+<h3 id="6-您能说说列表和元组的区别吗"><a href="#6-您能说说列表和元组的区别吗" class="headerlink" title="6.您能说说列表和元组的区别吗?"></a>6.您能说说列表和元组的区别吗?</h3><ul>
+<li><p>列表的数据可以动态变化而元祖不能</p>
+</li>
+<li><p>列表一般用于存储同构,列表具有顺序</p>
+</li>
+<li><p>元祖一般用于存储异构,元祖具有结构</p>
+<blockquote>
+<p>在数据量大的情况下元祖的操作还是比列表好用的</p>
+</blockquote>
+<h3 id="7-您能不能说说字典的低层"><a href="#7-您能不能说说字典的低层" class="headerlink" title="7.您能不能说说字典的低层"></a>7.您能不能说说字典的低层</h3></li>
+<li><p>字典是python中最通用的数据结构之一,他是以键值的方式存放的,他的查询速度比较快,是典型的那空间换时间</p>
+</li>
+<li><p>Cpython中使用了伪随机探测的散列表作为字典的低层数据结构,只有可哈希的对象才能作为字典的键</p>
+</li>
+<li><p>字典的三个基本操作(添加,获取,删除)的平均时间复杂度为O(1),但是他们的平摊最坏情况复杂度要高的多,O(n)</p>
+</li>
+<li><p>开放寻址法 : 字典在python3.6之前都是无序的,使用开放寻址法,实现散列表,所以在它产生哈希冲突时,他会用探测函数来去找,直到找到一个空槽来存放待插入的元素</p>
+<blockquote>
+<p>散列表就是哈希表</p>
+</blockquote>
+<blockquote>
+<p>哈希冲突:进行hash运算之后得到了位置进行存储,但是这个位置已经被占用了</p>
+</blockquote>
+</li>
+<li><p>拉链法:在python3.6之后,字典就变成了有序的,低层不再是散列表,而是拉链法,它不存在之前开放寻址法中的哈希冲突,遇到冲突他会直接追加到当前位置的尾部,,除非在极端的情况下,可能冲突都进入同一链表,导致当前遍历查询元素的时间较长,解决方案就是,升级为红黑树加快查询速度</p>
+<blockquote>
+<p>红黑树又称平衡二叉树</p>
+</blockquote>
+<ul>
+<li>根节点是黑色的节点,叶子节点是不存储数据的黑色空节点</li>
+<li>任何相邻的节点不能有用一个颜色</li>
+<li>任意节点到其可达到的叶子节点间包含相同数量的黑色节点</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-字符串内置的方法"><a href="#8-字符串内置的方法" class="headerlink" title="8.字符串内置的方法"></a>8.字符串内置的方法</h3><ul>
+<li>1.str.replace:替换字符串中的字符为新字符</li>
+<li>2.startswith:判断字符串是否以某个字符串开头</li>
+<li>3.str.split:将字符串进行切分,然后返回切分之后的列表</li>
+<li>4.str.join: 拼接字符串</li>
+<li>5.str.strip: 默认移出字符串首位的空白字符串</li>
+</ul>
+<h3 id="9-列表内置的方法"><a href="#9-列表内置的方法" class="headerlink" title="9.列表内置的方法"></a>9.列表内置的方法</h3><ul>
+<li>1.list.append:向列表添加新的元素</li>
+<li>2.list.extend:合并两个列表</li>
+<li>3.list.count:计算列表中元素的个数</li>
+<li>4.list.index:查询列表中某一个元素出现的位置</li>
+<li>5.list.insert:将指定元素插入到指定位置上<h3 id="10-字典内置的方法"><a href="#10-字典内置的方法" class="headerlink" title="10.字典内置的方法"></a>10.字典内置的方法</h3></li>
+<li>1.dict.keys: 查询所有键</li>
+<li>2.dict.values: 查询所有的值</li>
+<li>3.dict.item:查询所有的键值对</li>
+<li>4.dict.clear:清空字典中的元素</li>
+<li>5.dict.copy:拷贝一个新的字典</li>
+</ul>
+<h3 id="11-Python中内存管理-垃圾回收机制"><a href="#11-Python中内存管理-垃圾回收机制" class="headerlink" title="11.Python中内存管理(垃圾回收机制)"></a>11.Python中内存管理(垃圾回收机制)</h3><h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><blockquote>
+<p>引用计数就是当某一个变量被引用的时候,他的引用次数会加1,当引用计数变为0的时候,他将会被释放,当删除一个变量时,,他的引用计数就会减1,但是也会出现,两个变量相互引用,造成无法回收</p>
+</blockquote>
+<blockquote>
+<p>遇到这种情况可以用,标记-清除解决</p>
+</blockquote>
+<h3 id="标记-清除"><a href="#标记-清除" class="headerlink" title="标记-清除"></a>标记-清除</h3><blockquote>
+<p>标记就是他会自动给活跃的对象添加标识,添加标识的对象不会被清除<br>清除就是,他会对内存从头到尾的遍历一遍,然后讲那些没有被标识的对象进行内存,将那些原有的对象的标识抹掉,以便下次回收</p>
+</blockquote>
+<blockquote>
+<p>​    他最大的缺点就是在垃圾收集后可能有大量的内存碎片,其次就是需要遍历的内存节点比较多,每次回收都将花费大量时间</p>
+</blockquote>
+<blockquote>
+<p>遇到这种情况可以使用分代回收</p>
+</blockquote>
+<h3 id="分代回收-gc模块"><a href="#分代回收-gc模块" class="headerlink" title="分代回收(gc模块):"></a>分代回收(gc模块):</h3><blockquote>
+<p>分代回收就是一种典型的以空间换时间的方法,他会将回收对象分为年轻代,中年代,老年代,每一个代都是一个链表,当python触发垃圾回收机制的话,他会将那些没有被标记的对象进行回收,然后剩下的依次推到中年代,老年代</p>
+</blockquote>
+<blockquote>
+<p>你可以通过设置gc模块,默认执行700次青年代执行一次中年代,执行10次中年代执行1次老年代,这个可以自己设置,但是切记,不要随意改动,尽量让他间隔大一点,不然会导致他的回收频率过高</p>
+</blockquote>
+<h3 id="Python中的内置方法"><a href="#Python中的内置方法" class="headerlink" title="Python中的内置方法:"></a>Python中的内置方法:</h3><ul>
+<li><p>map函数:将条件依次作用在列表中的每一个元素上,最后返回一个新的可迭代对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span>(<span class="params">num</span>):</span></span><br><span class="line">  <span class="keyword">return</span> num*num</span><br><span class="line">r = <span class="built_in">map</span>(fun,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(r))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line"><span class="comment"># [1,4,9,16,25,36,49,64,81]</span></span><br></pre></td></tr></table></figure></li>
+<li><p>reduce 函数:累计运算的,接收两个参数,这两个参数的结果作为下一趟参数的第一个值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">x,y</span>):</span></span><br><span class="line">  <span class="keyword">return</span> x+y</span><br><span class="line"><span class="built_in">print</span>(reduce(add,[<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>]))</span><br><span class="line"><span class="comment"># 25</span></span><br></pre></td></tr></table></figure></li>
+<li><p>filter 函数: 起到一个过滤的作用,将你列表中的元素传给fifter,然后判断结果为True或者Flase将发回True的元素放在一个新的迭代器中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span>(<span class="params">n</span>):</span></span><br><span class="line">  <span class="keyword">return</span> n%<span class="number">2</span>==<span class="number">1</span>  <span class="comment">#判断是否为奇数</span></span><br><span class="line">  lst = fifter(fun,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>])</span><br><span class="line">  <span class="built_in">print</span>(<span class="built_in">list</span>(lst))</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 输出结果: [1,3,5,7,9]</span></span><br></pre></td></tr></table></figure></li>
+<li><p>sorted 函数:对可迭代对象进行排序,可选参数key(绝对值)为排序方法,也可以通过reverse逆置</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">sorted</span>([<span class="number">36</span>,<span class="number">5</span>,-<span class="number">12</span>,<span class="number">9</span>,-<span class="number">21</span>]))</span><br><span class="line"><span class="comment"># [-21,-12,5,9,36]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sorted</span>([<span class="number">36</span>,<span class="number">5</span>,-<span class="number">12</span>,<span class="number">9</span>,-<span class="number">21</span>],key=<span class="built_in">abs</span>))</span><br><span class="line"><span class="comment"># [5,9,-12,-21,36]</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="lambda表达式及跳转表您懂吗"><a href="#lambda表达式及跳转表您懂吗" class="headerlink" title="lambda表达式及跳转表您懂吗?"></a>lambda表达式及跳转表您懂吗?</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lambda</span> x:x+<span class="number">1</span> <span class="comment"># 结果+1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="不定长参数"><a href="#不定长参数" class="headerlink" title="不定长参数?"></a>不定长参数?</h3><ul>
+<li>*args: 接收的参数存在一个元祖里面</li>
+<li>**kwargs: 接收的额参数存在一个字典里面</li>
+</ul>
+<h3 id="pass语句你知道吗"><a href="#pass语句你知道吗" class="headerlink" title="pass语句你知道吗"></a>pass语句你知道吗</h3><ul>
+<li>这个pass 是一个空语句,作用是为了保证程序正常运行</li>
+</ul>
+<h3 id="global-和-nonlocal的作用你知道吗"><a href="#global-和-nonlocal的作用你知道吗" class="headerlink" title="global 和 nonlocal的作用你知道吗?"></a>global 和 nonlocal的作用你知道吗?</h3><ul>
+<li>global是全局变量,可以用在任何地方<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun1</span>():</span></span><br><span class="line">    <span class="keyword">global</span> a</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun2</span>():</span></span><br><span class="line">    b = a + <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>(b)</span><br><span class="line">    fun1()</span><br><span class="line"></span><br><span class="line">fun2()</span><br><span class="line"><span class="comment"># 结果:2</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>nonlocal是局部变量,只能用在当前函数当中<br>```python<br>def fun1():<br>  a = 1<br>  nonlocal a</li>
+</ul>
+<p>def fun2():<br>    b = a + 1<br>    print(b)<br>    fun1()</p>
+<p>fun2()</p>
+<h1 id="他会报错因为fun2找不到这个变量a-导致无法计算-这就是局部变量-是无法在另一个函数中引用的"><a href="#他会报错因为fun2找不到这个变量a-导致无法计算-这就是局部变量-是无法在另一个函数中引用的" class="headerlink" title="他会报错因为fun2找不到这个变量a,导致无法计算,这就是局部变量,是无法在另一个函数中引用的"></a>他会报错因为fun2找不到这个变量a,导致无法计算,这就是局部变量,是无法在另一个函数中引用的</h1><p>````</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhaozheng.link/python%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/" data-id="ckt17ax4e000hncv44v4v6gtp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-redis发布者订阅者" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/redis%E5%8F%91%E5%B8%83%E8%80%85%E8%AE%A2%E9%98%85%E8%80%85/" class="article-date">
+  <time datetime="2019-08-30T12:08:31.000Z" itemprop="datePublished">2019-08-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/redis%E5%8F%91%E5%B8%83%E8%80%85%E8%AE%A2%E9%98%85%E8%80%85/">redis发布者订阅者</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="redis发布者订阅者"><a href="#redis发布者订阅者" class="headerlink" title="redis发布者订阅者"></a>redis发布者订阅者</h1><p>一，概念知识</p>
+<ul>
+<li>什么是发布者？<ul>
+<li>redis提供 一组命令实现订阅者发布者模式，publisher subscriber。实现进程间通信，而发布者顾名思义就是发送数据包的</li>
+</ul>
+</li>
+<li>什么是订阅者？<ul>
+<li>每个订阅者会等待接收发布者发送的消息，当发布者发布消息后，订阅者全部接收到</li>
+</ul>
+</li>
+</ul>
+<p>二，应用场景</p>
+<ul>
+<li>比如打车类软件，当你发送你要打车时，这个消息就会同时发送到司机师傅那，然后他们选择离你最近的，他们就属于订阅者，而你是发布者</li>
+</ul>
+<p>三，代码实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#发布者pub</span></span><br><span class="line"><span class="keyword">import</span> redis</span><br><span class="line">conn = redis.Redis(host=<span class="string">&#x27;127.0.0.1&#x27;</span>, decode_responses=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">conn.publish(<span class="string">&#x27;zheng&#x27;</span>, <span class="string">&#x27;18&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis</span><br><span class="line"></span><br><span class="line">conn = redis.Redis(host=<span class="string">&#x27;127.0.0.1&#x27;</span>, decode_responses=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成一个订阅者对象sub</span></span><br><span class="line">pubsub = conn.pubsub()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这是订阅一个消息</span></span><br><span class="line">pubsub.subscribe(<span class="string">&#x27;zheng&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进行while循环，每次都进行接收</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    msg = pubsub.parse_response()</span><br><span class="line">    <span class="built_in">print</span>(msg)</span><br></pre></td></tr></table></figure>
+<h3 id="这是一些redis常用的一些发布订阅者命令："><a href="#这是一些redis常用的一些发布订阅者命令：" class="headerlink" title="这是一些redis常用的一些发布订阅者命令："></a>这是一些redis常用的一些发布订阅者命令：</h3><p>| 1 | PSUBSCRIBE pattern [pattern …] |订阅一个或多个符合给定模式的频道。|<br>|:—–|:—–|:—–|:—–|:—–|:—–|<br>| 2 | PUBSUB subcommand [argument [argument …]] |查看订阅与发布系统状态。|<br>| 3    | PUBLISH channel message |将信息发送到指定的频道。|<br>| 4    | PUNSUBSCRIBE [pattern [pattern …]] |退订所有给定模式的频道。|<br>| 5 |SUBSCRIBE channel [channel …] |订阅给定的一个或多个频道的信息。|<br>| 6    | UNSUBSCRIBE [channel [channel …]] |指退订给定的频道。|</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhaozheng.link/redis%E5%8F%91%E5%B8%83%E8%80%85%E8%AE%A2%E9%98%85%E8%80%85/" data-id="ckt17ax4f000jncv43m353van" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/">博客园博文</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E5%8D%9A%E6%96%87/mybatis/">mybatis</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS/" rel="tag">CentOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/" rel="tag">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E6%8A%80%E5%B7%A7/" rel="tag">SQL技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitee/" rel="tag">gitee</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CentOS/" style="font-size: 20px;">CentOS</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/SQL%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">SQL技巧</a> <a href="/tags/gitee/" style="font-size: 10px;">gitee</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/MongoDB/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/CentOS%E9%83%A8%E7%BD%B2django%E9%A1%B9%E7%9B%AE/">nginx部署django项目</a>
+          </li>
+        
+          <li>
+            <a href="/nginx%E9%83%A8%E7%BD%B2vue%E9%A1%B9%E7%9B%AE/">nginx部署vue项目</a>
+          </li>
+        
+          <li>
+            <a href="/gitee%E6%8F%90%E4%BA%A4%E5%88%B0%E4%BB%96%E4%BA%BA%E4%BB%93%E5%BA%93/">gitee提交到他人仓库</a>
+          </li>
+        
+          <li>
+            <a href="/Django%E4%B8%AD%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/">Django中自动生成接口文档</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 阿正<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
